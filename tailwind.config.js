@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'frameImg': "url('/img-bg.jpg')", // Replace with your image path
+      },
+    },
   },
   plugins: [],
 }
