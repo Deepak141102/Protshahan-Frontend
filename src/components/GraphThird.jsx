@@ -237,11 +237,11 @@ const GraphThird = () => {
           <div className="flex items-center  mt-9 relative flex-col w-1/3 max-md:w-full">
             <FontAwesomeIcon
               icon={faFilter}
-              className=" absolute -top-9 right-0 max-md:right-4 max-md:text-2xl text-purple-400 text-lg cursor-pointer my-12 hover:text-purple-600 transition-all duration-300"
+              className=" absolute -top-9 right-0 max-md:right-2 max-md:text-2xl text-purple-400 text-lg cursor-pointer my-12 hover:text-purple-600 transition-all duration-300"
               onClick={() => setPieDropdownOpen(!isPieDropdownOpen)} // Toggle dropdown
             />
             {isPieDropdownOpen && (
-              <div className="absolute right-0 top-8 bg-black bg-opacity-80 rounded-md shadow-md w-1/3">
+              <div className="absolute right-0 max-md:right-2 top-8 bg-black bg-opacity-80 rounded-md shadow-md w-1/3">
                 {pieFilters.map((filter) => (
                   <div
                     key={filter}
@@ -264,11 +264,11 @@ const GraphThird = () => {
           <div className="flex items-center ml-10 mt-9 relative flex-col w-1/2 max-md:w-full ">
             <FontAwesomeIcon
               icon={faFilter}
-              className="absolute top-0 right-0 max-md:right-4 max-md:text-2xl text-purple-400 text-lg cursor-pointer mr-2 hover:text-purple-600 transition-all duration-300"
+              className="absolute top-0 right-0 max-md:right-2 max-md:text-2xl text-purple-400 text-lg cursor-pointer mr-2 hover:text-purple-600 transition-all duration-300"
               onClick={() => setBarDropdownOpen(!isBarDropdownOpen)} // Toggle dropdown
             />
             {isBarDropdownOpen && (
-              <div className="absolute right-0 top-8 mt-2 bg-black bg-opacity-80 rounded-md shadow-md w-1/4">
+              <div className="absolute right-0 max-md:right-2 top-8 mt-2 bg-black bg-opacity-80 rounded-md shadow-md w-1/4 max-md:w-5/12">
                 {barFilters.map((filter) => (
                   <div
                     key={filter}
@@ -288,14 +288,14 @@ const GraphThird = () => {
             </div>
           </div>
 
-          <div className="flex items-center ml-10 mt-12 relative flex-col w-1/2 max-md:w-full">
+          <div className="flex items-center  max-md:ml-0 mt-12 relative flex-col w-1/2 max-md:w-full">
             <FontAwesomeIcon
               icon={faFilter}
-              className="absolute top-0 right-0 max-md:right-4 max-md:text-2xl text-purple-400 text-lg cursor-pointer mr-2 hover:text-purple-600 transition-all duration-300"
+              className="absolute top-0 right-0 max-md:right-2 max-md:text-2xl text-purple-400 text-lg cursor-pointer mr-2 hover:text-purple-600 transition-all duration-300"
               onClick={() => setLineDropdownOpen(!isLineDropdownOpen)} // Toggle dropdown
             />
             {isLineDropdownOpen && (
-              <div className="absolute right-0 top-8 mt-2 bg-black bg-opacity-80 rounded-md shadow-md w-1/4">
+              <div className="absolute right-0 max-md:right-2 top-8 mt-2 bg-black bg-opacity-80 rounded-md shadow-md w-1/4 max-md:w-5/12">
                 {lineFilters.map((filter) => (
                   <div
                     key={filter}
