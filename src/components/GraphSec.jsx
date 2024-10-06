@@ -4,10 +4,8 @@ import "chart.js/auto";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 
-
-
 const GraphSec = () => {
-  console.log('GraphSec is rendering...');
+  console.log("GraphSec is rendering...");
 
   // Year selection state
   const [startYear, setStartYear] = useState(2020);
@@ -18,13 +16,7 @@ const GraphSec = () => {
 
   // Original data for the polar area chart
   const originalData = {
-    labels: [
-      "Year 2020",
-      "Year 2021",
-      "Year 2022",
-      "Year 2023",
-      "Year 2024",
-    ],
+    labels: ["Year 2020", "Year 2021", "Year 2022", "Year 2023", "Year 2024"],
     datasets: [
       {
         label: "Children Affected",
@@ -171,101 +163,102 @@ const GraphSec = () => {
   };
 
   return (
-<div className=" bg-frameImg bg-no-repeat bg-fixed bg-cover bg-bottom">
-        <div className=" bg-black bg-opacity-75 text-white py-8 px-12 max-md:p-0  ">      <div className="flex text-4xl ">
-        <h1 className="max-md:text-center max-md:text-2xl">
-          <span className="text-yellow-400 pl-4">Protsahan</span>
-          -For a Better Future | Data Visualization (map 2)
-        </h1>
+    <div className=" bg-frameImg bg-no-repeat bg-fixed bg-cover bg-bottom">
+      <div className=" bg-black bg-opacity-75 text-white py-8 px-12 max-md:p-0  ">
+      <div className="flex text-4xl max-md:text-2xl mb-4">
+      <h1 className="max-md:text-center max-md:text-2xl">
+            <span className="text-yellow-400 pl-4">Protsahan</span>
+            -For a Better Future | Data Visualization (map 2)
+          </h1>
         </div>
-                <div className="bg-black py-11 max-p-0 rounded-lg bg-opacity-60">
+        <div className="bg-black py-11 max-p-0 rounded-lg bg-opacity-60">
+          <div className="border-[2px] border-dashed border-white rounded-md p-5 m-5">
+            <div className="flex justify-around flex-wrap">
+              <div className="flex">
+                <span className="text-yellow-300">Timeline:</span>
+                <p>Child entering Protsahan</p>
+              </div>
 
-         <div className="border-[2px] border-dashed border-white rounded-md p-5 m-5">
-        <div className="flex justify-around flex-wrap">
-          <div className="flex">
-            <span className="text-yellow-300">Timeline:</span>
-            <p>Child entering Protsahan</p>
+              <div className="flex flex-wrap max-md:flex-col max-md:m-auto">
+                <p className="max-sm:text-center">
+                  <span className="text-yellow-300">Potential Consumers:</span>{" "}
+                  Protsahan Executive Team | Governmental Bodies
+                </p>
+              </div>
+            </div>
+            <div className="text-center p-4">
+              <p>
+                These set of data visualisations takes a deeper look into how
+                Protsahan is empowering the children by providing them the
+                necessary tools to come out of their traumatised lives and lead
+                a normal lives.
+              </p>
+            </div>
           </div>
 
-          <div className="flex flex-wrap max-md:flex-col max-md:m-auto">
-            <p className="max-sm:text-center">
-              <span className="text-yellow-300">Potential Consumers:</span>{" "}
-              Protsahan Executive Team | Governmental Bodies
-            </p>
+          {/* Year Filters */}
+          <div className="flex  justify-center  my-10 w-1/2 max-md:w-full max-md:flex-col max-md:items-center max-md:space-y-4 ">
+            <div className=" flex items-center text-white w-1/2 max-md:w-full max-md:justify-center">
+              <FontAwesomeIcon
+                icon={faFilter}
+                style={{ marginRight: "10px" }}
+              />
+              <label className="max-md:text-2xl">Start Year:</label>
+              <select
+                className="ml-2 p-2 rounded-md border-none bg-[#131a48] text-[#fff] max-md:px-10 max-md:py-5 max-md:text-2xl"
+                value={startYear}
+                onChange={(e) => setStartYear(Number(e.target.value))}
+              >
+                {years.map((year) => (
+                  <option key={year} value={year}>
+                    {year}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div
+             className="flex items-center text-white w-1/2 max-md:w-full max-md:justify-center"
+            >
+              <FontAwesomeIcon
+                icon={faFilter}
+                style={{ marginRight: "10px" }}
+              />
+              <label className="max-md:text-2xl">End Year:</label>
+              <select
+                className="ml-2 p-2 rounded-md border-none bg-[#131a48] text-[#fff] max-md:px-10 max-md:py-5 max-md:text-2xl"
+                value={endYear}
+                onChange={(e) => setEndYear(Number(e.target.value))}
+              >
+                {years.map((year) => (
+                  <option key={year} value={year}>
+                    {year}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap justify-center">
+            {/* Polar Area Chart */}
+            <div className="w-1/3 max-md:w-full p-4">
+              <h2 className="text-2xl font-semibold text-center mb-4">
+                Polar Area Chart (Children Affected)
+              </h2>
+              <PolarArea data={updatedPolarData} options={polarOptions} />
+            </div>
+
+            {/* Line Chart */}
+            <div className="w-1/2 max-md:w-full max-md:h-full p-4">
+              <h2 className="text-2xl font-semibold text-center mb-4">
+                Line Chart
+              </h2>
+              <Line data={lineData} options={lineOptions} />
+            </div>
           </div>
         </div>
-        <div className="text-center p-4">
-          <p>
-          These set of data visualisations takes a deeper look into how Protsahan is empowering the children by providing them the necessary tools to come out of their
-          traumatised lives and lead a normal lives.
-          </p>
-        </div>
       </div>
-
-      {/* Year Filters */}
-      <div className="flex  justify-center  my-10 w-1/2 max-md:w-full max-md:flex-col max-md:items-center max-md:space-y-4 ">
-        <div
-        className=" flex items-center text-white w-1/2"
-          
-        >
-          <FontAwesomeIcon
-            icon={faFilter}
-            style={{ marginRight: "10px" }}
-          />
-          <label className="max-md:text-2xl">Start Year:</label>
-          <select
-            className="ml-2 p-2 rounded-md border-none bg-[#131a48] text-[#fff] max-md:px-10 max-md:py-5 max-md:text-2xl"
-            value={startYear}
-            onChange={(e) => setStartYear(Number(e.target.value))}
-          >
-            {years.map((year) => (
-              <option key={year} value={year}>
-                {year}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div
-          style={{ display: "flex", alignItems: "center", color: "#fff" }}
-        >
-          <FontAwesomeIcon
-            icon={faFilter}
-            style={{ marginRight: "10px" }}
-          />
-          <label className="max-md:text-2xl">End Year:</label>
-          <select
-            className="ml-2 p-2 rounded-md border-none bg-[#131a48] text-[#fff] max-md:px-10 max-md:py-5 max-md:text-2xl"
-            value={endYear}
-            onChange={(e) => setEndYear(Number(e.target.value))}
-          >
-            {years.map((year) => (
-              <option key={year} value={year}>
-                {year}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-
-      <div className="flex flex-wrap justify-center">
-        {/* Polar Area Chart */}
-        <div className="w-1/3 max-md:w-full p-4">
-          <h2 className="text-2xl font-semibold text-center mb-4">
-            Polar Area Chart (Children Affected)
-          </h2>
-          <PolarArea data={updatedPolarData} options={polarOptions} />
-        </div>
-
-        {/* Line Chart */}
-        <div className="w-1/2 max-md:w-full p-4">
-          <h2 className="text-2xl font-semibold text-center mb-4">
-            Line Chart
-          </h2>
-          <Line data={lineData} options={lineOptions} />
-        </div>
-      </div>
-    </div></div></div>
+    </div>
   );
 };
 

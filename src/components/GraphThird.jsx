@@ -205,12 +205,14 @@ const GraphThird = () => {
   return (
     <div className=" bg-frameImg bg-no-repeat bg-fixed bg-cover bg-bottom">
       <div className=" bg-black bg-opacity-75 text-white py-8 px-12 max-md:p-0  ">
-        <h1 className="max-md:text-center max-md:text-2xl">
-          <span className="text-yellow-400 pl-4">Protsahan</span>
+      <div className="flex text-4xl max-md:text-2xl mb-4">
+
+      <h1 className="max-md:text-center max-md:text-2xl">
+      <span className="text-yellow-400 pl-4">Protsahan</span>
           -For a Better Future | Data Visualization(map 3)
         </h1>
-      </div>
-      <div className="bg-black py-11 max-p-0 rounded-lg bg-opacity-60">
+        </div>
+        <div className="bg-black py-11 max-p-0 rounded-lg bg-opacity-60">
         <div className="border-[2px] border-dashed border-white rounded-md p-5 m-5">
           <div className="flex justify-around flex-wrap">
             <div className="flex">
@@ -314,7 +316,8 @@ const GraphThird = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div>      </div>
+
   );
 };
 

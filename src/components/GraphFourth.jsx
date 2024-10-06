@@ -15,7 +15,6 @@ import {
 import { icon } from "leaflet";
 import { data } from "autoprefixer";
 
-
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -27,7 +26,7 @@ ChartJS.register(
 );
 
 const GraphFourth = () => {
-  console.log('GraphFourth is rendering...');
+  console.log("GraphFourth is rendering...");
 
   const [doughnutFilter, setDoughnutFilter] = useState("all");
   const [barFilter, setBarFilter] = useState("all");
@@ -195,134 +194,141 @@ const GraphFourth = () => {
 
   return (
     <>
-<div className=" bg-frameImg bg-no-repeat bg-fixed bg-cover bg-bottom">
-        <div className=" bg-black bg-opacity-75 text-white py-8 px-12 max-md:p-0  ">        <div className="flex text-4xl max-md:text-2xl">
-          <h1 className="text-center">
-            <span className="text-yellow-400">Protsahan</span>
-            -For a Better Future | Data Visualization (map 5)
-          </h1>
-        </div>
-                <div className="bg-black py-11 max-p-0 rounded-lg bg-opacity-60">
-
-        <div className="border-[2px] border-dashed border-white rounded-md p-5 m-5">
-          <div className="flex justify-around flex-wrap">
-            <div className="flex">
-              <span className="text-yellow-300">Timeline:</span>
-              <p>Child entering Protsahan</p>
+      <div className=" bg-frameImg bg-no-repeat bg-fixed bg-cover bg-bottom">
+        <div className=" bg-black bg-opacity-75 text-white py-8 px-12 max-md:p-0  ">
+          <div className="flex text-4xl max-md:text-2xl mb-4">
+            <h1 className="text-center">
+              <span className="text-yellow-400">Protsahan</span>
+              -For a Better Future | Data Visualization (map 5)
+            </h1>
+          </div>
+          <div className="bg-black py-11 max-p-0 rounded-lg bg-opacity-60">
+            <div className="border-[2px] border-dashed border-white rounded-md p-5 m-5">
+              <div className="flex justify-around flex-wrap">
+                <div className="flex">
+                  <span className="text-yellow-300">Timeline:</span>
+                  <p>Child entering Protsahan</p>
+                </div>
+                <div className="flex flex-wrap max-md:flex-col max-md:m-auto">
+                  <p className="max-sm:text-center">
+                    <span className="text-yellow-300">
+                      Potential Consumers:
+                    </span>
+                    Protsahan Executive Team | Governmental Bodies
+                  </p>
+                </div>
+              </div>
+              <div className="text-center p-4">
+                <p>
+                  These set of data visualisations paints a story of the
+                  enrolment data of students on a specified date range/ month/
+                  year. It tells the user – how many children have enrolled in
+                  Protsahan, basic data related to the pool of children etc.
+                </p>
+              </div>
             </div>
-            <div className="flex flex-wrap max-md:flex-col max-md:m-auto">
-              <p className="max-sm:text-center">
-                <span className="text-yellow-300">Potential Consumers:</span>
-                Protsahan Executive Team | Governmental Bodies
-              </p>
+            <div className="flex justify-center items-center max-md:flex-col flex-wrap">
+              <div className="flex justify-between items-center w-1/3 max-md:w-full max-md:flex-col mt-10 relative">
+                {isDoughnutDropdownOpen && (
+                  <div className="absolute md:left-72 max-md:right-2 top-12 mt-2 bg-black bg-opacity-80 border border-purple-500 shadow-lg rounded-md z-10 w-48 transition-all duration-500 ease-in-out transform">
+                    <ul className="py-2 text-white">
+                      <li
+                        className="px-4 py-2 hover:bg-purple-700 cursor-pointer"
+                        onClick={() => handleDoughnutFilterSelection("all")}
+                      >
+                        All
+                      </li>
+                      <li
+                        className="px-4 py-2 hover:bg-purple-700 cursor-pointer"
+                        onClick={() => handleDoughnutFilterSelection("low")}
+                      >
+                        Low Income
+                      </li>
+                      <li
+                        className="px-4 py-2 hover:bg-purple-700 cursor-pointer"
+                        onClick={() => handleDoughnutFilterSelection("mid")}
+                      >
+                        Mid Income
+                      </li>
+                      <li
+                        className="px-4 py-2 hover:bg-purple-700 cursor-pointer"
+                        onClick={() => handleDoughnutFilterSelection("high")}
+                      >
+                        High Income
+                      </li>
+                    </ul>
+                  </div>
+                )}
+
+                {/* Doughnut Chart Container */}
+                <div className="w-full p-4">
+                  <FontAwesomeIcon
+                    icon={faFilter}
+                    className="text-yellow-400 cursor-pointer absolute right-6 max-md:right-4 max-md:text-3xl top-4"
+                    onClick={() =>
+                      setDoughnutDropdownOpen(!isDoughnutDropdownOpen)
+                    }
+                  />
+
+                  <Doughnut data={doughnutData} options={doughnutOptions} />
+                </div>
+              </div>
+
+              <div className="flex justify-between items-center w-1/2 max-md:w-full max-md:flex-col mt-10 relative">
+                {isBarDropdownOpen && (
+                  <div className="absolute right-0 top-12 mt-2 bg-black bg-opacity-80 border border-purple-500 shadow-lg rounded-md z-10 w-48 transition-all duration-500 ease-in-out transform">
+                    <ul className="py-2 text-white">
+                      <li
+                        className="px-4 py-2 hover:bg-purple-700 cursor-pointer"
+                        onClick={() => handleBarFilterSelection("all")}
+                      >
+                        All
+                      </li>
+                      <li
+                        className="px-4 py-2 hover:bg-purple-700 cursor-pointer"
+                        onClick={() => handleBarFilterSelection("Aadhar")}
+                      >
+                        Aadhar
+                      </li>
+                      <li
+                        className="px-4 py-2 hover:bg-purple-700 cursor-pointer"
+                        onClick={() => handleBarFilterSelection("PAN")}
+                      >
+                        PAN
+                      </li>
+                      <li
+                        className="px-4 py-2 hover:bg-purple-700 cursor-pointer"
+                        onClick={() =>
+                          handleBarFilterSelection("Birth Certificate")
+                        }
+                      >
+                        Birth Certificate
+                      </li>
+                      <li
+                        className="px-4 py-2 hover:bg-purple-700 cursor-pointer"
+                        onClick={() => handleBarFilterSelection("Other Docs")}
+                      >
+                        Other Docs
+                      </li>
+                    </ul>
+                  </div>
+                )}
+
+                {/* Bar Chart Container */}
+                <div className="w-full p-4">
+                  <FontAwesomeIcon
+                    icon={faFilter}
+                    className="text-yellow-400 cursor-pointer absolute right-6 max-md:right-4 max-md:text-3xl top-4"
+                    onClick={() => setBarDropdownOpen(!isBarDropdownOpen)}
+                  />
+
+                  <Bar data={barData} options={barOptions} />
+                </div>
+              </div>
             </div>
           </div>
-          <div className="text-center p-4">
-            <p>
-              These set of data visualisations paints a story of the enrolment
-              data of students on a specified date range/ month/ year. It tells
-              the user – how many children have enrolled in Protsahan, basic
-              data related to the pool of children etc.
-            </p>
-          </div>
         </div>
-        <div className="flex justify-center items-center max-md:flex-col flex-wrap">
-         <div className="flex justify-between items-center w-1/3 max-md:w-full max-md:flex-col mt-10 relative">
-  {isDoughnutDropdownOpen && (
-    <div className="absolute left-72 top-12 mt-2 bg-black bg-opacity-80 border border-purple-500 shadow-lg rounded-md z-10 w-48 transition-all duration-500 ease-in-out transform">
-      <ul className="py-2 text-white">
-        <li
-          className="px-4 py-2 hover:bg-purple-700 cursor-pointer"
-          onClick={() => handleDoughnutFilterSelection("all")}
-        >
-          All
-        </li>
-        <li
-          className="px-4 py-2 hover:bg-purple-700 cursor-pointer"
-          onClick={() => handleDoughnutFilterSelection("low")}
-        >
-          Low Income
-        </li>
-        <li
-          className="px-4 py-2 hover:bg-purple-700 cursor-pointer"
-          onClick={() => handleDoughnutFilterSelection("mid")}
-        >
-          Mid Income
-        </li>
-        <li
-          className="px-4 py-2 hover:bg-purple-700 cursor-pointer"
-          onClick={() => handleDoughnutFilterSelection("high")}
-        >
-          High Income
-        </li>
-      </ul>
-    </div>
-  )}
-  
-  {/* Doughnut Chart Container */}
-  <div className="w-full p-4">
-    <FontAwesomeIcon
-      icon={faFilter}
-      className="text-yellow-400 cursor-pointer absolute right-6 max-md:right-4 max-md:text-3xl top-4"
-      onClick={() => setDoughnutDropdownOpen(!isDoughnutDropdownOpen)}
-    />
-
-    <Doughnut data={doughnutData} options={doughnutOptions} />
-  </div>
-</div>
-
-         <div className="flex justify-between items-center w-1/2 max-md:w-full max-md:flex-col mt-10 relative">
-  {isBarDropdownOpen && (
-    <div className="absolute right-0 top-12 mt-2 bg-black bg-opacity-80 border border-purple-500 shadow-lg rounded-md z-10 w-48 transition-all duration-500 ease-in-out transform">
-      <ul className="py-2 text-white">
-        <li
-          className="px-4 py-2 hover:bg-purple-700 cursor-pointer"
-          onClick={() => handleBarFilterSelection("all")}
-        >
-          All
-        </li>
-        <li
-          className="px-4 py-2 hover:bg-purple-700 cursor-pointer"
-          onClick={() => handleBarFilterSelection("Aadhar")}
-        >
-          Aadhar
-        </li>
-        <li
-          className="px-4 py-2 hover:bg-purple-700 cursor-pointer"
-          onClick={() => handleBarFilterSelection("PAN")}
-        >
-          PAN
-        </li>
-        <li
-          className="px-4 py-2 hover:bg-purple-700 cursor-pointer"
-          onClick={() => handleBarFilterSelection("Birth Certificate")}
-        >
-          Birth Certificate
-        </li>
-        <li
-          className="px-4 py-2 hover:bg-purple-700 cursor-pointer"
-          onClick={() => handleBarFilterSelection("Other Docs")}
-        >
-          Other Docs
-        </li>
-      </ul>
-    </div>
-  )}
-  
-  {/* Bar Chart Container */}
-  <div className="w-full p-4">
-    <FontAwesomeIcon
-      icon={faFilter}
-      className="text-yellow-400 cursor-pointer absolute right-6 max-md:right-4 max-md:text-3xl top-4"
-      onClick={() => setBarDropdownOpen(!isBarDropdownOpen)}
-    />
-    
-    <Bar data={barData} options={barOptions} />
-  </div>
-</div>
-
-        </div>
-      </div></div></div>
+      </div>
     </>
   );
 };

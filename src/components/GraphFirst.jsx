@@ -158,8 +158,8 @@ const GraphFirst = () => {
     <div className=" bg-frameImg bg-no-repeat bg-fixed bg-cover bg-bottom">
       <div className=" bg-black bg-opacity-75 text-white py-8 px-12 max-md:p-0  ">
         {" "}
-        <div className="flex text-4xl ">
-          <h1 className="max-md:text-center max-md:text-2xl">
+        <div className="flex text-4xl max-md:text-2xl mb-4">
+        <h1 className="max-md:text-center max-md:text-2xl">
             <span className="text-yellow-400 pl-4">Protsahan</span>
             -For a Better Future | Data Visualization (map 1)
           </h1>
