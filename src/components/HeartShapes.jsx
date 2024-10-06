@@ -13,19 +13,19 @@ const HeartCompo = () => {
     {
       heading: "Ending Sexual and Gender Based Violence (SGBV):",
       desc: "Rescue from Sexual Abuse, Child Marriage & Child Labor",
-      icon: "/icons/first-icon.png",
+      icon: "/first-icon.png",
       color: "#671c0f",
     },
     {
       heading: "Continuum of Care:",
       desc: "Access & Equity in Education, Healthcare & Life Skills through Arts and Technology",
-      icon: "/icons/second-icon.png",
+      icon: "/second-icon.png",
       color: "#962820",
     },
     {
       heading: "Livelihoods, Rights & Entitlements:",
       desc: "Linkages with Government Schemes and Employability Enhancement Opportunities",
-      icon: "/icons/third-icon.png",
+      icon: "/third-icon.png",
       color: "#dd4826",
     },
   ];
@@ -222,7 +222,7 @@ const HeartCompo = () => {
               alt="Card icon"
               width="100"
               height="50"
-              className="flex-1"
+              className=""
             />
           </div>
         ))}
