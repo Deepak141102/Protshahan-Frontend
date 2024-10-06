@@ -7,6 +7,8 @@ import { faFilter } from "@fortawesome/free-solid-svg-icons";
 
 
 const GraphSec = () => {
+  console.log('GraphSec is rendering...');
+
   // Year selection state
   const [startYear, setStartYear] = useState(2020);
   const [endYear, setEndYear] = useState(2023);

@@ -4,7 +4,9 @@ import { map } from "leaflet";
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Ensure you import Link from react-router-dom
 
-const MyComponent = () => {
+const HeartCompo = () => {
+  console.log('Heart is rendering...');
+
   const [hoveredArea, setHoveredArea] = useState(null);
 
   const cards = [
@@ -116,39 +118,41 @@ const MyComponent = () => {
         </h4>
       </div>
       <div className="w-[70%] flex flex-col items-center ">
-        <svg
-          style={{ width: "100%" }}
-          className="hidden md:block max-w-full h-auto"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
-          viewBox="0 0 2742 1542"
-        >
-          <image href="heart-model.jpeg" style={{ width: "2742px" }} />
-          {quickLink.map((item, ind) => {
-            return (
-              <a key={ind} href={item.href} target="_blank" title={item.title}>
-                <g>
-                  <polygon
-                    className="image-mapper-shape"
-                    data-index={item.index}
-                    points={item.points}
-                  />
-                </g>
-              </a>
-            );
-          })}
+      <svg
+  style={{ width: "100%" }}
+  className="hidden md:block max-w-full h-auto"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlnsXlink="http://www.w3.org/1999/xlink"
+  viewBox="0 0 2742 1542"
+>
+  <image href="heart-model.jpeg" style={{ width: "2742px" }} />
+  {quickLink.map((item, ind) => {
+    return (
+      <Link key={ind} to={item.href}  title={item.title}>
+        <g>
+          <polygon
+            className="image-mapper-shape"
+            data-index={item.index}
+            points={item.points}
+          />
+        </g>
+      </Link>
+    );
+  })}
 
-          <style>{`
+  <style>{`
     .image-mapper-shape {
-      fill: rgba(0, 0, 0, 0);
-      stroke: none;
-      transition: all 0.3s ease;
+      fill: rgba(0, 0, 0, 0); /* Transparent fill */
+      stroke: none; /* No stroke */
+      transition: all 0.3s ease; /* Smooth transition */
     }
     .image-mapper-shape:hover {
       fill: rgba(255, 255, 255, 0.5); /* Light translucent fill on hover */
+      cursor: pointer; /* Change cursor to pointer on hover */
     }
   `}</style>
-        </svg>
+</svg>
+
       </div>
 
       <div className="bg-[#e04729] p-5 px-12 text-white font-bold font-montserrat text-left mx-0 my-8 hidden max-md:block">
@@ -185,7 +189,7 @@ const MyComponent = () => {
 
         {/* Background Image */}
         <image
-          xlinkHref="/mobile-heart-model.jpeg"
+          xlinkHref="mobi-heart.jpeg"
           width="1328"
           height="1126"
         />
@@ -245,4 +249,4 @@ const MyComponent = () => {
 //   );
 // };
 
-export default MyComponent;
+export default HeartCompo;

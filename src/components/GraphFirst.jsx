@@ -31,6 +31,8 @@ ChartJS.register(
 );
 
 const GraphFirst = () => {
+  console.log('GraphFirst is rendering...');
+
   const [startYear, setStartYear] = useState(2020);
   const [endYear, setEndYear] = useState(2023);
 

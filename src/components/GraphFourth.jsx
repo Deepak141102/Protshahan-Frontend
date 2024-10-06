@@ -27,6 +27,8 @@ ChartJS.register(
 );
 
 const GraphFourth = () => {
+  console.log('GraphFourth is rendering...');
+
   const [doughnutFilter, setDoughnutFilter] = useState("all");
   const [barFilter, setBarFilter] = useState("all");
   const [isDoughnutDropdownOpen, setDoughnutDropdownOpen] = useState(false);

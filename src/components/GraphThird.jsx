@@ -29,6 +29,8 @@ ChartJS.register(
 );
 
 const GraphThird = () => {
+  console.log('GraphThird is rendering...');
+
   const [isPieDropdownOpen, setPieDropdownOpen] = useState(false);
   const [isBarDropdownOpen, setBarDropdownOpen] = useState(false);
   const [isLineDropdownOpen, setLineDropdownOpen] = useState(false);

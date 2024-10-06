@@ -28,6 +28,8 @@ ChartJS.register(
 );
 
 const SpiderChart = () => {
+  console.log('art is rendering...');
+
   const [startYear, setStartYear] = useState(2020);
   const [endYear, setEndYear] = useState(2024);
 
