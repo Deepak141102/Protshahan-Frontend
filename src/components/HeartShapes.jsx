@@ -13,13 +13,13 @@ const HeartCompo = () => {
     {
       heading: "Ending Sexual and Gender Based Violence (SGBV):",
       desc: "Rescue from Sexual Abuse, Child Marriage & Child Labor",
-      icon: "./first-icon.png",
+      icon: "./icons/first-icon.png",
       color: "#671c0f",
     },
     {
       heading: "Continuum of Care:",
       desc: "Access & Equity in Education, Healthcare & Life Skills through Arts and Technology",
-      icon: "./second-icon.png",
+      icon: "./icons/second-icon.png",
       color: "#962820",
     },
     {
