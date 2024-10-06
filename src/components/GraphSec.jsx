@@ -198,7 +198,7 @@ const GraphSec = () => {
 
           {/* Year Filters */}
           <div className="flex  justify-center  my-10 w-1/2 max-md:w-full max-md:flex-col max-md:items-center max-md:space-y-4 ">
-            <div className=" flex items-center text-white w-1/2 max-md:w-full max-md:justify-center">
+            <div className=" flex items-center text-white w-1/2 max-md:w-full justify-center">
               <FontAwesomeIcon
                 icon={faFilter}
                 style={{ marginRight: "10px" }}
