@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Art = () => {
+const Health = () => {
   return (
     <div>
-      
+      Health
     </div>
   )
 }
 
-export default Art
+export default Health

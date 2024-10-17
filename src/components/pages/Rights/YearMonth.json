@@ -1,0 +1,48 @@
+[
+    {
+      "year": 2022,
+      "monthWise": {
+        "March": 46,
+        "April": 49,
+        "May": 56,
+        "June": 62,
+        "July": 55,
+        "August": 55,
+        "September": 68,
+        "October": 45,
+        "November": 60,
+        "December": 65
+      },
+      "total": 136
+    },
+    {
+      "year": 2023,
+      "monthWise": {
+        "January": 20,
+        "February": 17,
+        "March": 20,
+        "April": 15,
+        "May": 20,
+        "June": 17,
+        "July": 15,
+        "August": 15,
+        "September": 15,
+        "October": 15,
+        "November": 15,
+        "December": 17
+      },
+      "total": 158
+    },
+    {
+      "year": 2024,
+      "monthWise": {
+        "January": 50,
+        "February": 100,
+        "March": 150,
+        "April": 0,
+        "May": 0
+      },
+      "total": 300
+    }
+  ]
+  

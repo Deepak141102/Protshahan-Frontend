@@ -4,8 +4,8 @@ import "chart.js/auto";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 
-const GraphSec = () => {
-  console.log("GraphSec is rendering...");
+const Education = () => {
+  console.log("Education is rendering...");
 
   // Year selection state
   const [startYear, setStartYear] = useState(2020);
@@ -262,4 +262,4 @@ const GraphSec = () => {
   );
 };
 
-export default GraphSec;
+export default Education;

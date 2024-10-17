@@ -1,0 +1,33 @@
+{
+    "Number of Metrix": "April 2023 - March 2024",
+    "direct_cash_transfer_scholarships": {
+        "number_disbursed": 241,
+        "amount_disbursed_inr": 1446000
+    },
+    "digital_device_scholarships": {
+        "number_awarded": 10,
+        "amount_invested_inr": 99000
+    },
+    "categories_of_scholarship": {
+        "Disability Scholarship": 20,
+        "Merit Scholarship": 19,
+        "Need Based Equity": 531,
+        "Need Based Equity Disability": 1,
+        "Need Based Equity Merit": 55,
+        "Stem Scholarship": 2
+    },
+    "migration_info": {
+        "Bihar": 440,
+        "Rajasthan": 40,
+        "Chhattisgarh": 3,
+        "Uttar Pradesh": 125,
+        "Jharkhand": 3,
+        "Madhya Pradesh": 1,
+        "West Bengal": 0,
+        "Uttarakhand": 3,
+        "Nepal": 1,
+        "Delhi": 9,
+        "Haryana": 9,
+        "Lucknow": 1
+    }
+}

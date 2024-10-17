@@ -4,7 +4,7 @@ import { map } from "leaflet";
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Ensure you import Link from react-router-dom
 
-const HeartCompo = () => {
+const HeartModel = () => {
   console.log('Heart is rendering...');
 
   const [hoveredArea, setHoveredArea] = useState(null);
@@ -249,4 +249,4 @@ const HeartCompo = () => {
 //   );
 // };
 
-export default HeartCompo;
+export default HeartModel;
