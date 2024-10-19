@@ -30,25 +30,25 @@ const DataChart2 = () => {
       },
     ],
   };
-
   const optionsPie = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
-      legend: {
-        position: "top",
-        align: "center",  // Center the legend horizontally
-        labels: {
-          boxWidth: 15,  // Adjust the size of the legend box
-          padding: 20,   // Add padding between the text and box
-          usePointStyle: true,  // Make the legend point circular
+        legend: {
+            position: "top",
+            align: "center",
+            labels: {
+                boxWidth: 15,
+                padding: 20,
+                usePointStyle: true,
+            },
+            onClick: (e) => e.stopPropagation(), // Prevent default click behavior
         },
-      },
     },
     animation: {
-      animateScale: true,
+        animateScale: true,
     },
-  };
+};
 
   const filteredDataPie = dataPie.datasets[0].data.filter((_, index) =>
     filtersPie[dataPie.labels[index]]
@@ -106,17 +106,18 @@ const DataChart2 = () => {
   const optionsDoughnut = {
     responsive: true,
     plugins: {
-      legend: {
-        position: "top",
-        align: "center",  // Center the legend horizontally
-        labels: {
-          boxWidth: 15,  // Adjust the size of the legend box
-          padding: 20,   // Add padding between the text and box
-          usePointStyle: true,  // Make the legend point circular
+        legend: {
+            position: "top",
+            align: "center",
+            labels: {
+                boxWidth: 15,
+                padding: 20,
+                usePointStyle: true,
+            },
+            onClick: (e) => e.stopPropagation(), // Prevent default click behavior
         },
-      },
     },
-  };
+};
 
   const filteredDataDoughnut = {
     ...initialDataDoughnut,

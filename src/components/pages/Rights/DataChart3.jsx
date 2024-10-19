@@ -58,25 +58,9 @@ const DataChart1 = () => {
         maintainAspectRatio: false,
         plugins: {
             legend: {
-                position: isMobile ? 'bottom' : 'top',
-                labels: {
-                    color: '#fff',
-                    font: {
-                        size: isMobile ? 10 : 12,
-                    },
-                    boxWidth: 15,  // Adjust the size of the legend box
-                    padding: 20,   // Add padding between the text and box
-                    usePointStyle: true,  // Make the legend point circular
-                },
+                display: false, // Hide the legend
             },
-            title: {
-                display: true,
-                text: 'Scholarships Data',
-                color: '#fff',
-                font: {
-                    size: isMobile ? 14 : 18,
-                },
-            },
+          
         },
         layout: {
             padding: {
@@ -88,12 +72,6 @@ const DataChart1 = () => {
         },
         scales: {
             x: {
-                ticks: {
-                    color: '#fff',
-                    font: {
-                        size: isMobile ? 9 : 12,
-                    },
-                },
                 grid: {
                     color: 'rgba(255, 255, 255, 0.1)',
                 },

@@ -50,7 +50,7 @@ const IndiaMap = () => {
   <div className=" bg-gray-800 bg-opacity-20 w-1/2 m-auto max-md:w-full ">
   <h1 className="map-title px-3 py-3">Where has the child's family migrated from?</h1>
   </div>
-    <div className="relative w-[55%] h-[70vh] m-auto max-md:w-full">
+    <div className="relative w-[55%] h-screen m-auto max-md:w-full">
  
       <DatamapsIndia
         regionData={regionData}

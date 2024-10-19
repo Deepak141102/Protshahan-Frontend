@@ -72,11 +72,11 @@ const Rights = () => {
       legend: {
         position: "top",
         labels: {
-          color: "#e8461e",
           boxWidth: 15,
           padding: 20,
           usePointStyle: true,
-        },
+      },
+      onClick: (e) => e.stopPropagation(), 
       },
       tooltip: {
         callbacks: {
@@ -116,11 +116,12 @@ const Rights = () => {
       legend: {
         position: "top",
         labels: {
-          color: "#e8461e",
           boxWidth: 15,
           padding: 20,
           usePointStyle: true,
-        },
+      },
+      onClick: (e) => e.stopPropagation(), // Prevent default click behavior
+  
       },
       tooltip: {
         callbacks: {

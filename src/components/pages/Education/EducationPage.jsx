@@ -5,6 +5,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import yearlyData from './YearlyMonthlyData.json'; // Import the JSON file for yearly data
 import studentData from './StudentPassOut.json'; // Import the JSON file for student pass out data
 
+// Register ChartJS components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const Education = () => {
@@ -117,7 +118,7 @@ const Education = () => {
             <div className="max-w-3xl w-full relative overflow-hidden">
               {/* Yearly Bar Chart - Animate slide out when clicked */}
               <div className={`transition-transform duration-700 ease-in-out transform ${showMonthlyChart ? '-translate-x-full' : 'translate-x-0'}`}>
-                <h2 className="text-xl font-bold text-center mb-4">Yearly Data</h2>
+                <h2 className="text-xl font-bold text-center mb-4">Number of Lectures (Yearly)</h2>
                 <div className="p-4 rounded-lg shadow-md">
                   <Bar
                     data={yearlyChartData}
@@ -125,18 +126,16 @@ const Education = () => {
                       onClick: (evt, elements) => handleBarClick(elements),
                       responsive: true,
                       plugins: {
-                        legend: { 
-                          position: 'top',
-                          labels: {
-                            color: "#e8461e",
-                            boxWidth: 15,
-                            padding: 20,
-                            usePointStyle: true,
-                          }
+                        legend: {
+                          display: false, // Hide the legend
                         },
                       },
                     }}
                   />
+                  {/* Add instruction message here */}
+                  <p className="text-yellow-300 text-center mt-2">
+                    Click on a bar to see monthly data!
+                  </p>
                 </div>
               </div>
 
@@ -154,21 +153,15 @@ const Education = () => {
                     </button>
                   </div>
 
-                  <h2 className="text-xl font-bold text-center mb-4">Monthly Data for {selectedYearData.year}</h2>
-                  <div className="p-4 rounded-lg shadow-md ">
+                  <h2 className="text-xl font-bold text-center mb-4">Number of Lectures in  {selectedYearData.year} (Monthly)</h2>
+                  <div className="p-4 rounded-lg shadow-md">
                     <Bar
                       data={monthlyData}
                       options={{
                         responsive: true,
                         plugins: {
-                          legend: { 
-                            position: 'top',
-                            labels: {
-                              color: "#e8461e",
-                              boxWidth: 15,
-                              padding: 20,
-                              usePointStyle: true,
-                            }
+                          legend: {
+                            display: false, // Hide the legend
                           },
                         },
                       }}

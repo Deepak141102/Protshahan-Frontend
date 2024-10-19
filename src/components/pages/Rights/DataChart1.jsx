@@ -33,7 +33,7 @@ ChartJS.register(
   RadialLinearScale
 );
 
-const DataChart13 = () => {
+const DataChart1 = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
