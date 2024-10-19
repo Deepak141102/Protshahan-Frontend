@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; // Added useEffect to imports
 import DatamapsIndia from "react-datamaps-india";
 import migrationData from "./Data.json";
 import "./rightsPage.css";
 
 const IndiaMap = () => {
-  const [tooltipContent, setTooltipContent] = useState(
-    "Hover any state to see data"
-  );
+  const [color, setColor] = useState('#ff5733'); // Initial color
+
   const migrationInfo = migrationData.migration_info;
 
   // Convert migration data into the format required by DatamapsIndia
@@ -25,54 +24,83 @@ const IndiaMap = () => {
     return "linear-gradient(135deg, #00FF00, #66FF66)"; // Gradient for low values
   };
 
-  return (
-  
-          <div className="relative w-[55%] h-screen m-auto max-md:w-full"
-            
-          >
-            <h1 className="map-title">Where has the child's family migrated from?</h1>
-            <DatamapsIndia
-              regionData={regionData}
-              hoverComponent={({ value }) => {
-                const count = value.value; // Get the migration count
-                const stateName = value.name; // Get the state name from your data
+  useEffect(() => {
+    // Querying the specific paths for hiding
+    const pathsToHide = [
+      'path[d="M303.503,322.443L303.795,322.758L303.848,323.758L304.246,324.441L303.848,326.255L303.371,326.623L302.814,325.677L302.575,324.836L301.939,324.389L301.753,323.416L302.071,322.863L302.496,322.863Z"]',
+      'path[d="M124.169,287.87L123.374,287.551L122.95,286.993L123.188,286.594L124.063,287.073ZM103.695,282.336L103.112,282.336L102.688,281.244L103.165,280.87Z"]'
+    ];
 
-                // Construct the message
-                const message =
-                  count > 0
-                    ? `${count} people migrated from`
-                    : `No data available for `;
+    pathsToHide.forEach(selector => {
+      const specificPath = document.querySelector(selector);
+      if (specificPath) {
+        specificPath.style.display = 'none'; // Hide the specific path
+      }
+    });
 
-                return (
-                  <div className="tooltip flex">
-                    <div className="inline">
-                      {message}{" "}
-                      <div className="tooltip-header inline">{stateName}</div>
-                    </div>{" "}
-                    {/* The message already includes the state name */}
-                  </div>
-                );
-              }}
-              mapLayout={{
-                legendTitle: "Number of Migrants",
-                startColor: "#919191", // Light gray for low values
-                endColor: "#3c3950", // Dark purple for high values
-                hoverTitle: "Count",
-                noDataColor: "#f5f5f5", // Color for regions with no data
-                borderColor: "#ce441a", // Orange-red border for regions
-                hoverBorderColor: "#919191", // Gray border when hovered
-                hoverColor: "#e8461e", // Orange color on hover
-                height: 500,
-                width: 350,
-                color: "white",
-              }}
-              getFillColor={(region) => {
-                const value = regionData[region]?.value || 0;
-                return getGradientColor(value);
-              }}
-            />
-          </div>
+    // Reset all paths with specific starting d attribute
+    document.querySelectorAll('path[d^="M303"]').forEach(path => {
+      path.style.fill = color;
+      path.style.display = 'none';
+    });
+    
+  }, [color]); // Only runs when color changes
+
+  return (<>
+  <div className=" bg-gray-800 bg-opacity-20 w-1/2 m-auto max-md:w-full ">
+  <h1 className="map-title px-3 py-3">Where has the child's family migrated from?</h1>
+  </div>
+    <div className="relative w-[55%] h-[70vh] m-auto max-md:w-full">
+ 
+      <DatamapsIndia
+        regionData={regionData}
+        hoverComponent={({ value }) => {
+          const count = value.value; // Get the migration count
+          const stateName = value.name; // Get the state name from your data
+
+          // Construct the message
+          const message =
+            count > 0
+              ? `${count} people migrated from`
+              : `No data available for `;
+
+          return (
+            <div className="tooltip flex">
+              <div className="inline">
+                {message}{" "}
+                <div className="tooltip-header inline">{stateName}</div>
+              </div>
+            </div>
+          );
+        }}
+        mapLayout={{
+          legendTitle: "Number of Migrants",
+          startColor: "#919191", // Light gray for low values
+          endColor: "#3c3950", // Dark purple for high values
+          hoverTitle: "Count",
+          noDataColor: "#f5f5f5", // Color for regions with no data
+          borderColor: "#ce441a", // Orange-red border for regions
+          hoverBorderColor: "#919191", // Gray border when hovered
+          hoverColor: "#e8461e", // Orange color on hover
+          height: 500,
+          width: 350,
+          color: "white",
+        }}
+        getFillColor={(region) => {
+          const value = regionData[region]?.value || 0;
+          return getGradientColor(value);
+        }}
+      />
+    </div>
+    </>
   );
 };
 
 export default IndiaMap;
+
+
+
+
+
+
+

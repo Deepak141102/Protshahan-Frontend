@@ -68,19 +68,19 @@ const counters = [
   }, [hasAnimated]); // The effect will run only once on mount
 
   return (
-    <div className="flex flex-wrap justify-center p-5 md:p-10 bg-cover rounded-lg text-white backdrop-blur-sm">
+    <div className="flex flex-wrap justify-center p-5 md:p-10 bg-cover rounded-lg text-white font-lato">
       {counters.map((counter, index) => (
         <div
           key={index}
-          className="flex flex-col items-center text-center flex-1 max-w-xs p-6 bg-white bg-opacity-10 rounded-lg hover:transform hover:-translate-y-2 hover:bg-opacity-20 transition-all duration-300 backdrop-blur-md mx-2 mb-8"
-        >
-          <div className="text-6xl text-pink-500 mb-4 flex items-center justify-center">
+          className="flex flex-col w-1/5 max-md:w-2/5 max-sm:w-full max-lg:w-2/5 items-center text-center p-6 bg-white/10 rounded-lg hover:-translate-y-2 hover:bg-white/20 transition duration-300 backdrop-blur-md mx-2 mb-8"
+          >
+          <div className="text-6xl  text-[#e54c29] mb-4 flex items-center justify-center">
             {counter.icon}
           </div>
-          <div className="text-4xl font-bold text-yellow-400 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-yellow-500 drop-shadow-lg">
+          <div className="count text-4xl font-bold text-gradient bg-gradient-to-r  to-[#212331] from-[#919191] bg-clip-text text-transparent filter drop-shadow-md">
             {displayCounts[index]}+
           </div>
-          <div className="text-lg text-white text-opacity-70 mt-2">
+          <div className="text-lg text-[#df6b4f] text-opacity-70 mt-2">
             {counter.label}
           </div>
         </div>

@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Pie, Doughnut } from "react-chartjs-2";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import { FaGenderless, FaUsers } from "react-icons/fa";
+import { IoChevronDown } from "react-icons/io5";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import RightsChartsPage from "./DataChart2";
 import BarGraph from "./DataChart3";
@@ -23,49 +22,45 @@ const Rights = () => {
       {
         label: "Number of Individuals",
         data: [71, 554, 11],
-        backgroundColor: [
-          "#3c3950", // Darker shade for the first segment
-          "#ce441a", // Bright orange for the second segment
-          "#919191", // Gray for the third segment
-        ],
+        backgroundColor: ["#3c3950", "#ce441a", "#919191"],
         borderWidth: 2,
-        borderColor: "#fff", // White border for contrast
+        borderColor: "#fff",
       },
     ],
   };
 
-  const [filters, setFilters] = useState({
+  const [filtersDoughnut, setFiltersDoughnut] = useState({
     "Most Vulnerable Communities": true,
     "Daily Wage Workers": true,
     "Organised Sector": true,
   });
 
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropdownOpenDoughnut, setDropdownOpenDoughnut] = useState(false);
   const [selectedData, setSelectedData] = useState("gender");
-  const dropdownRef = useRef(null);
+  const dropdownRefDoughnut = useRef(null);
 
-  const toggleDropdown = () => {
-    setDropdownOpen((prev) => !prev);
+  const toggleDropdownDoughnut = () => {
+    setDropdownOpenDoughnut((prev) => !prev);
   };
 
-  const toggleFilter = (label) => {
-    setFilters((prevFilters) => ({
+  const toggleFilterDoughnut = (label) => {
+    setFiltersDoughnut((prevFilters) => ({
       ...prevFilters,
       [label]: !prevFilters[label],
     }));
   };
 
-  const filteredData = {
+  const filteredDoughnutData = {
     ...initialData,
-    labels: initialData.labels.filter((label) => filters[label]),
+    labels: initialData.labels.filter((label) => filtersDoughnut[label]),
     datasets: [
       {
         ...initialData.datasets[0],
         data: initialData.datasets[0].data.filter(
-          (_, index) => filters[initialData.labels[index]]
+          (_, index) => filtersDoughnut[initialData.labels[index]]
         ),
         backgroundColor: initialData.datasets[0].backgroundColor.filter(
-          (_, index) => filters[initialData.labels[index]]
+          (_, index) => filtersDoughnut[initialData.labels[index]]
         ),
       },
     ],
@@ -77,7 +72,10 @@ const Rights = () => {
       legend: {
         position: "top",
         labels: {
-          color: "#e8461e", // Futuristic color for legends
+          color: "#e8461e",
+          boxWidth: 15,
+          padding: 20,
+          usePointStyle: true,
         },
       },
       tooltip: {
@@ -93,10 +91,7 @@ const Rights = () => {
     datasets: [
       {
         data: [558, 79],
-        backgroundColor: [
-          "#e8461e", // Bright red for Female
-          "#919191", // Gray for Male
-        ],
+        backgroundColor: ["#e8461e", "#919191"],
         borderColor: "#fff",
         borderWidth: 2,
       },
@@ -108,7 +103,7 @@ const Rights = () => {
     datasets: [
       {
         data: [28, 552, 57],
-        backgroundColor: ["#3c3950", "#ce441a", "#919191"], // Colors for age groups
+        backgroundColor: ["#3c3950", "#ce441a", "#919191"],
         borderColor: "#fff",
         borderWidth: 2,
       },
@@ -122,6 +117,9 @@ const Rights = () => {
         position: "top",
         labels: {
           color: "#e8461e",
+          boxWidth: 15,
+          padding: 20,
+          usePointStyle: true,
         },
       },
       tooltip: {
@@ -136,15 +134,14 @@ const Rights = () => {
     setSelectedData(dataType);
   };
 
-  // Close dropdown if clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
-        dropdownOpen &&
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target)
+        dropdownOpenDoughnut &&
+        dropdownRefDoughnut.current &&
+        !dropdownRefDoughnut.current.contains(event.target)
       ) {
-        setDropdownOpen(false);
+        setDropdownOpenDoughnut(false);
       }
     };
 
@@ -152,122 +149,113 @@ const Rights = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [dropdownOpen]);
+  }, [dropdownOpenDoughnut]);
 
   return (
-    <div className="bg-frameImg bg-no-repeat bg-fixed bg-cover bg-bottom">
-      <div className="bg-black bg-opacity-75 text-white py-8 px-12 max-md:px-4">
-        <div className="flex flex-col text-4xl max-md:text-2xl mb-4">
-          <h1 className="text-center">
-            <span className="text-yellow-400">Protsahan</span> - For a Better
-            Future | Data Visualization (map 1)
-          </h1>
-        </div>
-        <div className="bg-black py-11 rounded-lg bg-opacity-60">
-          <div className="border-2 border-dashed border-white rounded-md p-5 m-5">
-            <div className="flex flex-col md:flex-row justify-between">
-              <div className="flex">
-                <span className="text-yellow-300">Timeline:</span>
-                <p className="ml-2">Child entering Protsahan</p>
-              </div>
-              <div className="flex flex-col max-md:m-auto">
-                <p className="max-sm:text-center">
-                  <span className="text-yellow-300">Potential Consumers:</span>{" "}
-                  Protsahan Executive Team | Governmental Bodies
-                </p>
-              </div>
+    <div className=" bg-frameImg bg-no-repeat bg-fixed bg-cover bg-bottom">
+    <div className=" bg-black bg-opacity-75 text-white py-8 px-12 max-md:p-0  ">
+      <div className="flex text-4xl p-4 ">
+        <h1 className="max-md:text-center max-md:text-2xl">
+          <span className="text-yellow-400 pl-4">Protsahan</span>
+          -For a Better Future | Data Visualization (map 6)
+        </h1>
+      </div>
+      <div className="bg-black py-11 max-p-0 rounded-lg bg-opacity-60">
+        <div className="border-[2px] border-dashed border-white rounded-md p-5 m-5">
+          <div className="flex justify-around flex-wrap">
+            <div className="flex">
+              <span className="text-yellow-300">Timeline:</span>
+              <p>Child entering Protsahan</p>
             </div>
-            <div className="text-center p-4">
-              <p>
-                This set of data visualizations takes a deeper look into how
-                Protsahan is empowering children by providing them with the
-                necessary tools to overcome their traumatic experiences and lead
-                normal lives.
+            <div className="flex flex-wrap max-md:flex-col max-md:m-auto">
+              <p className="max-sm:text-center">
+                <span className="text-yellow-300">
+                  Potential Consumers:
+                </span>
+                Protsahan Executive Team | Governmental Bodies
               </p>
             </div>
           </div>
-          <CounterSection />
-          {/* Filter for Doughnut Chart */}
+          <div className="text-center p-4">
+            <p>
+              These set of data visualisations paints a story of the
+              enrolment data of students on a specified date range/ month/
+              year. It tells the user – how many children have enrolled in
+              Protsahan, basic data related to the pool of children etc.
+            </p>
+          </div>
+        </div>       <CounterSection />
           <div className="flex flex-col md:flex-row justify-around items-center">
-            {/* Charts Container */}
-            <div className="flex flex-col md:flex-row justify-around items-center w-full">
-              {/* Doughnut Chart Area */}
-              <div className="w-full max-w-xs md:max-w-md">
-                <div className="flex flex-col items-center mb-3">
-                  <h1 className="text-2xl font-bold mb-5 max-md:text-center">
-                    Occupation of the Guardians / Family
-                  </h1>
+            {/* Doughnut Chart Area */}
+            <div className="w-full max-w-xs md:max-w-md">
+              <div className="flex flex-col items-center mb-3">
+                <h1 className="text-2xl font-bold mb-5 max-md:text-center">
+                  Occupation of the Guardians / Family
+                </h1>
+                <div className="relative inline-block">
                   <button
-                    onClick={toggleDropdown}
-                    className="bg-[#212331] text-white px-4 py-2 rounded-md flex items-center"
+                    onClick={toggleDropdownDoughnut}
+                    className="text-white bg-[#212331] rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center transition duration-300 hover:bg-[#e54c29]"
                   >
-                    Toggle Filters
-                    <FontAwesomeIcon icon={faFilter} className="ml-2" />
+                    Filter Data <IoChevronDown className="ml-2" />
                   </button>
-                  {dropdownOpen && (
+
+                  {dropdownOpenDoughnut && (
                     <div
-                      ref={dropdownRef}
-                      className="absolute z-10 top-[24.4rem] bg-[#393d50] divide-y divide-gray-100 rounded-lg shadow w-44 mt-2"
+                      ref={dropdownRefDoughnut}
+                      className="absolute mt-0 bg-[#393d50] shadow-lg rounded-lg z-10 w-[17rem]"
                     >
-                      <ul className="py-2 text-sm text-white">
-                        {initialData.labels.map((label) => (
-                          <li key={label}>
-                            <a
-                              href="#"
-                              onClick={(e) => {
-                                e.preventDefault(); // Prevent the default link behavior
-                                toggleFilter(label); // Toggle the filter
-                              }}
-                              className="block px-4 py-2 hover:bg-[#212331] hover:text-[#e54c29]"
-                            >
-                              <input
-                                type="checkbox"
-                                checked={filters[label]}
-                                readOnly // Make checkbox read-only as we are handling its state in the dropdown
-                                className="mr-2"
-                              />
-                              {label}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
+                      {Object.keys(filtersDoughnut).map((label) => (
+                        <label
+                          key={label}
+                          htmlFor={`doughnut-checkbox-${label}`}
+                          className="block px-4 py-2 hover:bg-[#212331] hover:text-[#e54c29] transition duration-300 cursor-pointer"
+                        >
+                          <input
+                            id={`doughnut-checkbox-${label}`}
+                            type="checkbox"
+                            checked={filtersDoughnut[label]}
+                            onChange={() => toggleFilterDoughnut(label)}
+                            className="mr-2"
+                          />
+                          {label}
+                        </label>
+                      ))}
                     </div>
                   )}
                 </div>
-                <Doughnut data={filteredData} options={DoughnutOptions} />
               </div>
+              <Doughnut data={filteredDoughnutData} options={DoughnutOptions} />
+            </div>
 
-              {/* Pie Chart Area */}
-              <div className="flex flex-col justify-center text-center items-center mt-8 md:mt-0 w-full max-w-xs md:max-w-md py-2">
-                <h1 className="text-2xl font-bold mb-6">
-                  Scholarship Data Visualization
-                </h1>
-                <div className="flex space-x-4 mb-4">
-                  <div
-                    className={`flex items-center cursor-pointer ${
-                      selectedData === "gender" ? "text-blue-500" : "text-white"
-                    }`}
-                    onClick={() => handleIconClick("gender")}
-                  >
-                    <FaGenderless className="text-3xl mr-2" />
-                    <span>Gender</span>
-                  </div>
-                  <div
-                    className={`flex items-center cursor-pointer ${
-                      selectedData === "age" ? "text-blue-500" : "text-white"
-                    }`}
-                    onClick={() => handleIconClick("age")}
-                  >
-                    <FaUsers className="text-3xl mr-2" />
-                    <span>Age</span>
-                  </div>
+            {/* Pie Chart Area */}
+            <div className="flex flex-col justify-center text-center items-center mt-8 md:mt-0 w-full max-w-xs md:max-w-md py-2">
+              <h1 className="text-2xl font-bold mb-6">Scholarship Data Visualization</h1>
+              <div className="flex space-x-4 mb-4">
+                <div
+                  className={`flex items-center cursor-pointer ${
+                    selectedData === "gender" ? "text-[#e54c29]" : "text-white"
+                  }`}
+                  onClick={() => handleIconClick("gender")}
+                >
+                  <FaGenderless className="text-3xl mr-2" />
+                  <span>Gender</span>
                 </div>
-                {selectedData === "gender" ? (
-                  <Pie data={genderData} options={options} />
-                ) : (
-                  <Pie data={ageData} options={options} />
-                )}
+                <div
+                  className={`flex items-center cursor-pointer ${
+                    selectedData === "age" ? "text-[#e54c29]" : "text-white"
+                  }`}
+                  onClick={() => handleIconClick("age")}
+                >
+                  <FaUsers className="text-3xl mr-2" />
+                  <span>Age</span>
+                </div>
               </div>
+              {selectedData === "gender" ? (
+                <Pie data={genderData} options={options} />
+              ) : (
+                <Pie data={ageData} options={options} />
+              )}
             </div>
           </div>
           <hr className="my-20" />

@@ -16,6 +16,9 @@ export default {
         xl: '1280px',  // Extra large devices (large desktops, 1280px and up)
         '2xl': '1536px', // 2X large devices (larger desktops, 1536px and up)
       },
+      fontFamily: {
+        lato: ['Lato', 'sans-serif'], // Use Lato as the default sans font
+      },
     },
   },
   plugins: [],

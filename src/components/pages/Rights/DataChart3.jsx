@@ -64,6 +64,9 @@ const DataChart1 = () => {
                     font: {
                         size: isMobile ? 10 : 12,
                     },
+                    boxWidth: 15,  // Adjust the size of the legend box
+                    padding: 20,   // Add padding between the text and box
+                    usePointStyle: true,  // Make the legend point circular
                 },
             },
             title: {
@@ -110,19 +113,19 @@ const DataChart1 = () => {
         },
         elements: {
             bar: {
-                borderWidth: 2,
+                borderWidth: 1,
                 borderColor: '#fff',
             },
         },
     };
 
     return (
-        <div className="flex justify-center space-x-8 flex-col md:flex-row items-center">
-            <div className="w-1/2 h-[50vh] max-md:w-full max-md:h-[50vh] mb-20">
+        <div className="flex justify-center space-x-8 flex-col md:flex-row max-md:items-center my-auto">
+            <div className="w-1/2 h-[60vh] max-md:w-[90%] max-md:h-[50vh] mb-20">
                 <h2 className="text-xl font-bold text-white text-center mb-4">Categories of Scholarship</h2>
                 <Line data={scholarshipData} options={options} />
             </div>
-            <div className="w-1/2 h-[50vh] max-md:w-full">
+            <div className="w-1/2 h-[50vh] max-md:w-[90%]">
                 <h2 className="text-xl font-bold text-white text-center mb-4">Number of Scholarships Disbursed by Gender</h2>
                 <Bar data={genderData} options={options} />
             </div>

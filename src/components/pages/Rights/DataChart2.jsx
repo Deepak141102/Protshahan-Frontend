@@ -97,7 +97,7 @@ const DataChart2 = () => {
       {
         label: "Number of Individuals",
         data: [71, 554, 11],
-        backgroundColor: ["#919191", "#3c3950", "#ce441a"],
+        backgroundColor: [ "#65190b", "#ce441a","#919191",],
         borderWidth: 2,
       },
     ],
@@ -163,16 +163,16 @@ const DataChart2 = () => {
   }, [dropdownOpenPie, dropdownOpenDoughnut]);
 
   return (
-    <div className="flex flex-col lg:flex-row justify-evenly items-center bg-transparent w-full gap-6 p-4 mt-11">
+    <div className="flex max-md:flex-col justify-evenly items-center bg-transparent w-full gap-6 p-4 mt-11">
       {/* Pie Chart with Filters */}
-      <div className="flex flex-col items-center w-1/2 max-md:w-full">
+      <div className="flex flex-col items-center w-1/3 max-md:w-full">
         <h2 className="text-lg lg:text-2xl font-bold mb-4 text-center">
           Monthly Family Income Distribution
         </h2>
         <div className="relative inline-block">
           <button
             onClick={toggleDropdownPie}
-            className="mb-4 bg-gray-800 text-white px-4 py-2 rounded-lg flex items-center hover:bg-[#e54c29]"
+            className="mb-4 bg-[#212331] text-white px-4 py-2 rounded-lg flex items-center hover:bg-[#e54c29]"
           >
             Filter Data <IoChevronDown className="ml-2" /> {/* Add the down arrow icon */}
           </button>
@@ -197,13 +197,13 @@ const DataChart2 = () => {
             </div>
           )}
         </div>
-        <div className="w-full h-[70vh] max-md:h-[55vh] ">
+        <div className="w-full h-[60vh] max-md:h-[55vh] ">
           <Pie data={updatedDataPie} options={optionsPie} />
         </div>
       </div>
 
       {/* Doughnut Chart with Filters */}
-      <div className="flex flex-col items-center w-1/2 max-md:w-full">
+      <div className="flex flex-col items-center w-2/5 max-md:w-full">
         <h2 className="text-lg lg:text-2xl font-bold mb-4 text-center">
           Individuals by Community Type
         </h2>
@@ -215,7 +215,7 @@ const DataChart2 = () => {
             Filter Data <IoChevronDown className="ml-2" /> {/* Add the down arrow icon */}
           </button>
           {dropdownOpenDoughnut && (
-            <div ref={dropdownRefDoughnut} className="absolute -mt-[14px] bg-[#393d50] shadow-lg rounded-lg z-10 w-[17rem]">
+            <div ref={dropdownRefDoughnut} className="absolute mt-0 bg-[#393d50] shadow-lg rounded-lg z-10 w-[17rem]">
               {Object.keys(filtersDoughnut).map((label) => (
                 <label
                   key={label}
@@ -235,7 +235,7 @@ const DataChart2 = () => {
             </div>
           )}
         </div>
-        <div className="w-full h-[70vh] max-md:w-screen max-md:h-[55vh] flex justify-center items-center">
+        <div className="w-full h-[60vh] max-md:w-screen max-md:h-[55vh] flex justify-center items-center">
           <Doughnut data={filteredDataDoughnut} options={optionsDoughnut} />
           
           

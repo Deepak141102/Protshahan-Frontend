@@ -1,0 +1,121 @@
+[
+    {
+        "year": 2022,
+        "classwise": [
+            {
+                "class": 12,
+                "subjectWise": {
+                    "History": 22,
+                    "Political Science": 22
+                }
+            },
+            {
+                "class": 11,
+                "subjectWise": {
+                    "History": 9,
+                    "Political Science": 9
+                }
+            },
+            {
+                "class": 10,
+                "subjectWise": {
+                    "Social Studies": 15,
+                    "Mathematics": 15
+                }
+            },
+            {
+                "class": 9,
+                "subjectWise": {
+                    "Social Studies": 10,
+                    "Mathematics": 10
+                }
+            },
+            {
+                "class": 8,
+                "subjectWise": {
+                    "Social Studies": 29,
+                    "Mathematics": 29,
+                    "Science":29
+                }
+            },
+            {
+                "class": "mixed Batch of 6 to 7",
+                "subjectWise": {
+                    "Social Studies": 38,
+                    "Mathematics": 38,
+                    "Science":38
+                }
+            }
+        ]
+    },
+    {
+        "year": 2023,
+        "classwise": [
+            {
+                "class": 12,
+                "subjectWise": {
+                    "History": 28,
+                    "Political Science": 28
+                }
+            },
+            {
+                "class": 11,
+                "subjectWise": {
+                    "History": 21,
+                    "Political Science": 21
+                }
+            },
+            {
+                "class": 10,
+                "subjectWise": {
+                    "Mathematics": 22
+                }
+            },
+            {
+                "class": 9,
+                "subjectWise": {
+                    "Mathematics": 15,
+                    "Science": 15
+                }
+            },
+            {
+                "class": 8,
+                "subjectWise": {
+                    "Mathematics": 28,
+                    "Science": 15
+                }
+            },
+            {
+                "class": 7,
+                "subjectWise": {
+                    "Mathematics": 28
+                }
+            },
+            {
+                "class": 6,
+                "subjectWise": {
+                    "Mathematics": 28
+                }
+            }
+        ]
+    },
+    {
+        "year": 2024,
+        "classwise": [
+            {
+                "class": 12,
+                "subjectWise": {
+                    "History": 9,
+                    "Political Science": 10
+                }
+            },
+            {
+                "class": 11,
+                "subjectWise": {
+                    "Mathematics": 10,
+                    "Science": 15
+                }
+            }
+        ]
+    }
+]
