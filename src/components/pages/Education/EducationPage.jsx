@@ -16,9 +16,9 @@ const Education = () => {
     labels: yearlyData.map((item) => item.year),
     datasets: [
       {
-        label: 'Total',
+        label: 'Yearly Batches',
         data: yearlyData.map((item) => item.total),
-        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+        backgroundColor: ['#df6b4f','#e0461f', '#86250f'],
         borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 1,
       },
@@ -113,7 +113,7 @@ const Education = () => {
             </div>
           </div>
           
-          <div className="flex flex-col items-center justify-center min-h-screen p-4">
+          <div className="flex justify-center min-h-screen p-4">
             <div className="max-w-3xl w-full relative overflow-hidden">
               {/* Yearly Bar Chart - Animate slide out when clicked */}
               <div className={`transition-transform duration-700 ease-in-out transform ${showMonthlyChart ? '-translate-x-full' : 'translate-x-0'}`}>
@@ -125,7 +125,15 @@ const Education = () => {
                       onClick: (evt, elements) => handleBarClick(elements),
                       responsive: true,
                       plugins: {
-                        legend: { position: 'top' },
+                        legend: { 
+                          position: 'top',
+                          labels: {
+                            color: "#e8461e",
+                            boxWidth: 15,
+                            padding: 20,
+                            usePointStyle: true,
+                          }
+                        },
                       },
                     }}
                   />
@@ -147,13 +155,21 @@ const Education = () => {
                   </div>
 
                   <h2 className="text-xl font-bold text-center mb-4">Monthly Data for {selectedYearData.year}</h2>
-                  <div className="p-4 rounded-lg shadow-md">
+                  <div className="p-4 rounded-lg shadow-md ">
                     <Bar
                       data={monthlyData}
                       options={{
                         responsive: true,
                         plugins: {
-                          legend: { position: 'top' },
+                          legend: { 
+                            position: 'top',
+                            labels: {
+                              color: "#e8461e",
+                              boxWidth: 15,
+                              padding: 20,
+                              usePointStyle: true,
+                            }
+                          },
                         },
                       }}
                     />
@@ -174,6 +190,12 @@ const Education = () => {
                   plugins: {
                     legend: {
                       position: 'top',
+                      labels: {
+                        color: "#e8461e",
+                        boxWidth: 15,
+                        padding: 20,
+                        usePointStyle: true,
+                      }
                     },
                     title: {
                       display: true,
