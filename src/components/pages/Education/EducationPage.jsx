@@ -90,7 +90,7 @@ const Education = () => {
       <div className="bg-black bg-opacity-75 text-white py-8 px-12 max-md:p-0">
         <div className="flex text-4xl p-4">
           <h1 className="max-md:text-center max-md:text-2xl">
-            <span className="text-yellow-400 pl-4">Protsahan</span> - For a Better Future | Data Visualization (map 6)
+            <span className="text-yellow-400 pl-4">Protsahan</span> - For a Better Future | Data Visualization
           </h1>
         </div>
         <div className="bg-black py-11 max-p-0 rounded-lg bg-opacity-60">

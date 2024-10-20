@@ -158,7 +158,7 @@ const Rights = () => {
       <div className="flex text-4xl p-4 ">
         <h1 className="max-md:text-center max-md:text-2xl">
           <span className="text-yellow-400 pl-4">Protsahan</span>
-          -For a Better Future | Data Visualization (map 6)
+          -For a Better Future | Data Visualization
         </h1>
       </div>
       <div className="bg-black py-11 max-p-0 rounded-lg bg-opacity-60">
@@ -188,7 +188,7 @@ const Rights = () => {
         </div>       <CounterSection />
           <div className="flex flex-col md:flex-row justify-around items-center">
             {/* Doughnut Chart Area */}
-            <div className="w-full max-w-xs md:max-w-md">
+            <div className="w-[42%] max-md:w-[90%]">
               <div className="flex flex-col items-center mb-3">
                 <h1 className="text-2xl font-bold mb-5 max-md:text-center">
                   Occupation of the Guardians / Family
@@ -230,7 +230,7 @@ const Rights = () => {
             </div>
 
             {/* Pie Chart Area */}
-            <div className="flex flex-col justify-center text-center items-center mt-8 md:mt-0 w-full max-w-xs md:max-w-md py-2">
+            <div className="flex flex-col justify-center text-center items-center mt-8 md:mt-0 w-[40%] max-md:w-[90%]  py-2">
               <h1 className="text-2xl font-bold mb-6">Scholarship Data Visualization</h1>
               <div className="flex space-x-4 mb-4">
                 <div

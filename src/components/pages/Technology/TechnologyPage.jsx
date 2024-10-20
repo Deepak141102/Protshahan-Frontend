@@ -199,7 +199,7 @@ const GraphFourth = () => {
           <div className="flex text-4xl max-md:text-2xl mb-4">
             <h1 className="text-center">
               <span className="text-yellow-400">Protsahan</span>
-              -For a Better Future | Data Visualization (map 5)
+              -For a Better Future | Data Visualization
             </h1>
           </div>
           <div className="bg-black py-11 max-p-0 rounded-lg bg-opacity-60">
