@@ -1,318 +1,180 @@
 [
- 
     {
-      "year": 2022,
-      "classwise": [
-        {
-          "class": "12th",
-          "subjectWise": {
-            "History":22,
-            "Political Science": 22
-          }
-        },
-        {
-          "class": "11th",
-          "subjectWise": {
-            "History":9,
-            "Political Science": 9        }
-        },
-        {
-          "class": "10th",
-          "subjectWise": {
-            "Social Studies": 15
-          }
-        },
-        {
-          "class": "9th",
-          "subjectWise": {
-            "Social Studies": 10
-          }
-        },
-        {
-          "class": "10th",
-          "subjectWise": {
-            "Mathematics": 15
-          }
-        },
-        {
-          "class": "9th",
-          "subjectWise": {
-            "Mathematics": 10
-          }
-        },
-        {
-          "class": "6/7 (mixed batch)",
-          "subjectWise": {
-            "Science": 38,
-            "Mathematics": 38,
-            "Social Studies": 38
-          }
-        },
-        {
-          "class": "8th",
-          "subjectWise": {
-            "Science": 29,
-            "Mathematics": 29,
-            "Social Studies": 29
-          }
-        },
-        {
-          "class": "7th & 9th ",
-          "subjectWise": {
-            "Mathematics": 27,
-            "Science": 27
-          }
-        },
-        {
-          "class": "6th, 8th & 10th",
-          "subjectWise": {
-            "Mathematics": 14,
-            "Science": 14
-          }
-        },
-        {
-          "class": "6th & 7th & 10th",
-          "subjectWise": {
-            "Science": 28
-          }
-        },
-        {
-          "class": "8th & 9th",
-          "subjectWise": {
-            "Science": 15
-           
-          }
-        },
-        {
-          "class": "6th & 7th & 10th",
-          "subjectWise": {
-            "Mathematics": 28
-          }
-        },
-        {
-          "class": "8th & 9th",
-          "subjectWise": {
-            "Mathematics": 15
-          }
-        }
-      ]
+        "year": 2022,
+        "classwise": [
+            {
+                "class": "12th",
+                "subjectWise": {
+                    "History": 22,
+                    "Political Science": 22
+                }
+            },
+            {
+                "class": "11th",
+                "subjectWise": {
+                    "History": 9,
+                    "Political Science": 9
+                }
+            },
+            {
+                "class": "10th",
+                "subjectWise": {
+                    "Social Studies": 15,
+                    "Mathematics": 57,
+                    "Science": 42
+                }
+            },
+            {
+                "class": "9th",
+                "subjectWise": {
+                    "Social Studies": 10,
+                    "Mathematics": 57,
+                    "Science": 42
+                }
+            },
+            {
+                "class": "8th",
+                "subjectWise": {
+                    "Mathematics": 58,
+                    "Science": 44
+                }
+            },
+            {
+                "class": "7th",
+                "subjectWise": {
+                    "Mathematics": 93,
+                    "Science": 93
+                }
+            },
+            {
+                "class": "6th",
+                "subjectWise": {
+                    "Mathematics": 80,
+                    "Science": 80
+                }
+            }
+        ]
     },
     {
-      "year": 2023,
-      "classwise": [
-        {
-          "class": "12th",
-          "subjectWise": {
-            "History": 8,
-            "Political Science": 8
-          }
-        },
-        {
-          "class": "11th",
-          "subjectWise": {
-            "History": 21,
-            "Political Science": 21
-          }
-        },
-        {
-          "class": "10th",
-          "subjectWise": {
-            "Social Studies": 17
-          }
-        },
-        {
-          "class": "9th",
-          "subjectWise": {
-            "Social Studies": 9
-          }
-        },
-        {
-          "class": "10th",
-          "subjectWise": {
-            "Mathematics": 17
-          }
-        },
-        {
-          "class": "9th",
-          "subjectWise": {
-            "Mathematics": 9
-          }
-        },
-        {
-          "class": "6/7 (mixed batch)",
-          "subjectWise": {
-            "Science": 40,
-            "Mathematics": 40,
-            "Social Studies": 40
-          }
-        },
-        {
-          "class": "8th",
-          "subjectWise": {
-            "Science": 29,
-            "Mathematics": 29,
-            "Social Studies": 29
-          }
-        },
-        {
-          "class": "7th & 9th ",
-          "subjectWise": {
-            "Mathematics": 23,
-            "Science": 23
-          }
-        },
-        {
-          "class": "6th, 8th & 10th",
-          "subjectWise": {
-            "Mathematics": 33,
-            "Science": 33
-          }
-        },
-        {
-          "class": "6th & 7th & 10th",
-          "subjectWise": {
-            "Science": 29
-          }
-        },
-        {
-          "class": "8th & 9th",
-          "subjectWise": {
-            "Science": 23
-          }
-        },
-        {
-          "class": "6th & 7th & 10th",
-          "subjectWise": {
-            "Mathematics": 29
-          }
-        },
-        {
-          "class": "8th & 9th",
-          "subjectWise": {
-            "Mathematics": 23
-          }
-        },
-        {
-          "class": "9th",
-          "subjectWise": {
-            "Science": 9
-          }
-        },
-        {
-          "class": "10th",
-          "subjectWise": {
-            "Science": 17
-          }
-        }
-      ]
+        "year": 2023,
+        "classwise": [
+            {
+                "class": "12th",
+                "subjectWise": {
+                    "History": 8,
+                    "Political Science": 8,
+                    "Science": 8
+                }
+            },
+            {
+                "class": "11th",
+                "subjectWise": {
+                    "History": 11,
+                    "Political Science": 11,
+                    "Science": 11
+                }
+            },
+            {
+                "class": "10th",
+                "subjectWise": {
+                    "Social Studies": 17,
+                    "Mathematics": 79,
+                    "Science": 96
+                }
+            },
+            {
+                "class": "9th",
+                "subjectWise": {
+                    "Social Studies": 9,
+                    "Mathematics": 9,
+                    "Science": 9
+                }
+            },
+            {
+                "class": "8th",
+                "subjectWise": {
+                    "Social Studies": 29,
+                    "Mathematics": 85,
+                    "Science": 85
+                }
+            },
+            {
+                "class": "7th",
+                "subjectWise": {
+                    "Social Studies": 40,
+                    "Mathematics": 92,
+                    "Science": 92
+                }
+            },
+            {
+                "class": "6th",
+                "subjectWise": {
+                    "Social Studies": 40,
+                    "Mathematics": 102,
+                    "Science": 102
+                }
+            }
+        ]
     },
     {
-      "year": 2024,
-      "classwise": [
-        {
-          "class": "12th",
-          "subjectWise": {
-            "History": 23,
-            "Political Science": 23
-          }
-        },
-        {
-          "class": "11th",
-          "subjectWise": {
-            "History": 17,
-            "Political Science": 17
-          }
-        },
-        {
-          "class": "10th",
-          "subjectWise": {
-            "Social Studies": 25
-          }
-        },
-        {
-          "class": "9th",
-          "subjectWise": {
-            "Social Studies": 16
-          }
-        },
-        {
-          "class": "10th",
-          "subjectWise": {
-            "Mathematics": 15
-          }
-        },
-        {
-          "class": "9th",
-          "subjectWise": {
-            "Mathematics": 16
-          }
-        },
-        {
-          "class": "6/7 (mixed batch)",
-          "subjectWise": {
-            "Science": 35,
-            "Mathematics": 35,
-            "Social Studies": 35
-          }
-        },
-        {
-          "class": "8th",
-          "subjectWise": {
-            "Science": 34,
-            "Mathematics": 34,
-            "Social Studies": 34
-          }
-        },
-        {
-          "class": "7th & 9th ",
-          "subjectWise": {
-            "Mathematics": 21,
-            "Science": 21
-          }
-        },
-        {
-          "class": "6th, 8th & 10th",
-          "subjectWise": {
-            "Mathematics": 32,
-            "Science": 32
-          }
-        },
-        {
-          "class": "6th & 7th & 10th",
-          "subjectWise": {
-            "Science": 32
-          }
-        },
-        {
-          "class": "8th & 9th",
-          "subjectWise": {
-            "Science": 22
-          }
-        },
-        {
-          "class": "6th & 7th & 10th",
-          "subjectWise": {
-            "Mathematics": 32
-          }
-        },
-        {
-          "class": "8th & 9th",
-          "subjectWise": {
-            "Mathematics": 22
-          }
-        },
-        {
-          "class": "10th",
-          "subjectWise": {
-            "Science": 15
-          }
-        },
-        {
-          "class": "10th",
-          "subjectWise": {
-            "Science": 16
-          }
-        }
-      ]
+        "year": 2024,
+        "classwise": [
+            {
+                "class": "12th",
+                "subjectWise": {
+                    "History": 23,
+                    "Political Science": 23,
+                    "Science": 23
+                }
+            },
+            {
+                "class": "11th",
+                "subjectWise": {
+                    "History": 17,
+                    "Political Science": 17,
+                    "Science": 17
+                }
+            },
+            {
+                "class": "10th",
+                "subjectWise": {
+                    "Social Studies": 25,
+                    "Mathematics": 74,
+                    "Science": 79
+                }
+            },
+            {
+                "class": "9th",
+                "subjectWise": {
+                    "Social Studies": 16,
+                    "Mathematics": 69,
+                    "Science": 59
+                }
+            },
+            {
+                "class": "8th",
+                "subjectWise": {
+                    "Social Studies": 34,
+                    "Mathematics": 88,
+                    "Science": 88
+                }
+            },
+            {
+                "class": "7th",
+                "subjectWise": {
+                    "Social Studies": 35,
+                    "Mathematics": 99,
+                    "Science": 99
+                }
+            },
+            {
+                "class": "6th",
+                "subjectWise": {
+                    "Social Studies": 35,
+                    "Mathematics": 99,
+                    "Science": 99
+                }
+            }
+        ]
     }
-  ]
+]

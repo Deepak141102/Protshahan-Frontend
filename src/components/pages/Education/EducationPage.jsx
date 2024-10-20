@@ -4,7 +4,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 import { IoMdArrowRoundBack } from "react-icons/io";
 import yearlyData from './YearlyMonthlyData.json'; // Import the JSON file for yearly data
 import studentData from './StudentPassOut.json'; // Import the JSON file for student pass out data
-
+import Education2 from './Education2'
 // Register ChartJS components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -19,7 +19,7 @@ const Education = () => {
       {
         label: 'Yearly Batches',
         data: yearlyData.map((item) => item.total),
-        backgroundColor: ['#df6b4f','#e0461f', '#86250f'],
+        backgroundColor: ['#df6b4f', '#e0461f', '#86250f'],
         borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 1,
       },
@@ -29,17 +29,17 @@ const Education = () => {
   // Prepare data for monthly chart when a year is selected
   const monthlyData = selectedYearData
     ? {
-        labels: Object.keys(selectedYearData.monthWise),
-        datasets: [
-          {
-            label: `Monthly Data for ${selectedYearData.year}`,
-            data: Object.values(selectedYearData.monthWise),
-            backgroundColor: 'rgba(153, 102, 255, 0.6)',
-            borderColor: 'rgba(153, 102, 255, 1)',
-            borderWidth: 1,
-          },
-        ],
-      }
+      labels: Object.keys(selectedYearData.monthWise),
+      datasets: [
+        {
+          label: `Monthly Data for ${selectedYearData.year}`,
+          data: Object.values(selectedYearData.monthWise),
+          backgroundColor: 'rgba(153, 102, 255, 0.6)',
+          borderColor: 'rgba(153, 102, 255, 1)',
+          borderWidth: 1,
+        },
+      ],
+    }
     : null;
 
   const handleBarClick = (elements) => {
@@ -60,31 +60,30 @@ const Education = () => {
     const subjects = {};
 
     studentData.forEach(item => {
-        years.push(item.year);
-        item.classwise.forEach(cls => {
-            Object.keys(cls.subjectWise).forEach(subject => {
-                if (!subjects[subject]) {
-                    subjects[subject] = Array(studentData.length).fill(0);
-                }
-                const yearIndex = years.indexOf(item.year);
-                subjects[subject][yearIndex] += cls.subjectWise[subject];
-            });
+      years.push(item.year);
+      item.classwise.forEach(cls => {
+        Object.keys(cls.subjectWise).forEach(subject => {
+          if (!subjects[subject]) {
+            subjects[subject] = Array(studentData.length).fill(0);
+          }
+          const yearIndex = years.indexOf(item.year);
+          subjects[subject][yearIndex] += cls.subjectWise[subject];
         });
+      });
     });
 
     return {
-        labels: years,
-        datasets: Object.keys(subjects).map((subject, index) => ({
-            label: subject,
-            data: subjects[subject],
-            backgroundColor: `rgba(${index * 30}, 100, 200, 0.5)`, // Different colors for each subject
-            borderColor: `rgba(${index * 30}, 100, 200, 1)`,
-            borderWidth: 1,
-        })),
+      labels: years,
+      datasets: Object.keys(subjects).map((subject, index) => ({
+        label: subject,
+        data: subjects[subject],
+        backgroundColor: `rgba(${index * 30}, 100, 200, 0.5)`, // Different colors for each subject
+        borderColor: `rgba(${index * 30}, 100, 200, 1)`,
+        borderWidth: 1,
+      })),
     };
   };
 
-  const chartData = prepareStudentChartData(); // Call the function to get chart data for student pass outs
 
   return (
     <div className="bg-frameImg bg-no-repeat bg-fixed bg-cover bg-bottom">
@@ -113,8 +112,8 @@ const Education = () => {
               </p>
             </div>
           </div>
-          
-          <div className="flex justify-center min-h-screen p-4">
+
+          <div className="flex justify-center min-h-screen h-[40vh] p-4 max-md:h-screen max-md:w-full">
             <div className="max-w-3xl w-full relative overflow-hidden">
               {/* Yearly Bar Chart - Animate slide out when clicked */}
               <div className={`transition-transform duration-700 ease-in-out transform ${showMonthlyChart ? '-translate-x-full' : 'translate-x-0'}`}>
@@ -128,6 +127,8 @@ const Education = () => {
                       plugins: {
                         legend: {
                           display: false, // Hide the legend
+                          onClick: (e) => e.stopPropagation(), // Prevent default click behavior
+
                         },
                       },
                     }}
@@ -173,32 +174,7 @@ const Education = () => {
           </div>
 
           {/* Student Pass Out Data */}
-          <div className="container mx-auto mt-10">
-            <h2 className="text-2xl font-bold mb-4">Subject Wise Distribution Over Years</h2>
-            <div className="p-4 rounded-lg shadow-md">
-              <Bar
-                data={chartData}
-                options={{
-                  responsive: true,
-                  plugins: {
-                    legend: {
-                      position: 'top',
-                      labels: {
-                        color: "#e8461e",
-                        boxWidth: 15,
-                        padding: 20,
-                        usePointStyle: true,
-                      }
-                    },
-                    title: {
-                      display: true,
-                      text: 'Subject Wise Scores per Year',
-                    },
-                  },
-                }}
-              />
-            </div>
-          </div>
+          <Education2 />
         </div>
       </div>
     </div>
