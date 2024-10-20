@@ -80,17 +80,16 @@ const Education2 = () => {
                 {/* Back Button Icon */}
                 {!yearlyData && (
                     <button
-                        className="absolute top-0 left-12 p-3 bg-gray-800 rounded-full shadow-lg transition-all duration-300 ease-in-out flex justify-center items-center"
-                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#4a4a4a'} // Darker shade on hover
-                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#3b3b3b'} // Reset to normal color
-                        onClick={() => {
-                            setYearlyData(true);
-                            setSelectedSubject(null);
-                        }}
-                    >
-                        <FontAwesomeIcon icon={faArrowLeft} className="text-white text-2xl" />
-                    </button>
+                    className="absolute top-0 left-12 p-3 bg-gradient-to-r from-gray-800 to-gray-600 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 ease-in-out flex justify-center items-center"
+                    onClick={() => {
+                      setYearlyData(true);
+                      setSelectedSubject(null);
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faArrowLeft} className="text-white text-2xl" />
+                  </button>
                 )}
+                <div className=" w-full">
                 <Bar
                     data={chartData}
                     options={{
@@ -109,6 +108,7 @@ const Education2 = () => {
                         },
                     }}
                 />
+            </div>
             </div>
         </div>
     );

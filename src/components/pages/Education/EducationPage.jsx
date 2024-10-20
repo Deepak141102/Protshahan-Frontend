@@ -113,12 +113,12 @@ const Education = () => {
             </div>
           </div>
 
-          <div className="flex justify-center min-h-screen h-[40vh] p-4 max-md:h-screen max-md:w-full">
+          <div className="flex justify-center p-4  mb-40 max-md:w-full">
             <div className="max-w-3xl w-full relative overflow-hidden">
               {/* Yearly Bar Chart - Animate slide out when clicked */}
               <div className={`transition-transform duration-700 ease-in-out transform ${showMonthlyChart ? '-translate-x-full' : 'translate-x-0'}`}>
                 <h2 className="text-xl font-bold text-center mb-4">Number of Lectures (Yearly)</h2>
-                <div className="p-4 rounded-lg shadow-md">
+                <div className="p-4 pb-12 rounded-lg shadow-md">
                   <Bar
                     data={yearlyChartData}
                     options={{
