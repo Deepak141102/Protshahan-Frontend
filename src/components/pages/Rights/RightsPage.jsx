@@ -154,30 +154,30 @@ const Rights = () => {
 
   return (
     <div className=" bg-frameImg bg-no-repeat bg-fixed bg-cover bg-bottom">
-    <div className=" bg-black bg-opacity-75 text-white py-8 px-12 max-md:p-0  ">
+    <div className=" bg-[#212331]  text-black py-8 px-12 max-md:p-0  ">
       <div className="flex text-4xl p-4 ">
-        <h1 className="max-md:text-center max-md:text-2xl">
+        <h1 className="max-md:text-center max-md:text-2xl text-white">
           <span className="text-yellow-400 pl-4">Protsahan</span>
           -For a Better Future | Data Visualization
         </h1>
       </div>
-      <div className="bg-black py-11 max-p-0 rounded-lg bg-opacity-60">
-        <div className="border-[2px] border-dashed border-white rounded-md p-5 m-5">
+      <div className="bg-white py-11 max-p-0 rounded-lg  ">
+        <div className="border-[2px] border-dashed border-[#212331] rounded-md p-5 m-5">
           <div className="flex justify-around flex-wrap">
-            <div className="flex">
-              <span className="text-yellow-300">Timeline:</span>
+            <div className="flex text-black">
+              <span className="text-[#e8461e] mr-2">Timeline:</span>
               <p>Child entering Protsahan</p>
             </div>
             <div className="flex flex-wrap max-md:flex-col max-md:m-auto">
-              <p className="max-sm:text-center">
-                <span className="text-yellow-300">
+              <p className="max-sm:text-center text-black">
+                <span className="text-[#e8461e] mr-2">
                   Potential Consumers:
                 </span>
                 Protsahan Executive Team | Governmental Bodies
               </p>
             </div>
           </div>
-          <div className="text-center p-4">
+          <div className="text-center p-4 text-black">
             <p>
               These set of data visualisations paints a story of the
               enrolment data of students on a specified date range/ month/
@@ -188,7 +188,7 @@ const Rights = () => {
         </div>       <CounterSection />
           <div className="flex flex-col md:flex-row justify-around items-center">
             {/* Doughnut Chart Area */}
-            <div className="w-[42%] max-md:w-[90%]">
+            <div className="max-md:w-[90%] w-[40vw] bg-white flex flex-col justify-center items-center shadow-2xl p-6 rounded-lg">
               <div className="flex flex-col items-center mb-3">
                 <h1 className="text-2xl font-bold mb-5 max-md:text-center">
                   Occupation of the Guardians / Family
@@ -204,7 +204,7 @@ const Rights = () => {
                   {dropdownOpenDoughnut && (
                     <div
                       ref={dropdownRefDoughnut}
-                      className="absolute mt-0 bg-[#393d50] shadow-lg rounded-lg z-10 w-[17rem]"
+                      className="absolute mt-0 bg-[#393d50] text-white shadow-lg rounded-lg z-10 w-[17rem]"
                     >
                       {Object.keys(filtersDoughnut).map((label) => (
                         <label
@@ -226,16 +226,19 @@ const Rights = () => {
                   )}
                 </div>
               </div>
+              <div className="w-[80%] h-[70vh]">
+
               <Doughnut data={filteredDoughnutData} options={DoughnutOptions} />
+              </div>
             </div>
 
             {/* Pie Chart Area */}
-            <div className="flex flex-col justify-center text-center items-center mt-8 md:mt-0 w-[40%] max-md:w-[90%]  py-2">
+            <div className="max-md:w-[90%] w-[40vw] ] bg-white flex flex-col justify-center items-center shadow-2xl p-6 rounded-lg ">
               <h1 className="text-2xl font-bold mb-6">Scholarship Data Visualization</h1>
               <div className="flex space-x-4 mb-4">
                 <div
                   className={`flex items-center cursor-pointer ${
-                    selectedData === "gender" ? "text-[#e54c29]" : "text-white"
+                    selectedData === "gender" ? "text-[#e54c29]" : "text-[#212331]"
                   }`}
                   onClick={() => handleIconClick("gender")}
                 >
@@ -244,20 +247,23 @@ const Rights = () => {
                 </div>
                 <div
                   className={`flex items-center cursor-pointer ${
-                    selectedData === "age" ? "text-[#e54c29]" : "text-white"
+                    selectedData === "age" ? "text-[#e54c29]" : "text-[#212331]"
                   }`}
                   onClick={() => handleIconClick("age")}
                 >
-                  <FaUsers className="text-3xl mr-2" />
+                  <FaUsers className="text-3xl mr-2 " />
                   <span>Age</span>
                 </div>
               </div>
+              <div className="w-[75%] h-[70vh]">
+
               {selectedData === "gender" ? (
                 <Pie data={genderData} options={options} />
               ) : (
                 <Pie data={ageData} options={options} />
               )}
             </div>
+              </div>
           </div>
           <hr className="my-20" />
           <RightsChartsPage />

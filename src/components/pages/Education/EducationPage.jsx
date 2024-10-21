@@ -5,6 +5,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import yearlyData from './YearlyMonthlyData.json'; // Import the JSON file for yearly data
 import studentData from './StudentPassOut.json'; // Import the JSON file for student pass out data
 import Education2 from './Education2'
+import GraphPage from './Onec';
 // Register ChartJS components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -86,7 +87,7 @@ const Education = () => {
 
 
   return (
-    <div className="bg-frameImg bg-no-repeat bg-fixed bg-cover bg-bottom">
+    <div className="">
       <div className="bg-black bg-opacity-75 text-white py-8 px-12 max-md:p-0">
         <div className="flex text-4xl p-4">
           <h1 className="max-md:text-center max-md:text-2xl">
@@ -113,8 +114,8 @@ const Education = () => {
             </div>
           </div>
 
-          <div className="flex justify-center p-4  mb-40 max-md:w-full">
-            <div className="max-w-3xl w-full relative overflow-hidden">
+          <div className="flex justify-center p-4  mb-40 max-md:w-full ">
+            <div className="max-w-3xl w-full relative overflow-hidden bg-white rounded-lg shadow-md">
               {/* Yearly Bar Chart - Animate slide out when clicked */}
               <div className={`transition-transform duration-700 ease-in-out transform ${showMonthlyChart ? '-translate-x-full' : 'translate-x-0'}`}>
                 <h2 className="text-xl font-bold text-center mb-4">Number of Lectures (Yearly)</h2>
@@ -145,7 +146,7 @@ const Education = () => {
                 <div
                   className={`absolute top-0 left-0 w-full transition-all duration-700 ease-in-out transform ${showMonthlyChart ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}
                 >
-                  <div className="flex justify-start p-4">
+                  <div className="flex justify-start p-4 ">
                     <button
                       className="bg-gradient-to-r from-gray-800 to-gray-600 p-3 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
                       onClick={handleBackClick}
@@ -155,7 +156,7 @@ const Education = () => {
                   </div>
 
                   <h2 className="text-xl font-bold text-center mb-4">Number of Lectures in  {selectedYearData.year} (Monthly)</h2>
-                  <div className="p-4 rounded-lg shadow-md">
+                  <div className="p-4 ">
                     <Bar
                       data={monthlyData}
                       options={{
@@ -175,6 +176,7 @@ const Education = () => {
 
           {/* Student Pass Out Data */}
           <Education2 />
+          <GraphPage/>
         </div>
       </div>
     </div>
