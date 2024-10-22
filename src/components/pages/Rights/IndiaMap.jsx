@@ -47,10 +47,10 @@ const IndiaMap = () => {
   }, [color]); // Only runs when color changes
 
   return (<>
-  <div className=" bg-gray-800 bg-opacity-20 w-1/2 m-auto max-md:w-full ">
+  <div className=" bg-gray-900 bg-opacity-80 w-1/2 m-auto max-md:w-full mt-16 rounded-xl">
   <h1 className="map-title px-3 py-3">Where has the child's family migrated from?</h1>
   </div>
-    <div className="relative w-[55%] h-screen m-auto max-md:w-full">
+    <div className="relative w-[55%] h-[75vh] md:h-[110vh] m-auto max-md:w-full bg-[#f5f6f8] rounded-xl">
  
       <DatamapsIndia
         regionData={regionData}

@@ -164,9 +164,9 @@ const DataChart2 = () => {
   }, [dropdownOpenPie, dropdownOpenDoughnut]);
 
   return (
-    <div className="flex max-md:flex-col justify-evenly items-center bg-transparent w-full gap-6 p-4 mt-11">
+    <div className="bg-[#dcdcdc] flex max-md:flex-col justify-evenly items-center bg-transparent w-full gap-6 p-4 mt-11">
       {/* Pie Chart with Filters */}
-      <div className="max-md:w-[90%] w-[40vw] bg-white flex flex-col justify-center items-center shadow-2xl p-6 rounded-lg">
+      <div className="max-md:w-[90%] w-[40vw] bg-white flex flex-col justify-center items-center  p-7 rounded-lg">
         <h2 className="text-lg lg:text-2xl font-bold mb-4 text-center">
           Monthly Family Income Distribution
         </h2>
@@ -198,13 +198,13 @@ const DataChart2 = () => {
             </div>
           )}
         </div>
-        <div className="w-[80%] h-[70vh] max-md:h-[55vh] ">
+        <div className="w-[70%] h-[70vh] max-md:h-[75vh] ">
           <Pie data={updatedDataPie} options={optionsPie} />
         </div>
       </div>
 
       {/* Doughnut Chart with Filters */}
-      <div className="fmax-md:w-[90%] w-[40vw] bg-white flex flex-col justify-center items-center shadow-2xl p-6 rounded-lg">
+      <div className="max-md:w-[90%] w-[40vw] bg-white flex flex-col justify-center items-center  p-7 rounded-lg">
         <h2 className="text-lg lg:text-2xl font-bold mb-4 text-center">
           Individuals by Community Type
         </h2>
@@ -236,7 +236,7 @@ const DataChart2 = () => {
             </div>
           )}
         </div>
-        <div className="w-[80%] h-[70vh] max-md:w-screen max-md:h-[55vh] flex justify-center items-center">
+        <div className="w-[80%] h-[70vh] max-md:w-11/12 max-md:h-[75vh] flex justify-center items-center">
           <Doughnut data={filteredDataDoughnut} options={optionsDoughnut} />
           
           

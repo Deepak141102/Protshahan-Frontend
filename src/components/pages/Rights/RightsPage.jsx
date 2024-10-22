@@ -3,12 +3,10 @@ import { Pie, Doughnut } from "react-chartjs-2";
 import { FaGenderless, FaUsers } from "react-icons/fa";
 import { IoChevronDown } from "react-icons/io5";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import RightsChartsPage from "./DataChart2";
-import BarGraph from "./DataChart3";
-import IndiaMap from "./IndiaMap";
 import CounterSection from "./CounterSection";
+import BarGraph from "./LineBar";
+import IndiaMap from "./IndiaMap";
 
-// Register necessary components
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Rights = () => {
@@ -68,6 +66,7 @@ const Rights = () => {
 
   const DoughnutOptions = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: "top",
@@ -75,8 +74,8 @@ const Rights = () => {
           boxWidth: 15,
           padding: 20,
           usePointStyle: true,
-      },
-      onClick: (e) => e.stopPropagation(), 
+        },
+        onClick: (e) => e.stopPropagation(),
       },
       tooltip: {
         callbacks: {
@@ -112,6 +111,7 @@ const Rights = () => {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: "top",
@@ -119,9 +119,8 @@ const Rights = () => {
           boxWidth: 15,
           padding: 20,
           usePointStyle: true,
-      },
-      onClick: (e) => e.stopPropagation(), // Prevent default click behavior
-  
+        },
+        onClick: (e) => e.stopPropagation(),
       },
       tooltip: {
         callbacks: {
@@ -153,64 +152,65 @@ const Rights = () => {
   }, [dropdownOpenDoughnut]);
 
   return (
-    <div className=" bg-frameImg bg-no-repeat bg-fixed bg-cover bg-bottom">
-    <div className=" bg-[#212331]  text-black py-8 px-12 max-md:p-0  ">
-      <div className="flex text-4xl p-4 ">
-        <h1 className="max-md:text-center max-md:text-2xl text-white">
-          <span className="text-yellow-400 pl-4">Protsahan</span>
-          -For a Better Future | Data Visualization
-        </h1>
-      </div>
-      <div className="bg-white py-11 max-p-0 rounded-lg  ">
-        <div className="border-[2px] border-dashed border-[#212331] rounded-md p-5 m-5">
-          <div className="flex justify-around flex-wrap">
-            <div className="flex text-black">
-              <span className="text-[#e8461e] mr-2">Timeline:</span>
-              <p>Child entering Protsahan</p>
+    <div className="bg-[#3c3950] min-h-screen font-lato">
+      <div className="bg-[#212331] text-white py-8 px-12">
+        <div className="flex text-4xl p-4">
+          <h1 className="text-yellow-400 pl-4">
+            Protsahan - For a Better Future | Data Visualization
+          </h1>
+        </div>
+        <div className="bg-white py-11 rounded-lg shadow-lg">
+          <div className="border-[2px] border-dashed border-[#212331] rounded-md p-5 m-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-items-center">
+              <div className="text-black">
+                <span className="text-[#e8461e] mr-2">Timeline:</span>
+                Child entering Protsahan
+              </div>
+              <div className="flex flex-wrap justify-center">
+                <p className="text-black text-center">
+                  <span className="text-[#e8461e] mr-2">
+                    Potential Consumers:
+                  </span>
+                  Protsahan Executive Team | Governmental Bodies
+                </p>
+              </div>
             </div>
-            <div className="flex flex-wrap max-md:flex-col max-md:m-auto">
-              <p className="max-sm:text-center text-black">
-                <span className="text-[#e8461e] mr-2">
-                  Potential Consumers:
-                </span>
-                Protsahan Executive Team | Governmental Bodies
+            <div className="text-center p-4 text-black">
+              <p>
+                These set of data visualisations paints a story of the enrolment
+                data of students on a specified date range/month/year. It tells
+                the user how many children have enrolled in Protsahan, basic
+                data related to the pool of children, etc.
               </p>
             </div>
           </div>
-          <div className="text-center p-4 text-black">
-            <p>
-              These set of data visualisations paints a story of the
-              enrolment data of students on a specified date range/ month/
-              year. It tells the user – how many children have enrolled in
-              Protsahan, basic data related to the pool of children etc.
-            </p>
-          </div>
-        </div>       <CounterSection />
-          <div className="flex flex-col md:flex-row justify-around items-center">
-            {/* Doughnut Chart Area */}
-            <div className="max-md:w-[90%] w-[40vw] bg-white flex flex-col justify-center items-center shadow-2xl p-6 rounded-lg">
-              <div className="flex flex-col items-center mb-3">
-                <h1 className="text-2xl font-bold mb-5 max-md:text-center">
+          <CounterSection />
+          <div className="flex justify-center items-center gap-8 py-10 bg-[#dcdcdc] max-md:flex-col">
+            {/* Doughnut Chart */}
+            <div className="w-[45%] max-md:w-full flex flex-col">
+              {" "}
+              {/* Set width to 45% */}
+              <div className="bg-white p-6 rounded-lg shadow-lg flex flex-col flex-grow">
+                <h1 className="text-2xl font-bold text-center mb-4 text-[#212331]">
                   Occupation of the Guardians / Family
                 </h1>
-                <div className="relative inline-block">
+                <div className="relative mb-5 flex justify-center">
                   <button
                     onClick={toggleDropdownDoughnut}
-                    className="text-white bg-[#212331] rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center transition duration-300 hover:bg-[#e54c29]"
+                    className="bg-[#212331] text-white rounded-lg text-sm px-5 py-2.5 inline-flex items-center transition duration-300 hover:bg-[#e54c29]"
                   >
                     Filter Data <IoChevronDown className="ml-2" />
                   </button>
-
                   {dropdownOpenDoughnut && (
                     <div
                       ref={dropdownRefDoughnut}
-                      className="absolute mt-0 bg-[#393d50] text-white shadow-lg rounded-lg z-10 w-[17rem]"
+                      className="absolute mt-2 bg-[#393d50] text-white rounded-lg z-10 w-64 shadow-lg"
                     >
                       {Object.keys(filtersDoughnut).map((label) => (
                         <label
                           key={label}
                           htmlFor={`doughnut-checkbox-${label}`}
-                          className="block px-4 py-2 hover:bg-[#212331] hover:text-[#e54c29] transition duration-300 cursor-pointer"
+                          className="block px-4 py-2"
                         >
                           <input
                             id={`doughnut-checkbox-${label}`}
@@ -225,51 +225,62 @@ const Rights = () => {
                     </div>
                   )}
                 </div>
-              </div>
-              <div className="w-[80%] h-[70vh]">
-
-              <Doughnut data={filteredDoughnutData} options={DoughnutOptions} />
-              </div>
-            </div>
-
-            {/* Pie Chart Area */}
-            <div className="max-md:w-[90%] w-[40vw] ] bg-white flex flex-col justify-center items-center shadow-2xl p-6 rounded-lg ">
-              <h1 className="text-2xl font-bold mb-6">Scholarship Data Visualization</h1>
-              <div className="flex space-x-4 mb-4">
-                <div
-                  className={`flex items-center cursor-pointer ${
-                    selectedData === "gender" ? "text-[#e54c29]" : "text-[#212331]"
-                  }`}
-                  onClick={() => handleIconClick("gender")}
-                >
-                  <FaGenderless className="text-3xl mr-2" />
-                  <span>Gender</span>
-                </div>
-                <div
-                  className={`flex items-center cursor-pointer ${
-                    selectedData === "age" ? "text-[#e54c29]" : "text-[#212331]"
-                  }`}
-                  onClick={() => handleIconClick("age")}
-                >
-                  <FaUsers className="text-3xl mr-2 " />
-                  <span>Age</span>
+                <div className="w-full h-[55vh]">
+                  {" "}
+                  {/* Increased height */}
+                  <Doughnut
+                    data={filteredDoughnutData}
+                    options={DoughnutOptions}
+                  />
                 </div>
               </div>
-              <div className="w-[75%] h-[70vh]">
-
-              {selectedData === "gender" ? (
-                <Pie data={genderData} options={options} />
-              ) : (
-                <Pie data={ageData} options={options} />
-              )}
             </div>
+            {/* Pie Chart */}
+            <div className="w-[45%] max-md:w-full flex flex-col">
+              {" "}
+              {/* Set width to 45% */}
+              <div className="bg-white p-6 rounded-lg shadow-lg flex flex-col flex-grow">
+                <h1 className="text-2xl font-bold text-center mb-4 text-[#212331] ">
+                  Gender/Age Distribution
+                </h1>
+                <div className="flex items-center justify-center mb-5 space-x-4">
+                  <div
+                    className={`flex items-center cursor-pointer ${
+                      selectedData === "gender"
+                        ? "text-[#e54c29]"
+                        : "text-[#212331]"
+                    }`}
+                    onClick={() => handleIconClick("gender")}
+                  >
+                    <FaGenderless className="text-3xl mr-2" />
+                    <span>Gender</span>
+                  </div>
+                  <div
+                    className={`flex items-center cursor-pointer ${
+                      selectedData === "age"
+                        ? "text-[#e54c29]"
+                        : "text-[#212331]"
+                    }`}
+                    onClick={() => handleIconClick("age")}
+                  >
+                    <FaUsers className="text-3xl mr-2 " />
+                    <span>Age</span>
+                  </div>
+                </div>
+                <div className="w-full h-[55vh]">
+                  {" "}
+                  {/* Increased height */}
+                  {selectedData === "gender" ? (
+                    <Pie data={genderData} options={options} />
+                  ) : (
+                    <Pie data={ageData} options={options} />
+                  )}
+                </div>
               </div>
+            </div>
           </div>
-          <hr className="my-20" />
-          <RightsChartsPage />
-          <hr className="my-20" />
+
           <BarGraph />
-          <hr className="my-20" />
           <IndiaMap />
         </div>
       </div>

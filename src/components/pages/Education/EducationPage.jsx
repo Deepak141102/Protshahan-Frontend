@@ -87,33 +87,38 @@ const Education = () => {
 
 
   return (
-    <div className="">
-      <div className="bg-black bg-opacity-75 text-white py-8 px-12 max-md:p-0">
+     <div className="bg-[#3c3950] min-h-screen">
+      <div className="bg-[#212331] text-white py-8 px-12">
         <div className="flex text-4xl p-4">
-          <h1 className="max-md:text-center max-md:text-2xl">
-            <span className="text-yellow-400 pl-4">Protsahan</span> - For a Better Future | Data Visualization
+          <h1 className="text-yellow-400 pl-4">
+            Protsahan - For a Better Future | Data Visualization
           </h1>
         </div>
-        <div className="bg-black py-11 max-p-0 rounded-lg bg-opacity-60">
-          <div className="border-[2px] border-dashed border-white rounded-md p-5 m-5">
-            <div className="flex justify-around flex-wrap">
-              <div className="flex">
-                <span className="text-yellow-300">Timeline:</span>
-                <p>Child entering Protsahan</p>
+        <div className="bg-white py-11 rounded-lg shadow-lg">
+          <div className="border-[2px] border-dashed border-[#212331] rounded-md p-5 m-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-items-center">
+              <div className="text-black">
+                <span className="text-[#e8461e] mr-2">Timeline:</span>
+                Child entering Protsahan
               </div>
-              <div className="flex flex-wrap max-md:flex-col max-md:m-auto">
-                <p className="max-sm:text-center">
-                  <span className="text-yellow-300">Potential Consumers:</span> Protsahan Executive Team | Governmental Bodies
+              <div className="flex flex-wrap justify-center">
+                <p className="text-black text-center">
+                  <span className="text-[#e8461e] mr-2">
+                    Potential Consumers:
+                  </span>
+                  Protsahan Executive Team | Governmental Bodies
                 </p>
               </div>
             </div>
-            <div className="text-center p-4">
+            <div className="text-center p-4 text-black">
               <p>
-                These set of data visualisations paints a story of the enrolment data of students on a specified date range/month/year. It tells the user – how many children have enrolled in Protsahan, basic data related to the pool of children etc.
+                These set of data visualisations paints a story of the
+                enrolment data of students on a specified date range/month/year.
+                It tells the user how many children have enrolled in Protsahan,
+                basic data related to the pool of children, etc.
               </p>
             </div>
           </div>
-
           <div className="flex justify-center p-4  mb-40 max-md:w-full ">
             <div className="max-w-3xl w-full relative overflow-hidden bg-white rounded-lg shadow-md">
               {/* Yearly Bar Chart - Animate slide out when clicked */}
@@ -176,7 +181,7 @@ const Education = () => {
 
           {/* Student Pass Out Data */}
           <Education2 />
-          <GraphPage/>
+          {/* <GraphPage/> */}
         </div>
       </div>
     </div>
