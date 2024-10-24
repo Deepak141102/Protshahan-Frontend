@@ -88,24 +88,30 @@ const GovtLinkage = () => {
 
     let chartData;
     let onClickHandler = null;
+    let headingText = ''; // Variable for dynamic heading text
+
     if (!selectedYear) {
         chartData = getYearlyData();
         onClickHandler = handleYearClick;
+        headingText = 'Click On a Bar To See Category Data!'; // Heading when viewing yearly data
     } else if (!selectedCategory) {
         chartData = getCategoryData(selectedYear);
         console.log("Selected Year Data:", chartData); // Debugging line
         onClickHandler = handleCategoryClick;
+        headingText = 'Click On a Bar To See Monthly Data!'; // Heading when viewing category data
     } else {
         chartData = getMonthlyData(selectedYear, selectedCategory);
+        headingText = 'Visualise Monthly Data!'; // Heading when viewing monthly data
     }
 
     return (
         <div className="container mx-auto p-4">
             <h1 className="text-2xl font-bold text-[#212331] text-center mb-4">Interactive Data Visualization</h1>
+            <h2 className="text-2xl font-bold text-[#e0461f] text-center mb-4">{headingText}</h2> {/* Dynamic heading */}
             <div className="relative">
                 {selectedYear && !selectedCategory && (
                     <button
-                        className="absolute -top-10 left-1 p-2 mb-4 bg-gradient-to-r from-gray-800 to-gray-600 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 ease-in-out flex justify-center items-center"
+                        className="absolute -top-14 left-1 p-2 mb-4 bg-gradient-to-r from-gray-800 to-gray-600 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 ease-in-out flex justify-center items-center"
                         onClick={() => {
                             setSelectedYear(null);
                             setSelectedCategory(null); // Reset category when going back to year view
@@ -116,7 +122,7 @@ const GovtLinkage = () => {
                 )}
                 {selectedCategory && (
                     <button
-                        className="absolute -top-10 left-1 p-2 mb-4 bg-gradient-to-r from-gray-800 to-gray-600 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 ease-in-out flex justify-center items-center"
+                        className="absolute -top-14 left-1 p-2 mb-4 bg-gradient-to-r from-gray-800 to-gray-600 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 ease-in-out flex justify-center items-center"
                         onClick={() => setSelectedCategory(null)}
                     >
                         <FontAwesomeIcon icon={faArrowLeft} className="text-white text-2xl" />

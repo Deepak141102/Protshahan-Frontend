@@ -80,7 +80,7 @@ const Education2 = () => {
                 {/* Back Button Icon */}
                 {!yearlyData && (
                     <button
-                    className="absolute top-0 left-12 p-3 bg-gradient-to-r from-gray-800 to-gray-600 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 ease-in-out flex justify-center items-center"
+                    className="absolute -top-10 left-1 p-3 bg-gradient-to-r from-gray-800 to-gray-600 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 ease-in-out flex justify-center items-center"
                     onClick={() => {
                       setYearlyData(true);
                       setSelectedSubject(null);
