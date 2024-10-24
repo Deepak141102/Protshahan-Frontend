@@ -164,7 +164,7 @@ const DataChart2 = () => {
   }, [dropdownOpenPie, dropdownOpenDoughnut]);
 
   return (
-    <div className="bg-[#dcdcdc] flex max-md:flex-col justify-evenly items-center bg-transparent w-full gap-6 p-4 mt-11">
+    <div className="bg-[#dcdcdc] flex max-md:flex-col justify-evenly items-center w-full gap-6 p-4 mt-11">
       {/* Pie Chart with Filters */}
       <div className="max-md:w-[90%] w-[40vw] bg-white flex flex-col justify-center items-center  p-7 rounded-lg">
         <h2 className="text-lg lg:text-2xl font-bold mb-4 text-center">

@@ -6,6 +6,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import CounterSection from "./CounterSection";
 import BarGraph from "./LineBar";
 import IndiaMap from "./IndiaMap";
+import DataChart2 from "./DoughnutPie";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -153,7 +154,7 @@ const Rights = () => {
 
   return (
     <div className="bg-[#3c3950] min-h-screen font-lato">
-      <div className="bg-[#212331] text-white py-8 px-12">
+      <div className="bg-[#212331] text-white py-8 px-12 max-md:px-0">
         <div className="flex text-4xl p-4">
           <h1 className="text-yellow-400 pl-4">
             Protsahan - For a Better Future | Data Visualization
@@ -279,7 +280,7 @@ const Rights = () => {
               </div>
             </div>
           </div>
-
+<DataChart2/>
           <BarGraph />
           <IndiaMap />
         </div>

@@ -1,54 +1,137 @@
-import React, { useState } from 'react';
-import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import React, { useState } from "react";
+import { Bar } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import yearlyData from './YearlyMonthlyData.json'; // Import the JSON file for yearly data
-import studentData from './StudentPassOut.json'; // Import the JSON file for student pass out data
-import Education2 from './Education2'
-import GraphPage from './Onec';
-import GovtLinkage from './Category';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import yearlyData from "./YearlyMonthlyData.json"; // Yearly data
+import studentData from "./StudentPassOut.json"; // Student pass out data
+import GovtLinkage from "./Category";
+
 // Register ChartJS components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const Education = () => {
   const [selectedYearData, setSelectedYearData] = useState(null);
   const [showMonthlyChart, setShowMonthlyChart] = useState(false);
+  const [selectedSubject, setSelectedSubject] = useState(null);
+  const [yearlyStudentData, setYearlyStudentData] = useState(true);
 
-  // Prepare data for yearly chart
+  // Prepare data for yearly chart (Batches)
   const yearlyChartData = {
     labels: yearlyData.map((item) => item.year),
     datasets: [
       {
-        label: 'Yearly Batches',
+        label: "Yearly Batches",
         data: yearlyData.map((item) => item.total),
-        backgroundColor: ['#df6b4f', '#e0461f', '#86250f'],
-        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: ["#df6b4f", "#e0461f", "#86250f"],
+        borderColor: "rgba(75, 192, 192, 1)",
         borderWidth: 1,
       },
     ],
   };
 
-  // Prepare data for monthly chart when a year is selected
+  // Prepare data for monthly chart
   const monthlyData = selectedYearData
     ? {
-      labels: Object.keys(selectedYearData.monthWise),
+        labels: Object.keys(selectedYearData.monthWise),
+        datasets: [
+          {
+            label: `Monthly Data for ${selectedYearData.year}`,
+            data: Object.values(selectedYearData.monthWise),
+            backgroundColor: "rgba(153, 102, 255, 0.6)",
+            borderColor: "rgba(153, 102, 255, 1)",
+            borderWidth: 1,
+          },
+        ],
+      }
+    : null;
+
+  // Prepare Student Pass Out Data
+  const colorMap = {
+    History: "#e0461f",
+    "Political Science": "#f25c54",
+    "Social Studies": "#86250f",
+    Mathematics: "#df6b4f",
+    Science: "#65190b",
+  };
+
+  const getYearlyStudentData = () => {
+    const years = studentData.map((data) => data.year);
+    const subjects = [
+      ...new Set(
+        studentData.flatMap((data) =>
+          data.classwise.flatMap((cw) => Object.keys(cw.subjectWise))
+        )
+      ),
+    ];
+
+    const datasets = subjects.map((subject) => ({
+      label: subject,
+      data: studentData.map((data) => {
+        const total = data.classwise.reduce(
+          (sum, cw) => sum + (cw.subjectWise[subject] || 0),
+          0
+        );
+        return total;
+      }),
+      backgroundColor: colorMap[subject] || "#dc2f02",
+    }));
+
+    return {
+      labels: years,
+      datasets,
+    };
+  };
+
+  const getClasswiseStudentData = (subject) => {
+    const classwise = studentData.flatMap((data) =>
+      data.classwise.map((cw) => ({
+        class: cw.class,
+        value: cw.subjectWise[subject] || 0,
+      }))
+    );
+
+    const classLabels = [...new Set(classwise.map((cw) => cw.class))];
+    const classData = classLabels.map((cls) =>
+      classwise
+        .filter((cw) => cw.class === cls)
+        .reduce((sum, cw) => sum + cw.value, 0)
+    );
+
+    return {
+      labels: classLabels,
       datasets: [
         {
-          label: `Monthly Data for ${selectedYearData.year}`,
-          data: Object.values(selectedYearData.monthWise),
-          backgroundColor: 'rgba(153, 102, 255, 0.6)',
-          borderColor: 'rgba(153, 102, 255, 1)',
-          borderWidth: 1,
+          label: subject,
+          data: classData,
+          backgroundColor: colorMap[subject] || "#dc2f02",
         },
       ],
-    }
-    : null;
+    };
+  };
 
   const handleBarClick = (elements) => {
     if (elements.length > 0) {
       const clickedIndex = elements[0].index;
       setSelectedYearData(yearlyData[clickedIndex]);
-      setShowMonthlyChart(true); // Trigger transition to monthly chart
+      setShowMonthlyChart(true); // Switch to monthly chart
+    }
+  };
+
+  const handleStudentClick = (event, elements) => {
+    if (elements.length > 0) {
+      const subject = event.chart.data.datasets[elements[0].datasetIndex].label;
+      setSelectedSubject(subject);
+      setYearlyStudentData(false);
     }
   };
 
@@ -56,103 +139,86 @@ const Education = () => {
     setShowMonthlyChart(false); // Go back to yearly chart
   };
 
-  // Prepare Student Pass Out Data
-  const prepareStudentChartData = () => {
-    const years = [];
-    const subjects = {};
-
-    studentData.forEach(item => {
-      years.push(item.year);
-      item.classwise.forEach(cls => {
-        Object.keys(cls.subjectWise).forEach(subject => {
-          if (!subjects[subject]) {
-            subjects[subject] = Array(studentData.length).fill(0);
-          }
-          const yearIndex = years.indexOf(item.year);
-          subjects[subject][yearIndex] += cls.subjectWise[subject];
-        });
-      });
-    });
-
-    return {
-      labels: years,
-      datasets: Object.keys(subjects).map((subject, index) => ({
-        label: subject,
-        data: subjects[subject],
-        backgroundColor: `rgba(${index * 30}, 100, 200, 0.5)`, // Different colors for each subject
-        borderColor: `rgba(${index * 30}, 100, 200, 1)`,
-        borderWidth: 1,
-      })),
-    };
+  const handleStudentBackClick = () => {
+    setYearlyStudentData(true);
+    setSelectedSubject(null); // Reset selected subject
   };
 
+  const studentChartData = yearlyStudentData
+    ? getYearlyStudentData()
+    : getClasswiseStudentData(selectedSubject);
+
+  // Common chart options
+  const commonChartOptions = {
+    responsive: true,
+    maintainAspectRatio: false, // Allow full control over height
+    height: "80vh", // Set height explicitly for Bar chart rendering
+  };
 
   return (
-     <div className="bg-[#3c3950] min-h-screen">
+    <div className="bg-[#3c3950] min-h-screen">
       <div className="bg-[#212331] text-white py-8 px-12">
-        <div className="flex text-4xl p-4">
-          <h1 className="text-yellow-400 pl-4">
-            Protsahan - For a Better Future | Data Visualization
-          </h1>
-        </div>
+        <h1 className="text-yellow-400 text-4xl pl-4">
+          Protsahan - Data Visualization
+        </h1>
         <div className="bg-white py-11 rounded-lg shadow-lg">
-          <div className="border-[2px] border-dashed border-[#212331] rounded-md p-5 m-5">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-items-center">
-              <div className="text-black">
-                <span className="text-[#e8461e] mr-2">Timeline:</span>
-                Child entering Protsahan
+          <div className="p-5 m-5 border-2 border-dashed border-[#212331] rounded-md">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-black">
+              <div>
+                <span className="text-[#e8461e] mr-2">Timeline:</span> Child
+                entering Protsahan
               </div>
-              <div className="flex flex-wrap justify-center">
-                <p className="text-black text-center">
-                  <span className="text-[#e8461e] mr-2">
-                    Potential Consumers:
-                  </span>
-                  Protsahan Executive Team | Governmental Bodies
-                </p>
+              <div className="text-center">
+                <span className="text-[#e8461e] mr-2">
+                  Potential Consumers:
+                </span>{" "}
+                Protsahan Executive Team | Governmental Bodies
               </div>
             </div>
-            <div className="text-center p-4 text-black">
-              <p>
-                These set of data visualisations paints a story of the
-                enrolment data of students on a specified date range/month/year.
-                It tells the user how many children have enrolled in Protsahan,
-                basic data related to the pool of children, etc.
-              </p>
-            </div>
+            <p className="text-center p-4">
+              These data visualizations show the enrollment and academic
+              performance of students.
+            </p>
           </div>
-          <div className="flex justify-center p-4  mb-40 max-md:w-full ">
-            <div className="max-w-3xl w-full relative overflow-hidden bg-white rounded-lg shadow-md">
-              {/* Yearly Bar Chart - Animate slide out when clicked */}
-              <div className={`transition-transform duration-700 ease-in-out transform ${showMonthlyChart ? '-translate-x-full' : 'translate-x-0'}`}>
-                <h2 className="text-xl font-bold text-center mb-4">Number of Lectures (Yearly)</h2>
-                <div className="p-4 pb-12 rounded-lg shadow-md">
+
+          <div className="flex justify-center p-4 mb-40 bg-[#dcdcdc] gap-4 max-md:flex-col">
+            {/* Yearly Bar Chart */}
+            <div className="w-full max-md:w-full h-[75vh] max-md:h-screen relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
+              <div
+                className={`transition-transform duration-700 ease-in-out transform ${
+                  showMonthlyChart ? "-translate-x-[45rem]" : "translate-x-0"
+                }`}
+              >
+                <h2 className="text-xl font-bold text-center mb-4 text-[#212331]">
+                  Number of Lectures (Yearly)
+                </h2>
+
+                {/* Set responsive height for the chart container */}
+                <div className="h-[57.6vh] max-md:h-[80vh] ">
                   <Bar
                     data={yearlyChartData}
                     options={{
+                      ...commonChartOptions,
                       onClick: (evt, elements) => handleBarClick(elements),
-                      responsive: true,
-                      plugins: {
-                        legend: {
-                          display: false, // Hide the legend
-                          onClick: (e) => e.stopPropagation(), // Prevent default click behavior
-
-                        },
-                      },
                     }}
                   />
-                  {/* Add instruction message here */}
-                  <p className="text-yellow-300 text-center mt-2">
-                    Click on a bar to see monthly data!
-                  </p>
                 </div>
+
+                <p className="text-yellow-300 text-center mt-2">
+                  Click on a bar to see monthly data!
+                </p>
               </div>
 
-              {/* Monthly Bar Chart - Initially hidden, slides in vertically with fade effect */}
+              {/* Monthly Bar Chart */}
               {selectedYearData && (
                 <div
-                  className={`absolute top-0 left-0 w-full transition-all duration-700 ease-in-out transform ${showMonthlyChart ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}
+                  className={`absolute top-0 left-0 w-full pb-36 px-4 overflow-hidden h-full transition-all duration-700 ease-in-out transform ${
+                    showMonthlyChart
+                      ? "translate-y-0 opacity-100"
+                      : "-translate-y-full opacity-0"
+                  }`}
                 >
-                  <div className="flex justify-start p-4 ">
+                  <div className="flex justify-start p-4">
                     <button
                       className="bg-gradient-to-r from-gray-800 to-gray-600 p-3 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
                       onClick={handleBackClick}
@@ -161,29 +227,50 @@ const Education = () => {
                     </button>
                   </div>
 
-                  <h2 className="text-xl font-bold text-center mb-4">Number of Lectures in  {selectedYearData.year} (Monthly)</h2>
-                  <div className="p-4 ">
+                  <h2 className="text-xl font-bold text-center mb-4 text-[#212331]">
+                    Number of Lectures in {selectedYearData.year} (Monthly)
+                  </h2>
+                  {/* Set responsive height for the monthly chart container */}
+                  <div className="h-[60vh] max-md:h-[80vh] pb-14">
                     <Bar
                       data={monthlyData}
-                      options={{
-                        responsive: true,
-                        plugins: {
-                          legend: {
-                            display: false, // Hide the legend
-                          },
-                        },
-                      }}
+                      options={commonChartOptions}
                     />
                   </div>
                 </div>
               )}
             </div>
-          </div>
 
-          {/* Student Pass Out Data */}
-          <Education2 />
-          <GovtLinkage/>
-          {/* <GraphPage/> */}
+            {/* Student Pass Out Chart */}
+            <div className="w-full max-md:w-full h-[75vh] max-md:h-screen relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
+      {selectedSubject && (
+        <div className="flex justify-start p-4 pt-0">
+          <button
+            className="bg-gradient-to-r w-12 from-gray-800 to-gray-600 p-3 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
+            onClick={handleStudentBackClick}
+          >
+            <FontAwesomeIcon icon={faArrowLeft} className="text-white text-2xl" />
+          </button>
+        </div>
+      )}
+      <h2 className="text-xl font-bold text-center mb-4 text-[#212331]">
+        Number of Students Passed Out
+      </h2>
+
+      {/* Set responsive height for the student chart container */}
+      <div className="h-[55.5vh] max-md:h-[80vh]">
+        <Bar
+          data={studentChartData}
+          options={{
+            ...commonChartOptions,
+            onClick: (evt, elements) => handleStudentClick(evt, elements),
+          }}
+        />
+      </div>
+      </div>
+      
+          </div>
+      <GovtLinkage/>
         </div>
       </div>
     </div>
