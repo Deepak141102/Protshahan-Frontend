@@ -6,6 +6,7 @@ import yearlyData from './YearlyMonthlyData.json'; // Import the JSON file for y
 import studentData from './StudentPassOut.json'; // Import the JSON file for student pass out data
 import Education2 from './Education2'
 import GraphPage from './Onec';
+import GovtLinkage from './Category';
 // Register ChartJS components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -181,6 +182,7 @@ const Education = () => {
 
           {/* Student Pass Out Data */}
           <Education2 />
+          <GovtLinkage/>
           {/* <GraphPage/> */}
         </div>
       </div>
