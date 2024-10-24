@@ -106,20 +106,20 @@ const CounterSection = () => {
   }, [hasAnimated]);
 
   return (
-    <div className="flex flex-wrap justify-center p-5 md:p-10 bg-cover rounded-lg text-white font-lato">
+    <div className="flex flex-wrap justify-center p-8 md:p-12 bg-gradient-to-r from-[#3c3950] to-[#919191] text-white font-lato shadow-xl">
       {counters.map((counter, index) => (
         <div
           key={index}
-          className="group flex flex-col w-1/5 max-md:w-2/5 max-sm:w-full max-lg:w-2/5 items-center text-center p-6 bg-[#3c3950] rounded-lg hover:-translate-y-2 hover:bg-[#e54c29] 
-            duration-300 backdrop-blur-md mx-2 mb-8 transition-all"
+          className="group flex flex-col w-full md:w-1/5 items-center text-center p-6 bg-[#3c3950] rounded-lg 
+          hover:scale-105 hover:bg-gradient-to-tr from-[#ce441a] to-[#e8461e] duration-300 mx-3 mb-8 shadow-md transition-transform ease-out"
         >
-          <div className="text-6xl text-[#e54c29] mb-4 flex items-center justify-center group-hover:text-[#212331] ">
+          <div className="text-5xl text-[#e8461e] mb-4 flex items-center justify-center group-hover:text-[#fff] transition-colors ease-in-out duration-300">
             {counter.icon}
           </div>
-          <div className="count text-4xl font-bold text-gradient bg-gradient-to-r to-[#525468] from-[#919191] bg-clip-text text-transparent filter drop-shadow-md">
+          <div className="count text-5xl font-bold bg-gradient-to-r from-[#86250f] to-[#df6b4f] bg-clip-text text-transparent filter drop-shadow-lg transition-all duration-500">
             {displayCounts[index]}+
           </div>
-          <div className="text-lg text-[#df6b4f] group-hover:text-white text-opacity-70 mt-2 ">
+          <div className="text-lg text-[#df6b4f] group-hover:text-white transition-colors duration-300 mt-2">
             {counter.label}
           </div>
         </div>

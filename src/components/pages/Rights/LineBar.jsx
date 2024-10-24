@@ -48,12 +48,13 @@ const DataChart1 = () => {
       {
         label: "Number of Scholarships",
         data: [20, 19, 531, 1, 55, 2],
-        backgroundColor: "#ce441a",
-        borderColor: "#e8461e",
+        backgroundColor: "#e8461e", // Main bar color
+        borderColor: "#df6b4f", // Border color for hover effect
         borderWidth: 2,
         borderRadius: 10,
-        // Add barThickness property to control bar width
         barThickness: 15, // Adjust this value for desired bar width
+        hoverBackgroundColor: "#ce441a", // Hover color
+        hoverBorderColor: "#65190b", // Hover border color
       },
     ],
   };
@@ -64,10 +65,12 @@ const DataChart1 = () => {
       {
         label: "Number of Scholarships Disbursed",
         data: [558, 79],
-        backgroundColor: "#e8461e",
+        backgroundColor: "#86250f", // Main bar color
         borderWidth: 2,
         borderRadius: 10,
-        barThickness: 55, 
+        barThickness: 55,
+        hoverBackgroundColor: "#e8461e", // Hover color
+        hoverBorderColor: "#3c3950", // Hover border color
       },
     ],
   };
@@ -91,45 +94,51 @@ const DataChart1 = () => {
     scales: {
       x: {
         grid: {
-          color: "rgb(33, 35, 49, 0.4)",
+          color: "rgba(33, 35, 49, 0.4)",
+        },
+        ticks: {
+          color: "#3c3950",
+          font: {
+            size: isMobile ? 10 : 12,
+          },
         },
       },
       y: {
         beginAtZero: true,
         ticks: {
-          color: "rgb(33, 35, 49, 0.3)",
+          color: "rgba(33, 35, 49, 0.3)",
           font: {
             size: isMobile ? 9 : 12,
           },
         },
         grid: {
-          color: "rgb(33, 35, 49, 0.2)",
+          color: "rgba(33, 35, 49, 0.2)",
         },
       },
     },
     elements: {
       bar: {
         borderWidth: 1,
-        borderColor: "rgb(33, 35, 49, 0.1)",
+        borderColor: "rgba(33, 35, 49, 0.1)",
       },
     },
   };
 
   return (
-    <div className="bg-[#dcdcdc] flex justify-center flex-col md:flex-row my-auto font-lato gap-4 items-center pb-16">
-      <div className="w-[47%] max-md:w-11/12 bg-white shadow-2xl p-10 mb-4 md:mb-0 rounded-xl">
-        <h2 className="text-xl font-bold text-center text-black mb-4">
+    <div className="bg-gradient-to-r from-[#919191] to-[#3c3950] flex justify-center flex-col md:flex-row my-auto font-lato gap-4 items-center py-16">
+      <div className="w-[47%] max-md:w-11/12 bg-white shadow-2xl p-10 mb-4 md:mb-0 rounded-xl border border-[#65190b]">
+        <h2 className="text-xl font-bold text-center text-[#3c3950] mb-4">
           Categories of Scholarship
         </h2>
-        <div className="w-full  h-[50vh]">
+        <div className="w-full h-[50vh]">
           <Line data={scholarshipData} options={options} />
         </div>
       </div>
-      <div className="w-[47%] max-md:w-11/12  bg-white shadow-2xl p-10 rounded-xl">
-        <h2 className="text-xl font-bold text-center text-black mb-4">
+      <div className="w-[47%] max-md:w-11/12 bg-white shadow-2xl p-10 rounded-xl border border-[#65190b]">
+        <h2 className="text-xl font-bold text-center text-[#3c3950] mb-4">
           Number of Scholarships Disbursed by Gender
         </h2>
-        <div className="w-full  h-[50vh]">
+        <div className="w-full h-[50vh]">
           <Bar data={genderData} options={options} />
         </div>
       </div>

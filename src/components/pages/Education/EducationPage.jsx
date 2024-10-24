@@ -15,9 +15,17 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import yearlyData from "./YearlyMonthlyData.json"; // Yearly data
 import studentData from "./StudentPassOut.json"; // Student pass out data
 import GovtLinkage from "./Category";
+import Dashboard from "./Rest";
 
 // Register ChartJS components
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const Education = () => {
   const [selectedYearData, setSelectedYearData] = useState(null);
@@ -42,17 +50,17 @@ const Education = () => {
   // Prepare data for monthly chart
   const monthlyData = selectedYearData
     ? {
-      labels: Object.keys(selectedYearData.monthWise),
-      datasets: [
-        {
-          label: `Monthly Data for ${selectedYearData.year}`,
-          data: Object.values(selectedYearData.monthWise),
-          backgroundColor: "rgba(153, 102, 255, 0.6)",
-          borderColor: "rgba(153, 102, 255, 1)",
-          borderWidth: 1,
-        },
-      ],
-    }
+        labels: Object.keys(selectedYearData.monthWise),
+        datasets: [
+          {
+            label: `Monthly Data for ${selectedYearData.year}`,
+            data: Object.values(selectedYearData.monthWise),
+            backgroundColor: "rgba(153, 102, 255, 0.6)",
+            borderColor: "rgba(153, 102, 255, 1)",
+            borderWidth: 1,
+          },
+        ],
+      }
     : null;
 
   // Prepare Student Pass Out Data
@@ -152,7 +160,18 @@ const Education = () => {
   const commonChartOptions = {
     responsive: true,
     maintainAspectRatio: false, // Allow full control over height
-    height: "80vh", // Set height explicitly for Bar chart rendering
+    height: "80vh",
+    plugins: {
+      legend: {
+        position: "top",
+        labels: {
+          boxWidth: 15,
+          padding: 20,
+          usePointStyle: true,
+        },
+        onClick: (e) => e.stopPropagation(),
+      },
+    },
   };
 
   return (
@@ -181,12 +200,13 @@ const Education = () => {
             </p>
           </div>
 
-          <div className="flex justify-center p-4 mb-40 bg-[#dcdcdc] gap-4 max-md:flex-col">
+          <div className="flex justify-center py-16 px-4 mb-40 bg-[#dcdcdc] gap-4 max-md:flex-col">
             {/* Yearly Bar Chart */}
             <div className="w-full max-md:w-full h-[75vh] max-md:h-screen relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
               <div
-                className={`transition-transform duration-700 ease-in-out transform ${showMonthlyChart ? "-translate-x-[45rem]" : "translate-x-0"
-                  }`}
+                className={`transition-transform duration-700 ease-in-out transform ${
+                  showMonthlyChart ? "-translate-x-[45rem]" : "translate-x-0"
+                }`}
               >
                 <h2 className="text-xl font-bold text-center mb-4 text-[#212331]">
                   Number of Lectures (Yearly)
@@ -198,6 +218,12 @@ const Education = () => {
                     data={yearlyChartData}
                     options={{
                       ...commonChartOptions,
+                      plugins: {
+                        ...commonChartOptions.plugins,
+                        legend: {
+                          display: false, // Hides the legend only for this chart
+                        },
+                      },
                       onClick: (evt, elements) => handleBarClick(elements),
                     }}
                   />
@@ -211,10 +237,11 @@ const Education = () => {
               {/* Monthly Bar Chart */}
               {selectedYearData && (
                 <div
-                  className={`absolute top-0 left-0 w-full pb-36 px-4 overflow-hidden h-full transition-all duration-700 ease-in-out transform ${showMonthlyChart
+                  className={`absolute top-0 left-0 w-full pb-36 px-4 overflow-hidden h-full transition-all duration-700 ease-in-out transform ${
+                    showMonthlyChart
                       ? "translate-y-0 opacity-100"
                       : "-translate-y-full opacity-0"
-                    }`}
+                  }`}
                 >
                   <div className="flex justify-start p-4">
                     <button
@@ -230,10 +257,18 @@ const Education = () => {
                   </h2>
                   {/* Set responsive height for the monthly chart container */}
                   <div className="h-[60vh] max-md:h-[80vh] pb-14">
-                    <Bar
-                      data={monthlyData}
-                      options={commonChartOptions}
-                    />
+                    <Bar data={monthlyData}
+                     options={{
+                      ...commonChartOptions,
+                      plugins: {
+                        ...commonChartOptions.plugins,
+                        legend: {
+                          display: false, // Hides the legend only for this chart
+                        },
+                      },
+                      onClick: (evt, elements) => handleBarClick(elements),
+                    }}
+                     />
                   </div>
                 </div>
               )}
@@ -249,7 +284,6 @@ const Education = () => {
                   >
                     <IoMdArrowRoundBack className="text-white text-2xl hover:text-gray-300 transition-all" />
                   </button>
-
                 </div>
               )}
               <h2 className="text-xl font-bold text-center mb-4 text-[#212331]">
@@ -262,14 +296,15 @@ const Education = () => {
                   data={studentChartData}
                   options={{
                     ...commonChartOptions,
-                    onClick: (evt, elements) => handleStudentClick(evt, elements),
+                    onClick: (evt, elements) =>
+                      handleStudentClick(evt, elements),
                   }}
                 />
               </div>
             </div>
-
           </div>
           <GovtLinkage />
+          <Dashboard/>
         </div>
       </div>
     </div>
