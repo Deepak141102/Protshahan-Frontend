@@ -174,7 +174,7 @@ const GovtLinkage = () => {
         {headingText}
       </h2>
       <div className="relative">
-        <div className="w-full h-[50vh] max-md:w-full m-auto">
+        <div className="w-full h-[50vh] max-md:h-[66vh] max-md:w-full m-auto">
           <Bar
             data={chartData}
             options={{
