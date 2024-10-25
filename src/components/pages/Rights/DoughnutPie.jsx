@@ -169,10 +169,10 @@ const DataChart2 = () => {
   }, [dropdownOpenPie, dropdownOpenDoughnut]);
 
   return (
-    <div className="bg-white flex flex-col items-center justify-center w-full min-h-screen p-8 ">
+    <div className="bg-[#dcdcdc] flex flex-col items-center justify-center w-full min-h-screen p-8 max-md:p-4 ">
       <div className="flex flex-col md:flex-row justify-center items-center w-full space-y-6 md:space-y-0 md:space-x-6">
         {/* Pie Chart Section */}
-        <div className="bg-white shadow-2xl rounded-xl p-6 w-full md:w-[45%] flex flex-col items-center relative">
+        <div className="bg-white shadow-2xl rounded-xl p-6 pb-4 w-full h-[82vh] md:w-[45%] flex flex-col items-center relative">
           <h2 className="text-2xl md:text-3xl font-bold text-[#3e4c63] mb-4">
             Family Income Distribution
           </h2>
@@ -185,7 +185,7 @@ const DataChart2 = () => {
           {dropdownOpenPie && (
             <div
               ref={dropdownRefPie}
-              className="mt-4 bg-[#2e2f42] text-white p-4 rounded-lg w-60 absolute top-[100%] z-10 shadow-2xl"
+              className="bg-[#2e2f42] text-white p-4 rounded-lg w-60 absolute top-full max-md:top-[22%] z-10 shadow-2xl"
             >
               {Object.keys(filtersPie).map((label) => (
                 <label
@@ -209,7 +209,7 @@ const DataChart2 = () => {
         </div>
 
         {/* Doughnut Chart Section */}
-        <div className="bg-white shadow-2xl rounded-xl p-6 w-full md:w-[45%] flex flex-col justify-center items-center relative">
+        <div className="bg-white shadow-2xl rounded-xl p-6 h-[82vh] w-full md:w-[45%] flex flex-col justify-center items-center relative">
           <h2 className="text-2xl md:text-3xl font-bold text-[#3e4c63] mb-4">
             Individuals by Community Type
           </h2>
@@ -222,7 +222,7 @@ const DataChart2 = () => {
           {dropdownOpenDoughnut && (
             <div
               ref={dropdownRefDoughnut}
-              className="mt-2 bg-[#2e2f42] text-white p-4 rounded-lg w-60 absolute top-[100%] z-10 shadow-2xl"
+              className="bg-[#2e2f42] text-white p-4 rounded-lg w-60 absolute top-full max-md:top-[27%] z-10 shadow-2xl"
             >
               {Object.keys(filtersDoughnut).map((label) => (
                 <label

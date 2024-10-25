@@ -50,11 +50,11 @@ const DataChart1 = () => {
         data: [20, 19, 531, 1, 55, 2],
         backgroundColor: "#e8461e", // Main bar color
         borderColor: "#df6b4f", // Border color for hover effect
-        borderWidth: 2,
-        borderRadius: 10,
-        barThickness: 15, // Adjust this value for desired bar width
-        hoverBackgroundColor: "#ce441a", // Hover color
-        hoverBorderColor: "#65190b", // Hover border color
+        backgroundColor: 'rgba(142, 68, 173, 0.1)',
+        fill: true,
+        tension: 0.4,
+        pointBackgroundColor: '#8e44ad',
+        pointHoverRadius: 8, // Hover border color
       },
     ],
   };
@@ -126,7 +126,7 @@ const DataChart1 = () => {
 
   return (
     <div className="bg-gradient-to-r from-[#919191] to-[#3c3950] flex justify-center flex-col md:flex-row my-auto font-lato gap-4 items-center py-16">
-      <div className="w-[47%] max-md:w-11/12 bg-white shadow-2xl p-10 mb-4 md:mb-0 rounded-xl border border-[#65190b]">
+      <div className="w-[47%] max-md:w-11/12 bg-white shadow-2xl p-10 max-md:p-4 mb-4 md:mb-0 rounded-xl border border-[#65190b]">
         <h2 className="text-xl font-bold text-center text-[#3c3950] mb-4">
           Categories of Scholarship
         </h2>
@@ -134,7 +134,7 @@ const DataChart1 = () => {
           <Line data={scholarshipData} options={options} />
         </div>
       </div>
-      <div className="w-[47%] max-md:w-11/12 bg-white shadow-2xl p-10 rounded-xl border border-[#65190b]">
+      <div className="w-[47%] max-md:w-11/12 bg-white shadow-2xl p-10  rounded-xl border border-[#65190b]">
         <h2 className="text-xl font-bold text-center text-[#3c3950] mb-4">
           Number of Scholarships Disbursed by Gender
         </h2>

@@ -202,7 +202,7 @@ const Education = () => {
 
           <div className="flex justify-center py-16 px-4 mb-40 bg-[#dcdcdc] gap-4 max-md:flex-col">
             {/* Yearly Bar Chart */}
-            <div className="w-full max-md:w-full h-[75vh] max-md:h-screen relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
+            <div className="w-full max-md:w-full h-[75vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
               <div
                 className={`transition-transform duration-700 ease-in-out transform ${
                   showMonthlyChart ? "-translate-x-[45rem]" : "translate-x-0"
@@ -213,7 +213,7 @@ const Education = () => {
                 </h2>
 
                 {/* Set responsive height for the chart container */}
-                <div className="h-[57.6vh] max-md:h-[80vh] ">
+                <div className="h-[57.6vh] max-md:h-[66vh] ">
                   <Bar
                     data={yearlyChartData}
                     options={{
@@ -256,7 +256,7 @@ const Education = () => {
                     Number of Lectures in {selectedYearData.year} (Monthly)
                   </h2>
                   {/* Set responsive height for the monthly chart container */}
-                  <div className="h-[60vh] max-md:h-[80vh] pb-14">
+                  <div className="h-[60vh] max-md:h-[68vh] pb-14">
                     <Bar data={monthlyData}
                      options={{
                       ...commonChartOptions,
@@ -275,7 +275,7 @@ const Education = () => {
             </div>
 
             {/* Student Pass Out Chart */}
-            <div className="w-full max-md:w-full h-[75vh] max-md:h-screen relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
+            <div className="w-full max-md:w-full h-[75vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
               {selectedSubject && (
                 <div className="flex justify-start p-4 pt-0">
                   <button
@@ -291,7 +291,7 @@ const Education = () => {
               </h2>
 
               {/* Set responsive height for the student chart container */}
-              <div className="h-[55.5vh] max-md:h-[80vh]">
+              <div className="h-[55.5vh] max-md:h-[66vh]">
                 <Bar
                   data={studentChartData}
                   options={{
@@ -304,7 +304,7 @@ const Education = () => {
             </div>
           </div>
           <GovtLinkage />
-          <Dashboard/>
+          {/* <Dashboard/> */}
         </div>
       </div>
     </div>
