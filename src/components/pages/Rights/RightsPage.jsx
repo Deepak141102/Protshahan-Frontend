@@ -6,6 +6,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import CounterSection from "./CounterSection";
 import DataChart2 from "./DoughnutPie";
 import DataChart1 from "./LineBar";
+import IndiaMap from "./IndiaMap";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -286,6 +287,7 @@ const Rights = () => {
             </div>
               <DataChart2/>
               <DataChart1/>
+              <IndiaMap/>
           </div>
         </div>
       </div>

@@ -47,23 +47,25 @@ const IndiaMap = () => {
   }, [color]); // Only runs when color changes
 
   return (<>
-  <div className=" bg-gray-900 bg-opacity-80 w-1/2 m-auto max-md:w-full mt-16 rounded-xl">
+  <div className="bg-gradient-to-r from-[#dcdcdc] to-[#919191] text-white font-lato shadow-xl py-12">
+
+  <div className=" bg-gray-900 bg-opacity-80 w-1/2 m-auto max-md:w-full rounded-xl">
   <h1 className="map-title px-3 py-3">Where has the child's family migrated from?</h1>
   </div>
-    <div className="relative w-[55%] h-[75vh] md:h-[110vh] m-auto max-md:w-full bg-[#f5f6f8] rounded-xl">
+    <div className="relative w-[55%] h-[75vh] md:h-[110vh]  m-auto max-md:w-full rounded-xl">
  
       <DatamapsIndia
         regionData={regionData}
         hoverComponent={({ value }) => {
           const count = value.value; // Get the migration count
           const stateName = value.name; // Get the state name from your data
-
+          
           // Construct the message
           const message =
-            count > 0
-              ? `${count} people migrated from`
-              : `No data available for `;
-
+          count > 0
+          ? `${count} people migrated from`
+          : `No data available for `;
+          
           return (
             <div className="tooltip flex">
               <div className="inline">
@@ -83,15 +85,16 @@ const IndiaMap = () => {
           hoverBorderColor: "#919191", // Gray border when hovered
           hoverColor: "#e8461e", // Orange color on hover
           height: 500,
-          width: 350,
+          width: 380,
           color: "white",
         }}
         getFillColor={(region) => {
           const value = regionData[region]?.value || 0;
           return getGradientColor(value);
         }}
-      />
+        />
     </div>
+        </div>
     </>
   );
 };
