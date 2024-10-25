@@ -106,12 +106,9 @@ const GovtLinkage = () => {
 
     return (
         <div className="container mx-auto p-4">
-            <h1 className="text-2xl font-bold text-[#212331] text-center mb-4">Interactive Data Visualization</h1>
-            <h2 className="text-2xl font-bold text-[#e0461f] text-center mb-4">{headingText}</h2> {/* Dynamic heading */}
-            <div className="relative">
-                {selectedYear && !selectedCategory && (
+            {selectedYear && !selectedCategory && (
                     <button
-                        className="absolute -top-14 left-1 p-2 mb-4 bg-gradient-to-r from-gray-800 to-gray-600 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 ease-in-out flex justify-center items-center"
+                        className="relative top-0 left-1 p-2 mb-4 bg-gradient-to-r from-gray-800 to-gray-600 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 ease-in-out flex justify-center items-center"
                         onClick={() => {
                             setSelectedYear(null);
                             setSelectedCategory(null); // Reset category when going back to year view
@@ -122,12 +119,16 @@ const GovtLinkage = () => {
                 )}
                 {selectedCategory && (
                     <button
-                        className="absolute -top-14 left-1 p-2 mb-4 bg-gradient-to-r from-gray-800 to-gray-600 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 ease-in-out flex justify-center items-center"
+                        className="relative top-0 left-1 p-2 mb-4 bg-gradient-to-r from-gray-800 to-gray-600 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 ease-in-out flex justify-center items-center"
                         onClick={() => setSelectedCategory(null)}
                     >
                         <FontAwesomeIcon icon={faArrowLeft} className="text-white text-2xl" />
                     </button>
                 )}
+            <h1 className="text-2xl font-bold text-[#212331] text-center mb-4">Interactive Data Visualization</h1>
+            <h2 className="text-2xl font-bold text-[#e0461f] text-center mb-4">{headingText}</h2> {/* Dynamic heading */}
+            <div className="relative">
+                
                 <div className="w-full h-[50vh]">
                     <Bar
                         data={chartData}
