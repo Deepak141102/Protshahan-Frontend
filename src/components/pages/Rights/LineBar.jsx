@@ -50,10 +50,8 @@ const DataChart1 = () => {
         data: [20, 19, 531, 1, 55, 2],
         backgroundColor: "#e8461e", // Main bar color
         borderColor: "#df6b4f", // Border color for hover effect
-        backgroundColor: 'rgba(142, 68, 173, 0.1)',
         fill: true,
         tension: 0.4,
-        pointBackgroundColor: '#8e44ad',
         pointHoverRadius: 8, // Hover border color
       },
     ],

@@ -18,27 +18,7 @@ const GovtLinkage = () => {
     "rgba(101, 25, 11, 1)", // Dark Red
   ];
 
-  useEffect(() => {
-    const handleResize = () => {
-      // Set bar thickness based on screen width
-      if (window.innerWidth <= 768) {
-        setBarThickness(15); // Thinner bars on smaller screens
-      } else {
-        setBarThickness(60); // Default thicker bars on larger screens
-      }
-    };
 
-    // Initial check
-    handleResize();
-
-    // Add event listener for window resize
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup the event listener on component unmount
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   const getYearlyData = () => {
     const years = Object.keys(catalog);
@@ -60,7 +40,7 @@ const GovtLinkage = () => {
           backgroundColor: colors.slice(0, years.length),
           hoverBackgroundColor: colors.slice(0, years.length),
           borderSkipped: false,
-          barThickness: barThickness, // Use dynamic bar thickness
+          barThickness: 30, // Use dynamic bar thickness
         },
       ],
     };
@@ -82,7 +62,7 @@ const GovtLinkage = () => {
           backgroundColor: "rgba(134, 37, 15, 1)",
           hoverBackgroundColor: "rgba(134, 37, 15, 0.8)",
           borderSkipped: false,
-          barThickness: barThickness, // Use dynamic bar thickness
+          barThickness: 20, // Use dynamic bar thickness
         },
       ],
     };
@@ -106,9 +86,8 @@ const GovtLinkage = () => {
           ).filter((_, index) => index < 12),
           backgroundColor: "rgba(242, 92, 84, 1)",
           hoverBackgroundColor: "rgba(242, 92, 84, 0.8)",
-          borderRadius: 10,
           borderSkipped: false,
-          barThickness: barThickness, // Use dynamic bar thickness
+          barThickness: 15, // Use dynamic bar thickness
         },
       ],
     };
@@ -174,10 +153,11 @@ const GovtLinkage = () => {
         {headingText}
       </h2>
       <div className="relative">
-        <div className="w-full h-[50vh] max-md:h-[66vh] max-md:w-full m-auto">
+        <div className="w-full h-[50vh] max-md:h-[80vh] max-md:w-full m-auto">
           <Bar
             data={chartData}
             options={{
+              indexAxis: "y", // Set to "y" for vertical bars
               onClick: onClickHandler,
               responsive: true,
               maintainAspectRatio: false,
