@@ -10,6 +10,7 @@ export default {
         'frameImg': "url('/img-bg.jpg')", // Replace with your image path
       },
       screens: {
+        xs:'340px',
         sm: '640px',   // Small devices (landscape phones, 640px and up)
         md: '769px',   // Medium devices (tablets, 768px and up)
         lg: '1024px',  // Large devices (desktops, 1024px and up)

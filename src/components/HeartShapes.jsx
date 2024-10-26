@@ -213,7 +213,7 @@ const HeartModel = () => {
             className="mb-4 p-5 h-auto flex justify-between rounded-lg max-xs:flex-col max-xs:items-center"
             style={{ backgroundColor: item.color }}
           >
-            <div className="max-xs:text-center text-white">
+            <div className="max-xs:text-center text-white  ">
               <h1 className="py-2 font-medium text-xl">{item.heading}</h1>
               <p className="text-sm">{item.desc}</p>
             </div>
@@ -221,7 +221,7 @@ const HeartModel = () => {
               src={item.icon}
               alt="Card icon"
               width="100"
-              height="50"
+              height="40"
               className=""
             />
           </div>
