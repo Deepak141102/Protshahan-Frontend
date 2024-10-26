@@ -205,7 +205,7 @@ const Rights = () => {
             <div className="flex justify-center items-center gap-8 py-10 bg-[#dcdcdc]  max-md:flex-col">
               {/* Doughnut Chart */}
               <div className="w-full max-w-[600px] flex flex-col">
-                <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col">
+                <div className="bg-white h-[81.92vh] p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col">
                   <h2 className="text-2xl font-bold text-center mb-4 text-[#212331]">
                     Occupation of the Guardians / Family
                   </h2>
@@ -263,24 +263,33 @@ const Rights = () => {
                     )}
                   </div>
                   <div className="flex justify-around mt-4">
+                    <div className="flex flex-col justify-center items-center">
+
                     <button
                       onClick={() => handleIconClick("gender")}
                       className={`${
                         selectedData === "gender"
-                          ? "bg-[#e8461e]"
-                          : "bg-[#919191]"
+                        ? "bg-[#e8461e]"
+                        : "bg-[#919191]"
                       } hover:bg-[#e54c29] p-3 rounded-full text-white transition duration-300`}
-                    >
+                      >
                       <FaGenderless size={25} />
+                    
                     </button>
+                    <h1 className="text-[#212331]">Gender</h1>
+                      </div>
+                    <div className="flex flex-col justify-center items-center">
+
                     <button
                       onClick={() => handleIconClick("age")}
                       className={`${
                         selectedData === "age" ? "bg-[#e8461e]" : "bg-[#919191]"
                       } hover:bg-[#e54c29] p-3 rounded-full text-white transition duration-300`}
-                    >
+                      >
                       <FaUsers size={25} />
                     </button>
+                    <h1 className="text-[#212331]">Age</h1>
+                      </div>
                   </div>
                 </div>
               </div>

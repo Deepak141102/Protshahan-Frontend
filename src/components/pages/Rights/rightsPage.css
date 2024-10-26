@@ -10,7 +10,6 @@
   color: white; /* Change the color to white */
   font-size: 1.5em; /* Adjust the font size as needed */
   text-align: center; /* Center the title */
-  margin-bottom: 20px; /* Add some spacing below the title */
 }
 
   .tooltip {
@@ -51,3 +50,4 @@
 
     }
   }
+ 

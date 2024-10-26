@@ -47,12 +47,15 @@ const IndiaMap = () => {
   }, [color]); // Only runs when color changes
 
   return (<>
-  <div className="bg-gradient-to-r from-[#dcdcdc] to-[#919191] text-white font-lato shadow-xl py-12">
+  <div className="bg-gradient-to-r from-[#dcdcdc] to-[#919191] text-white font-lato shadow-xl pt-12">
 
-  <div className=" bg-gray-900 bg-opacity-80 w-1/2 m-auto max-md:w-full rounded-xl">
-  <h1 className="map-title px-3 py-3">Where has the child's family migrated from?</h1>
+  <div className=" bg-gray-900 bg-opacity-80 w-1/2 m-auto max-md:w-full rounded-xl px-3 py-2">
+  <h1 className="map-title ">Where has the child's family migrated from?</h1>
   </div>
-    <div className="relative w-[55%] max-sm:w-full h-[75vh] md:h-[110vh]  m-auto max-md:w-full rounded-xl">
+  <div className="w-[70vw] max-lg:w-[90vw] max-md:w-[72vh] max-sm:w-[80vw] h-[100vh] m-auto max-sm:h-[71vh]">
+
+  
+    <div className="relative max-lg:w-[80%] w-2/3 max-sm:w-full h-[75vh] max-md:h-[72vw] md:h-[100vh]  m-auto max-md:w-full rounded-xl">
  
       <DatamapsIndia
         regionData={regionData}
@@ -94,6 +97,7 @@ const IndiaMap = () => {
         }}
         />
     </div>
+        </div>
         </div>
     </>
   );

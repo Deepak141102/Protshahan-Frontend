@@ -185,7 +185,7 @@ const DataChart2 = () => {
           {dropdownOpenPie && (
             <div
               ref={dropdownRefPie}
-              className="bg-[#2e2f42] text-white p-4 rounded-lg w-60 absolute top-full max-md:top-[22%] z-10 shadow-2xl"
+              className="bg-[#2e2f42] text-white p-4 rounded-lg w-60 absolute top-[126px] max-md:top-[22%] z-10 shadow-2xl"
             >
               {Object.keys(filtersPie).map((label) => (
                 <label
@@ -222,7 +222,7 @@ const DataChart2 = () => {
           {dropdownOpenDoughnut && (
             <div
               ref={dropdownRefDoughnut}
-              className="bg-[#2e2f42] text-white p-4 rounded-lg w-60 absolute top-full max-md:top-[27%] z-10 shadow-2xl"
+              className="bg-[#2e2f42] text-white p-4 rounded-lg w-60 absolute top-[126px] max-md:top-[27%] z-10 shadow-2xl"
             >
               {Object.keys(filtersDoughnut).map((label) => (
                 <label
