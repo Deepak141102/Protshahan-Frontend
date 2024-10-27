@@ -106,7 +106,7 @@ const CounterSection = () => {
   }, [hasAnimated]);
 
   return (
-    <div className="flex flex-wrap justify-center p-8 md:p-12 bg-gradient-to-r from-[#3c3950] to-[#919191] text-white font-lato shadow-xl">
+    <div className="flex flex-wrap justify-center p-8 md:p-12 bg-gradient-to-r from-[#3c3950] to-[#919191] text-white font-lato shadow-xl max-md:px-0">
       {counters.map((counter, index) => (
         <div
           key={index}
