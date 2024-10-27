@@ -123,10 +123,10 @@ const DataChart2 = () => {
   }, []);
 
   return (
-    <div className="bg-gray-200 flex max-md:flex-col items-center justify-evenly w-full min-h-screen p-8 max-md:px-4 max-md:space-y-5 font-lato">
+    <div className="bg-[#dcdcdc] flex max-md:flex-col items-center justify-evenly w-full min-h-screen p-8 max-md:px-4 max-md:space-y-5 font-lato">
 
         {/* Pie Chart Section */}
-        <div className="bg-white shadow-xl rounded-xl p-6 w-full h-[80vh] md:w-[45%] flex flex-col justify-center items-center">
+        <div className="bg-white shadow-xl rounded-xl p-6 w-full h-[76vh] md:w-[45%] flex flex-col justify-center items-center">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">
             Family Income Distribution
           </h2>
@@ -136,7 +136,7 @@ const DataChart2 = () => {
         </div>
 
         {/* Gender Chart Section */}
-        <div className="bg-white shadow-xl rounded-xl p-6 w-full h-[80vh] md:w-[45%] flex flex-col justify-center items-center">
+        <div className="bg-white shadow-xl rounded-xl p-6 w-full h-[76vh] md:w-[45%] flex flex-col justify-center items-center">
           <h2 className="text-2xl  font-bold text-gray-800 mb-4 text-center">
             Number of Scholarships Disbursed by Gender
           </h2>

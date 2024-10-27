@@ -47,7 +47,7 @@ const IndiaMap = () => {
   }, [color]); // Only runs when color changes
 
   return (<>
-  <div className="bg-gradient-to-r from-[#dcdcdc] to-[#919191] text-white font-lato shadow-xl pt-12">
+  <div className="bg-[#dcdcdc] text-white font-lato shadow-xl pt-12">
 
   <div className=" bg-gray-900 bg-opacity-80 w-1/2 m-auto max-md:w-full rounded-xl px-3 py-2">
   <h1 className="map-title ">Where has the child's family migrated from?</h1>
