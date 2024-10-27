@@ -52,10 +52,10 @@ const IndiaMap = () => {
   <div className=" bg-gray-900 bg-opacity-80 w-1/2 m-auto max-md:w-full rounded-xl px-3 py-2">
   <h1 className="map-title ">Where has the child's family migrated from?</h1>
   </div>
-  <div className="w-[70vw] max-xs:w-screen max-xs:h-[56vh] max-lg:w-[90vw] max-md:w-[72vh] max-sm:w-screen h-[100vh] m-auto max-sm:h-[52vh]">
+  <div className="w-[70vw] max-xs:w-screen max-xs:h-[56vh] max-lg:w-[90vw] max-md:w-[72vh] max-sm:w-full h-[100vh] m-auto max-sm:h-screen">
 
   
-    <div className="relative max-lg:w-[80%] w-2/3 max-sm:w-full h-[75vh] max-md:h-[54vw] md:h-[100vh]  m-auto max-md:w-full rounded-xl">
+    <div className="relative max-lg:w-[80%] w-2/3 max-sm:w-[93%] h-[75vh] max-md:h-[54vw] md:h-[100vh]  m-auto max-md:w-full rounded-xl">
  
       <DatamapsIndia
         regionData={regionData}

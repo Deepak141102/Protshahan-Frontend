@@ -169,7 +169,7 @@ const Rights = () => {
 
   return (
     <div className="bg-[#3c3950] min-h-screen font-lato">
-      <div className="bg-[#212331] text-white py-8 px-4 md:px-12">
+      <div className="bg-[#212331] text-white py-8 px-4 max-md:px-0">
         <div className="flex text-2xl md:text-4xl p-4">
           <h1 className="text-yellow-400">
             Protsahan - For a Better Future | Data Visualization
