@@ -177,7 +177,7 @@ const Education = () => {
   return (
     <div className="bg-[#3c3950] min-h-screen">
       <div className="bg-[#212331] text-white py-8 px-12 max-md:px-0">
-        <h1 className="text-yellow-400 text-4xl pl-4">
+        <h1 className="text-yellow-400 text-4xl p-4">
           Protsahan - Data Visualization
         </h1>
         <div className="bg-white py-11 rounded-lg shadow-lg">
@@ -230,7 +230,7 @@ const Education = () => {
                 </div>
 
                 <p className="text-[#e8461e] text-center mt-2 font-bold text-[20px]">
-                  Click on a bar to see monthly data!
+                  Click on a bar to view monthly data!
                 </p>
               </div>
 
@@ -275,33 +275,40 @@ const Education = () => {
             </div>
 
             {/* Student Pass Out Chart */}
-            <div className="w-full max-md:w-full h-[75vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
-              {selectedSubject && (
-                <div className="flex justify-start p-4 pt-0">
-                  <button
-                    className="bg-gradient-to-r w-12 from-gray-800 to-gray-600 p-3 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
-                    onClick={handleStudentBackClick}
-                  >
-                    <IoMdArrowRoundBack className="text-white text-2xl hover:text-gray-300 transition-all" />
-                  </button>
-                </div>
-              )}
-              <h2 className="text-xl font-bold text-center mb-4 text-[#212331]">
-                Number of Students Passed Out
-              </h2>
+<div className="w-full max-md:w-full h-[75vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
+  {selectedSubject && (
+    <div className="flex justify-start p-4 pt-0">
+      <button
+        className="bg-gradient-to-r w-12 from-gray-800 to-gray-600 p-3 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
+        onClick={handleStudentBackClick}
+      >
+        <IoMdArrowRoundBack className="text-white text-2xl hover:text-gray-300 transition-all" />
+      </button>
+    </div>
+  )}
 
-              {/* Set responsive height for the student chart container */}
-              <div className="h-[55.5vh] max-md:h-[66vh]">
-                <Bar
-                  data={studentChartData}
-                  options={{
-                    ...commonChartOptions,
-                    onClick: (evt, elements) =>
-                      handleStudentClick(evt, elements),
-                  }}
-                />
-              </div>
-            </div>
+  {/* Conditionally render the heading only if selectedSubject is not set */}
+  <h2 className="text-xl font-bold text-center mb-4 text-[#212331]">
+      Number of Students Passed Out
+    </h2>
+
+  {/* Set responsive height for the student chart container */}
+  <div className="h-[55.5vh] max-md:h-[66vh]">
+    <Bar
+      data={studentChartData}
+      options={{
+        ...commonChartOptions,
+        onClick: (evt, elements) => handleStudentClick(evt, elements),
+      }}
+    />
+  </div>
+  {!selectedSubject && (
+    <h2 className="text-[#e8461e] text-center mt-2 font-bold text-[20px]">
+    Click on a bar to view passed students data!
+  </h2>
+  )}
+</div>
+
           </div>
           <GovtLinkage />
           {/* <Dashboard/> */}

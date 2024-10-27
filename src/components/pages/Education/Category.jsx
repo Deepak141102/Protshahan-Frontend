@@ -92,15 +92,15 @@ const GovtLinkage = () => {
     if (!selectedYear) {
         chartData = getYearlyData();
         onClickHandler = handleYearClick;
-        headingText = 'Click On a Bar To See Category Data!'; // Heading when viewing yearly data
+        headingText = 'Click on a bar to view category data!'; // Heading when viewing yearly data
     } else if (!selectedCategory) {
         chartData = getCategoryData(selectedYear);
         console.log("Selected Year Data:", chartData); // Debugging line
         onClickHandler = handleCategoryClick;
-        headingText = 'Click On a Bar To See Monthly Data!'; // Heading when viewing category data
+        headingText = 'Click on a bar to view monthly data!'; // Heading when viewing category data
     } else {
         chartData = getMonthlyData(selectedYear, selectedCategory);
-        headingText = 'Visualise Monthly Data!'; // Heading when viewing monthly data
+        headingText = 'Visualise monthly data!'; // Heading when viewing monthly data
     }
 
     return (
