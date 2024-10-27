@@ -200,7 +200,7 @@ const Education = () => {
             </p>
           </div>
 
-          <div className="flex justify-center py-16 px-4 mb-40 bg-[#dcdcdc] gap-4 max-md:flex-col">
+          <div className="flex justify-center py-10 px-4 mb-10 bg-[#dcdcdc] gap-4 max-md:flex-col">
             {/* Yearly Bar Chart */}
             <div className="w-full max-md:w-full h-[75vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
               <div
@@ -229,7 +229,7 @@ const Education = () => {
                   />
                 </div>
 
-                <p className="text-[#e8461e] text-center mt-2">
+                <p className="text-[#e8461e] text-center mt-2 font-bold text-[20px]">
                   Click on a bar to see monthly data!
                 </p>
               </div>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Bar } from 'react-chartjs-2';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { IoMdArrowRoundBack } from "react-icons/io";
 import catalog from './GovtLinkage.json'; // Ensure the path is correct
 
 const GovtLinkage = () => {
@@ -107,26 +106,26 @@ const GovtLinkage = () => {
     return (
         <div className="container mx-auto p-4">
             {selectedYear && !selectedCategory && (
-                    <button
-                        className="relative top-0 left-1 p-2 mb-4 bg-gradient-to-r from-gray-800 to-gray-600 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 ease-in-out flex justify-center items-center"
-                        onClick={() => {
-                            setSelectedYear(null);
-                            setSelectedCategory(null); // Reset category when going back to year view
-                        }}
-                    >
-                        <FontAwesomeIcon icon={faArrowLeft} className="text-white text-2xl" />
-                    </button>
+                <div className="flex justify-start p-4">
+                <button
+                  className="bg-gradient-to-r from-gray-800 to-gray-600 p-3 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
+                  onClick={() => { setSelectedYear(null); setSelectedCategory(null);}}
+                >
+                  <IoMdArrowRoundBack className="text-white text-2xl hover:text-gray-300 transition-all" />
+                </button>
+              </div>
                 )}
                 {selectedCategory && (
+                    <div className="flex justify-start p-4">
                     <button
-                        className="relative top-0 left-1 p-2 mb-4 bg-gradient-to-r from-gray-800 to-gray-600 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 ease-in-out flex justify-center items-center"
-                        onClick={() => setSelectedCategory(null)}
+                      className="bg-gradient-to-r from-gray-800 to-gray-600 p-3 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
+                      onClick={() => setSelectedCategory(null)}
                     >
-                        <FontAwesomeIcon icon={faArrowLeft} className="text-white text-2xl" />
+                      <IoMdArrowRoundBack className="text-white text-2xl hover:text-gray-300 transition-all" />
                     </button>
+                  </div>
                 )}
             <h1 className="text-2xl font-bold text-[#212331] text-center mb-4">Interactive Data Visualization</h1>
-            <h2 className="text-2xl font-bold text-[#e0461f] text-center mb-4">{headingText}</h2> {/* Dynamic heading */}
             <div className="relative">
                 
                 <div className="w-full h-[50vh]">
@@ -156,6 +155,7 @@ const GovtLinkage = () => {
                     />
                 </div>
             </div>
+            <h2 className="text-[20px] font-bold text-[#e0461f] text-center mb-4">{headingText}</h2> {/* Dynamic heading */}
         </div>
     );
 };
