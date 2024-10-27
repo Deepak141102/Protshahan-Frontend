@@ -29,5 +29,10 @@
         "Delhi": 9,
         "Haryana": 9,
         "Lucknow": 1
+    },
+    "Type of Scholarship": {
+        "Direct Bank Transfer": 603,
+        "Digital Device": 29,
+        "DBT + DD": 5
     }
 }

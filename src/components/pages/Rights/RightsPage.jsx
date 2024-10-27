@@ -169,8 +169,8 @@ const Rights = () => {
 
   return (
     <div className="bg-[#3c3950] min-h-screen font-lato">
-      <div className="bg-[#212331] text-white py-8 px-12 max-md:px-0">
-        <div className="flex text-4xl p-4">
+      <div className="bg-[#212331] text-white py-8 px-4 md:px-12">
+        <div className="flex text-2xl md:text-4xl p-4">
           <h1 className="text-yellow-400">
             Protsahan - For a Better Future | Data Visualization
           </h1>
@@ -202,105 +202,88 @@ const Rights = () => {
           </div>
           <div className="bg-white rounded-lg shadow-lg">
             <CounterSection />
-            <div className="flex justify-center items-center gap-8 py-10 bg-[#dcdcdc]  max-md:flex-col">
-              {/* Doughnut Chart */}
-              <div className="w-full max-w-[600px] flex flex-col">
-                <div className="bg-white h-[81.92vh] p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col">
-                  <h2 className="text-2xl font-bold text-center mb-4 text-[#212331]">
-                    Occupation of the Guardians / Family
+            <div className="flex justify-center max-lg:flex-col items-center gap-4 md:gap-8 py-10 bg-[#dcdcdc] px-4 md:flex-row">
+              {/* Data Chart for Age Ratio */}
+              <div className="flex flex-col w-full max-w-[600px] flex-grow">
+                <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-[80vh] justify-between">
+                  <h2 className="text-xl md:text-2xl font-bold text-center mb-4 text-[#212331]">
+                    Age: 4-29 Years Boys & Girls
                   </h2>
-                  <div className="relative mb-5 flex justify-center">
-                    <button
-                      onClick={toggleDropdownDoughnut}
-                      className="bg-[#212331] text-white rounded-lg text-sm px-5 py-2.5 inline-flex items-center transition duration-300 hover:bg-[#e54c29]"
-                    >
-                      Filter Data <IoChevronDown className="ml-2" />
-                    </button>
-                    {dropdownOpenDoughnut && (
-                      <div
-                        ref={dropdownRefDoughnut}
-                        className="absolute mt-2 bg-[#393d50] text-white rounded-lg z-10 w-64 shadow-lg"
-                      >
-                        {Object.keys(filtersDoughnut).map((label) => (
-                          <label
-                            key={label}
-                            htmlFor={`doughnut-checkbox-${label}`}
-                            className="block px-4 py-2 hover:bg-[#212331] hover:text-[#e54c29] transition duration-300 cursor-pointer"
-                          >
-                            <input
-                              id={`doughnut-checkbox-${label}`}
-                              type="checkbox"
-                              checked={filtersDoughnut[label]}
-                              onChange={() => toggleFilterDoughnut(label)}
-                              className="mr-2"
-                            />
-                            {label}
-                          </label>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                  <div className="w-full h-[55vh]">
+                  <div className="flex justify-center items-center h-[400px]">
                     <Doughnut
-                      data={filteredDoughnutData}
-                      options={DoughnutOptions}
+                      data={ageData}
+                      options={options}
+                      className="w-full h-auto"
                     />
                   </div>
                 </div>
               </div>
 
-              {/* Data Chart */}
-              <div className="w-full max-w-[600px] flex flex-col">
-                <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col">
-                  <h2 className="text-2xl font-bold text-center mb-4 text-[#212331]">
-                    Gender Ratio
+              {/* Chart for Occupation of Guardians/Family */}
+              <div className="flex flex-col w-full max-w-[600px] flex-grow">
+                <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-[80vh] justify-between">
+                  <h2 className="text-xl md:text-2xl font-bold text-center mb-4 text-[#212331]">
+                    Occupation of the Guardians / Family
                   </h2>
-                  <div className="w-full h-[55vh]">
-                    {selectedData === "gender" ? (
-                      <Doughnut data={genderData} options={options} />
-                    ) : (
-                      <Doughnut data={ageData} options={options} />
+                  <div className="relative mb-5 flex justify-center">
+                    <button
+                      onClick={toggleDropdownDoughnut}
+                      className="bg-[#212331] text-white rounded-lg text-sm px-5 py-2.5 inline-flex items-center transition duration-300 hover:bg-[#e54b35]"
+                    >
+                      {selectedData === "gender"
+                        ? "Gender Ratio"
+                        : "Age Ratio"}
+                      <IoChevronDown className="ml-1" />
+                    </button>
+                    {dropdownOpenDoughnut && (
+                      <div
+                        ref={dropdownRefDoughnut}
+                        className="absolute z-10 mt-2 bg-white rounded-md shadow-lg w-48"
+                      >
+                        <div className="py-1">
+                          <button
+                            onClick={() => handleIconClick("gender")}
+                            className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 w-full text-left"
+                          >
+                            Gender Ratio
+                          </button>
+                          <button
+                            onClick={() => handleIconClick("age")}
+                            className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 w-full text-left"
+                          >
+                            Age Ratio
+                          </button>
+                        </div>
+                      </div>
                     )}
                   </div>
-                  <div className="flex justify-around mt-4">
-                    <div className="flex flex-col justify-center items-center">
-
-                    <button
-                      onClick={() => handleIconClick("gender")}
-                      className={`${
-                        selectedData === "gender"
-                        ? "bg-[#e8461e]"
-                        : "bg-[#919191]"
-                      } hover:bg-[#e54c29] p-3 rounded-full text-white transition duration-300`}
-                      >
-                      <FaGenderless size={25} />
-                    
-                    </button>
-                    <h1 className="text-[#212331]">Gender</h1>
-                      </div>
-                    <div className="flex flex-col justify-center items-center">
-
-                    <button
-                      onClick={() => handleIconClick("age")}
-                      className={`${
-                        selectedData === "age" ? "bg-[#e8461e]" : "bg-[#919191]"
-                      } hover:bg-[#e54c29] p-3 rounded-full text-white transition duration-300`}
-                      >
-                      <FaUsers size={25} />
-                    </button>
-                    <h1 className="text-[#212331]">Age</h1>
-                      </div>
+                  <div className="flex justify-center items-center h-[400px]">
+                    <Doughnut
+                      data={selectedData === "gender" ? genderData : ageData}
+                      options={options}
+                      className="w-full h-auto"
+                    />
                   </div>
                 </div>
               </div>
             </div>
-              <DataChart2/>
-              <DataChart1/>
-              <IndiaMap/>
+
+            {/* India Map Section */}
+           
+              <IndiaMap />
+
+           
+            
+                <DataChart1 />
+           
+
+            {/* Data Chart 2 */}
+            
+                <DataChart2 />
+            </div>
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

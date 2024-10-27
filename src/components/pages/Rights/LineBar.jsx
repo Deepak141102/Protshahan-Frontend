@@ -10,6 +10,10 @@ import {
   Legend,
   LineElement,
 } from "chart.js";
+import { PieChart, Pie, Tooltip as RechartsTooltip, Cell, Legend as RechartsLegend } from "recharts";
+import scholarshipData from './Data.json';
+
+const COLORS = ['#e54c29', '#86250f', '#3c3950'];
 
 ChartJS.register(
   CategoryScale,
@@ -23,6 +27,7 @@ ChartJS.register(
 
 const DataChart1 = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -35,110 +40,102 @@ const DataChart1 = () => {
     };
   }, []);
 
-  const scholarshipData = {
+  // Chart data for line chart
+  const chartData = {
     labels: [
-      "Disability Scholarship",
-      "Merit Scholarship",
-      "Need-Based Equity",
-      "Need-Based Equity, Disability Scholarship",
-      "Need-Based Equity, Merit Scholarship",
-      "STEM Scholarship (Science Stream)",
+      "Disability",
+      "Merit",
+      "Need Equity",
+      "Need Equity + Disability",
+      "Need Equity + Merit",
+      "STEM (Science)",
     ],
+    
     datasets: [
       {
         label: "Number of Scholarships",
         data: [20, 19, 531, 1, 55, 2],
-        backgroundColor: "#e8461e", // Main bar color
-        borderColor: "#df6b4f", // Border color for hover effect
+        backgroundColor: "#e8461e",
+        borderColor: "#df6b4f",
         fill: true,
         tension: 0.4,
-        pointHoverRadius: 8, // Hover border color
+        pointHoverRadius: 8,
       },
     ],
   };
 
-  const genderData = {
-    labels: ["Female", "Male"],
-    datasets: [
-      {
-        label: "Number of Scholarships Disbursed",
-        data: [558, 79],
-        backgroundColor: "#86250f", // Main bar color
-        borderWidth: 2,
-        borderRadius: 10,
-        barThickness: 55,
-        hoverBackgroundColor: "#e8461e", // Hover color
-        hoverBorderColor: "#3c3950", // Hover border color
-      },
-    ],
-  };
+  // Formatting data for pie chart
+  useEffect(() => {
+    const formattedData = Object.entries(scholarshipData["Type of Scholarship"]).map(([name, value], index) => ({
+      name,
+      value,
+      fill: COLORS[index % COLORS.length],
+    }));
+    setData(formattedData);
+  }, []);
 
-  const options = {
+  const lineOptions = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        display: false, // Hide the legend
+        position: "top",
+        labels: {
+          color: "#3c3950",
+        },
       },
-    },
-    layout: {
-      padding: {
-        top: 10,
-        left: isMobile ? 5 : 20,
-        right: isMobile ? 5 : 20,
-        bottom: 10,
+      tooltip: {
+        backgroundColor: "#fff",
+        titleColor: "#3c3950",
+        bodyColor: "#3c3950",
       },
     },
     scales: {
-      x: {
-        grid: {
-          color: "rgba(33, 35, 49, 0.4)",
-        },
-        ticks: {
-          color: "#3c3950",
-          font: {
-            size: isMobile ? 10 : 12,
-          },
-        },
-      },
       y: {
         beginAtZero: true,
         ticks: {
-          color: "rgba(33, 35, 49, 0.3)",
-          font: {
-            size: isMobile ? 9 : 12,
-          },
-        },
-        grid: {
-          color: "rgba(33, 35, 49, 0.2)",
+          color: "#3c3950",
         },
       },
-    },
-    elements: {
-      bar: {
-        borderWidth: 1,
-        borderColor: "rgba(33, 35, 49, 0.1)",
+      x: {
+        ticks: {
+          color: "#3c3950",
+        },
       },
     },
   };
 
   return (
-    <div className="bg-gradient-to-r from-[#919191] to-[#3c3950] flex justify-center flex-col md:flex-row my-auto font-lato gap-4 items-center py-16">
-      <div className="w-[47%] max-md:w-11/12 bg-white shadow-2xl p-10 max-md:p-4 mb-4 md:mb-0 rounded-xl border border-[#65190b]">
-        <h2 className="text-xl font-bold text-center text-[#3c3950] mb-4">
+    <div className="bg-gradient-to-r from-[#919191] to-[#3c3950] flex justify-evenly flex-col md:flex-row my-auto font-lato gap-4 items-center py-16">
+      <div className="w-[45%] h-[76vh] max-md:w-11/12 bg-white shadow-2xl p-10 max-md:p-4 rounded-xl border border-[#65190b] flex flex-col items-center">
+      <h2 className="text-xl font-bold text-center text-[#3c3950] mb-4">
           Categories of Scholarship
         </h2>
         <div className="w-full h-[50vh]">
-          <Line data={scholarshipData} options={options} />
+          <Line data={chartData} options={lineOptions} />
         </div>
       </div>
-      <div className="w-[47%] max-md:w-11/12 bg-white shadow-2xl p-10  rounded-xl border border-[#65190b]">
+      <div className="w-[45%] h-[76vh] max-md:w-11/12 bg-white shadow-2xl p-10 max-md:p-4 rounded-xl border border-[#65190b] flex flex-col items-center">
         <h2 className="text-xl font-bold text-center text-[#3c3950] mb-4">
-          Number of Scholarships Disbursed by Gender
+          Scholarship Distribution
         </h2>
-        <div className="w-full h-[50vh]">
-          <Bar data={genderData} options={options} />
-        </div>
+        <PieChart width={isMobile ? 300 : 400} height={isMobile ? 300 : 400}>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            labelLine={false}
+            label={({ name, percent }) => `${name} (${(percent * 100).toFixed(0)}%)`}
+            outerRadius="80%"
+            dataKey="value"
+          >
+            {data.map((entry) => (
+              <Cell key={entry.name} fill={entry.fill} />
+            ))}
+          </Pie>
+          <RechartsTooltip />
+          <RechartsLegend />
+        </PieChart>
       </div>
     </div>
   );

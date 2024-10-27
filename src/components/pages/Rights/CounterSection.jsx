@@ -116,7 +116,7 @@ const CounterSection = () => {
           <div className="text-5xl text-[#e8461e] mb-4 flex items-center justify-center group-hover:text-[#fff] transition-colors ease-in-out duration-300">
             {counter.icon}
           </div>
-          <div className="count text-5xl font-bold bg-gradient-to-r from-[#86250f] to-[#df6b4f] bg-clip-text text-transparent filter drop-shadow-lg transition-all duration-500">
+          <div className="count text-4xl font-bold bg-gradient-to-r from-[#86250f] to-[#df6b4f] group-hover:text-[#919191] bg-clip-text text-transparent filter drop-shadow-lg transition-all duration-500">
             {displayCounts[index]}+
           </div>
           <div className="text-lg text-[#df6b4f] group-hover:text-white transition-colors duration-300 mt-2">
