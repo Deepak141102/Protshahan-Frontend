@@ -50,17 +50,17 @@ const Education = () => {
   // Prepare data for monthly chart
   const monthlyData = selectedYearData
     ? {
-        labels: Object.keys(selectedYearData.monthWise),
-        datasets: [
-          {
-            label: `Monthly Data for ${selectedYearData.year}`,
-            data: Object.values(selectedYearData.monthWise),
-            backgroundColor: "rgba(153, 102, 255, 0.6)",
-            borderColor: "rgba(153, 102, 255, 1)",
-            borderWidth: 1,
-          },
-        ],
-      }
+      labels: Object.keys(selectedYearData.monthWise),
+      datasets: [
+        {
+          label: `Monthly Data for ${selectedYearData.year}`,
+          data: Object.values(selectedYearData.monthWise),
+          backgroundColor: "rgba(153, 102, 255, 0.6)",
+          borderColor: "rgba(153, 102, 255, 1)",
+          borderWidth: 1,
+        },
+      ],
+    }
     : null;
 
   // Prepare Student Pass Out Data
@@ -204,9 +204,8 @@ const Education = () => {
             {/* Yearly Bar Chart */}
             <div className="w-full max-md:w-full h-[75vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
               <div
-                className={`transition-transform duration-700 ease-in-out transform ${
-                  showMonthlyChart ? "-translate-x-[45rem]" : "translate-x-0"
-                }`}
+                className={`transition-transform duration-700 ease-in-out transform ${showMonthlyChart ? "-translate-x-[45rem]" : "translate-x-0"
+                  }`}
               >
                 <h2 className="text-xl font-bold text-center mb-4 text-[#212331]">
                   Number of Lectures (Yearly)
@@ -237,11 +236,10 @@ const Education = () => {
               {/* Monthly Bar Chart */}
               {selectedYearData && (
                 <div
-                  className={`absolute top-0 left-0 w-full pb-36 px-4 overflow-hidden h-full transition-all duration-700 ease-in-out transform ${
-                    showMonthlyChart
+                  className={`absolute top-0 left-0 w-full pb-36 px-4 overflow-hidden h-full transition-all duration-700 ease-in-out transform ${showMonthlyChart
                       ? "translate-y-0 opacity-100"
                       : "-translate-y-full opacity-0"
-                  }`}
+                    }`}
                 >
                   <div className="flex justify-start p-4">
                     <button
@@ -258,57 +256,56 @@ const Education = () => {
                   {/* Set responsive height for the monthly chart container */}
                   <div className="h-[60vh] max-md:h-[68vh] pb-14">
                     <Bar data={monthlyData}
-                     options={{
-                      ...commonChartOptions,
-                      plugins: {
-                        ...commonChartOptions.plugins,
-                        legend: {
-                          display: false, // Hides the legend only for this chart
+                      options={{
+                        ...commonChartOptions,
+                        plugins: {
+                          ...commonChartOptions.plugins,
+                          legend: {
+                            display: false, // Hides the legend only for this chart
+                          },
                         },
-                      },
-                      onClick: (evt, elements) => handleBarClick(elements),
-                    }}
-                     />
+                        onClick: (evt, elements) => handleBarClick(elements),
+                      }}
+                    />
                   </div>
                 </div>
               )}
             </div>
 
             {/* Student Pass Out Chart */}
-<div className="w-full max-md:w-full h-[75vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
-  {selectedSubject && (
-    <div className="flex justify-start p-4 pt-0">
-      <button
-        className="bg-gradient-to-r w-12 from-gray-800 to-gray-600 p-3 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
-        onClick={handleStudentBackClick}
-      >
-        <IoMdArrowRoundBack className="text-white text-2xl hover:text-gray-300 transition-all" />
-      </button>
-    </div>
-  )}
+            <div className="w-full max-md:w-full h-[75vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
+              {selectedSubject && (
+                <div className="flex justify-start p-4 pt-0">
+                  <button
+                    className="bg-gradient-to-r w-12 from-gray-800 to-gray-600 p-3 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
+                    onClick={handleStudentBackClick}
+                  >
+                    <IoMdArrowRoundBack className="text-white text-2xl hover:text-gray-300 transition-all" />
+                  </button>
+                </div>
+              )}
 
-  {/* Conditionally render the heading only if selectedSubject is not set */}
-  <h2 className="text-xl font-bold text-center mb-4 text-[#212331]">
-      Number of Students Passed Out
-    </h2>
+              {/* Conditionally render the heading only if selectedSubject is not set */}
+              <h2 className="text-xl font-bold text-center mb-4 text-[#212331]">
+                Number of Students Passed Out
+              </h2>
 
-  {/* Set responsive height for the student chart container */}
-  <div className="h-[55.5vh] max-md:h-[66vh]">
-    <Bar
-      data={studentChartData}
-      options={{
-        ...commonChartOptions,
-        onClick: (evt, elements) => handleStudentClick(evt, elements),
-      }}
-    />
-  </div>
-  {!selectedSubject && (
-    <h2 className="text-[#e8461e] text-center mt-2 font-bold text-[20px]">
-    Click on a bar to view passed students data!
-  </h2>
-  )}
-</div>
-
+              {/* Set responsive height for the student chart container */}
+              <div className="h-[55.5vh] max-md:h-[66vh]">
+                <Bar
+                  data={studentChartData}
+                  options={{
+                    ...commonChartOptions,
+                    onClick: (evt, elements) => handleStudentClick(evt, elements),
+                  }}
+                />
+              </div>
+              {!selectedSubject && (
+                <h2 className="text-[#e8461e] text-center mt-2 font-bold text-[20px]">
+                  Click on a bar to view passed students data!
+                </h2>
+              )}
+            </div>
           </div>
           <GovtLinkage />
           {/* <Dashboard/> */}
