@@ -10,12 +10,11 @@ import {
   Legend,
 } from "chart.js";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import yearlyData from "./YearlyMonthlyData.json"; // Yearly data
 import studentData from "./StudentPassOut.json"; // Student pass out data
 import GovtLinkage from "./Category";
-import Dashboard from "./Rest";
+
+
 
 // Register ChartJS components
 ChartJS.register(
@@ -175,30 +174,36 @@ const Education = () => {
   };
 
   return (
-    <div className="bg-[#3c3950] min-h-screen">
-      <div className="bg-[#212331] text-white py-8 px-12 max-md:px-0">
-        <h1 className="text-yellow-400 text-4xl p-4">
-          Protsahan - Data Visualization
+    <div className="bg-[#3c3950] min-h-screen font-lato">
+    <div className="bg-[#212331] text-white py-8 px-11 max-md:px-0">
+      <div className="flex text-2xl md:text-4xl p-4">
+        <h1 className="text-yellow-400">
+          Protsahan - For a Better Future | Data Visualization
         </h1>
-        <div className="bg-white py-11 rounded-lg shadow-lg">
-          <div className="p-5 m-5 border-2 border-dashed border-[#212331] rounded-md">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-black">
-              <div>
-                <span className="text-[#e8461e] mr-2">Timeline:</span> Child
-                entering Protsahan
-              </div>
-              <div className="text-center">
+      </div>
+      <div className="bg-[#3c3950] rounded-lg shadow-lg pt-4">
+        <div className="border-[2px] border-dashed border-white rounded-md p-5 m-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-items-center">
+            <div className="text-white">
+              <span className="text-[#e8461e] mr-2">Timeline:</span>
+              Child entering Protsahan
+            </div>
+            <div className="flex flex-wrap justify-center">
+              <p className="text-white text-center">
                 <span className="text-[#e8461e] mr-2">
                   Potential Consumers:
-                </span>{" "}
+                </span>
                 Protsahan Executive Team | Governmental Bodies
-              </div>
+              </p>
             </div>
-            <p className="text-center p-4 text-[#212331]">
+          </div>
+          <div className="text-center p-4 text-white">
+          <p className="text-center p-4">
               These data visualizations show the enrollment and academic
               performance of students.
             </p>
           </div>
+        </div>
 
           <div className="flex justify-center py-10 px-4 mb-10 bg-[#dcdcdc] gap-4 max-md:flex-col">
             {/* Yearly Bar Chart */}
@@ -308,7 +313,8 @@ const Education = () => {
             </div>
           </div>
           <GovtLinkage />
-          {/* <Dashboard/> */}
+
+
         </div>
       </div>
     </div>

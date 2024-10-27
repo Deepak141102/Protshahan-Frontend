@@ -104,7 +104,7 @@ const GovtLinkage = () => {
     }
 
     return (
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto p-4 bg-white">
             {selectedYear && !selectedCategory && (
                 <div className="flex justify-start p-4">
                 <button
