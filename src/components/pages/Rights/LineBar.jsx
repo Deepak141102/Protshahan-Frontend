@@ -158,11 +158,11 @@ const DataChart1 = () => {
           <Line data={chartData} options={lineOptions} />
         </div>
       </div>
-      <div className="w-full md:w-[45%] h-[70vh] bg-white shadow-2xl p-6 sm:p-8 lg:p-10 rounded-xl flex flex-col items-center overflow-hidden">
+      <div className="w-full md:w-[45%] h-[70vh] max-xs:h-[75vh] bg-white shadow-2xl p-6 sm:p-8 lg:p-10 rounded-xl flex flex-col items-center overflow-hidden">
         <h2 className="text-lg sm:text-xl font-bold text-center text-[#3c3950] mb-4">
           Scholarship Distribution
         </h2>
-        <PieChart width={isMobile ? 300 : 380} height={isMobile ? 200 : 380}>
+        <PieChart width={isMobile ? 450 : 380} height={isMobile ? 300 : 380}>
           <Pie
             data={data}
             cx="50%"
