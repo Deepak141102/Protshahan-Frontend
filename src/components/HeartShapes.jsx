@@ -118,14 +118,12 @@ const HeartModel = () => {
 
       <div className="bg-[#e04729] p-5 px-12 text-white font-bold font-montserrat text-left mx-0 mt-8 w-2/3 text-xl max-md:w-full max-md:text-justify ">
         <h1>
-          Protsahan's heart model is a holistic, flexible, first-of its kind
-          gender transformative approach to seamlessly blending physical,
-          mental, material and emotional well-being of a survivor of sexual and
-          gender based violence (sgbv)
+        Protsahan's H.E.A.R.T model is a holistic, flexible, first-of its kind gender transformative approach seamlessly blending physical, mental, material and emotional well-being of a survivor of sexual and gender based violence(SGBV)
         </h1>
       </div>
 
     <div className=" flex flex-col h-auto py-9 max-md:w-full w-[45vw]  p-4 items-center">
+      <h1 className="text-center bg-[#dcdcdc] p-2 text-[#e04729]">USE THE HEART MODEL BELOW TO UNDERSTAND OUR IMPACT IN DIFFERENT DOMAINS</h1>
       <svg
         style={{ width: "100%", height: "auto" }}
         xmlns="http://www.w3.org/2000/svg"
