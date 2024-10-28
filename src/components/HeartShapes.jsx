@@ -166,11 +166,11 @@ const HeartModel = () => {
       </div>
 
       {/* THIS IS OUR CARDS AREA WHICH ARE GETTING DATA FROM THE ARRAY OBJECT  */}
-      <div className=" w-full bg-[#212331] flex justify-center gap-5 p-4 max-md:flex-col">
+      <div className=" w-full bg-[#212331] flex justify-center gap-5 p-4 max-md:flex-col flex-wrap">
         {cards.map((item, index) => (
           <div
             key={index}
-            className="max-md:mb-4 p-5 h-[38vh]  max-md:h-[45vh] flex justify-evenly rounded-lg max-xs:flex-col max-xs:items-center  flex-col items-center w-2/3 max-md:w-full"
+            className="max-md:mb-4 p-5 h-[38vh]  max-md:h-[45vh] flex justify-evenly rounded-lg max-xs:flex-col max-xs:items-center  flex-col items-center w-[45%] max-md:w-full"
             style={{ backgroundColor: item.color }}
           >
             <div className="max-xs:text-center text-center text-white  ">
