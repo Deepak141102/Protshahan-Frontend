@@ -150,8 +150,8 @@ const Rights = () => {
 
               {/* Chart for Occupation of Guardians/Family */}
               <div className="flex flex-col w-full md:w-1/2 lg:w-[40%] max-w-lg justify-center">
-                <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-[60vh] lg:h-[80vh] justify-between items-center">
-                  <h2 className="text-xl md:text-2xl font-bold text-center mb-4 text-[#212331]">
+                <div className="bg-white p-6 max-md:p-0 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-[60vh] lg:h-[80vh] justify-between items-center">
+                  <h2 className="text-xl md:text-2xl font-bold text-center mb-4 p-6 text-[#212331]">
                     Occupation of the Guardians / Family
                   </h2>
                   <div className="flex justify-center items-center w-full h-full">
