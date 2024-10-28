@@ -207,7 +207,7 @@ const Education = () => {
 
           <div className="flex justify-center py-10 px-4  bg-[#dcdcdc] gap-4 max-md:flex-col">
             {/* Yearly Bar Chart */}
-            <div className="w-full max-md:w-full h-[75vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
+           <div className="w-full max-md:w-full h-[75vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
               <div
                 className={`transition-transform duration-700 ease-in-out transform ${showMonthlyChart ? "-translate-x-[45rem]" : "translate-x-0"
                   }`}
