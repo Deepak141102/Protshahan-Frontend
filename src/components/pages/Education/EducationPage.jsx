@@ -183,7 +183,7 @@ const Education = () => {
         </div>
         <div className="bg-[#3c3950] rounded-lg shadow-lg pt-4">
           <div className="border-[2px] border-dashed border-white rounded-md p-5 m-5">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-items-center">
+            {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-items-center">
               <div className="text-white">
                 <span className="text-[#e8461e] mr-2">Timeline:</span>
                 Child entering Protsahan
@@ -196,11 +196,10 @@ const Education = () => {
                   Protsahan Executive Team | Governmental Bodies
                 </p>
               </div>
-            </div>
+            </div> */}
             <div className="text-center p-4 text-white">
               <p className="text-center p-4">
-                These data visualizations show the enrollment and academic
-                performance of students.
+              Protsahan focuses on closely monitoring and actively working to stop child begging, forced or early marriages, and child abuse, while encouraging school enrollment for children who aren’t in school. Their approach is to prevent the need for placing children in state shelters by stepping in early, providing safety nets and support to children, families, and communities right where they live. This way, they’re able to offer safe and healing spaces within their own communities, keeping children connected to their families and giving them the protection and care they need.
               </p>
             </div>
           </div>
@@ -236,7 +235,7 @@ const Education = () => {
                             font: {
                               size: 14,
                             },
-                            color: "#333",
+                            color: "#e0461f",
                           },
                         },
                         y: {
@@ -246,7 +245,7 @@ const Education = () => {
                             font: {
                               size: 14,
                             },
-                            color: "#333",
+                            color: "#e0461f",
                           },
                         },
                       },
@@ -268,7 +267,7 @@ const Education = () => {
                     : "-translate-y-full opacity-0"
                     }`}
                 >
-                  <div className="flex justify-start p-4">
+                  <div className="flex justify-start pt-4">
                     <button
                       className="bg-gradient-to-r from-gray-800 to-gray-600 p-3 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
                       onClick={handleBackClick}
@@ -300,7 +299,7 @@ const Education = () => {
                               font: {
                                 size: 14,
                               },
-                              color: "#333",
+                              color: "#e0461f",
                             },
                           },
                           y: {
@@ -310,7 +309,7 @@ const Education = () => {
                               font: {
                                 size: 14,
                               },
-                              color: "#333",
+                              color: "#e0461f",
                             },
                           },
                         },
@@ -325,7 +324,7 @@ const Education = () => {
             {/* Student Pass Out Chart */}
             <div className="w-full max-md:w-full h-[73 vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
               {selectedSubject && (
-                <div className="flex justify-start p-4 pt-0">
+                <div className="flex justify-start pt-0">
                   <button
                     className="bg-gradient-to-r w-12 from-gray-800 to-gray-600 p-3 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
                     onClick={handleStudentBackClick}
@@ -354,7 +353,7 @@ const Education = () => {
                           font: {
                             size: 14,
                           },
-                          color: "#333",
+                          color: "#e0461f",
                         },
                       },
                       y: {
@@ -364,7 +363,7 @@ const Education = () => {
                           font: {
                             size: 14,
                           },
-                          color: "#333",
+                          color: "#e0461f",
                         },
                       },
                     },

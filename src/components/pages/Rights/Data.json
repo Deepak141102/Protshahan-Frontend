@@ -33,6 +33,6 @@
     "Type of Scholarship": {
         "Direct Bank Transfer": 603,
         "Digital Device": 29,
-        "DBT + DD": 5
+        "Direct Benefit Transfer + Demand Draft": 5
     }
 }

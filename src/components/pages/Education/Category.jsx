@@ -164,7 +164,7 @@ const GovtLinkage = () => {
                     font: {
                         size: 14,
                     },
-                    color: '#333',
+                    color: '#e0461f',
                 },
             },
             y: {
@@ -174,7 +174,7 @@ const GovtLinkage = () => {
                     font: {
                         size: 14,
                     },
-                    color: '#333',
+                    color: '#e0461f',
                 },
             },
         },

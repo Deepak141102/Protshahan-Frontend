@@ -123,7 +123,7 @@ const DataChart2 = () => {
   }, []);
 
   return (
-    <div className="bg-[#dcdcdc] flex max-md:flex-col items-center justify-evenly w-full min-h-screen p-8 max-md:px-4 max-md:space-y-5 font-lato">
+    <div className="bg-[#dcdcdc] flex max-md:flex-col items-center justify-evenly w-full p-8 max-md:px-4 max-md:space-y-5 font-lato">
 
         {/* Pie Chart Section */}
         <div className="bg-white shadow-xl rounded-xl p-6 w-full h-[76vh] md:w-[45%] flex flex-col justify-center items-center">
