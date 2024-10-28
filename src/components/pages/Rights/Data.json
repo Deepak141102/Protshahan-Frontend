@@ -34,5 +34,47 @@
         "Direct Bank Transfer": 603,
         "Digital Device": 29,
         "DBT + DD": 5
-    }
+    },
+    "occupations": [
+        {
+          "category": "Most Vulnerable Communities",
+          "types": [
+            "Begging",
+            "Ragpicking",
+            "Sewer Cleaner",
+            "Boot Polish Work",
+            "Domestic helper",
+            "Paan shopkeeper"
+          ],
+          "count": 71
+        },
+        {
+          "category": "Daily Wage Workers",
+          "types": [
+            "Construction Workers",
+            "E-Rickshaw Drivers",
+            "Fruit Vendors",
+            "Labourers",
+            "Carpenter",
+            "Electricity worker",
+            "Factory worker",
+            "Machine repairing",
+            "Painter",
+            "Plumber",
+            "Tailor",
+            "Worker in palor",
+            "Salesman",
+            "Shopkeeper"
+          ],
+          "count": 554
+        },
+        {
+          "category": "Organised Sector",
+          "types": [
+            "Data entry",
+            "School teacher"
+          ],
+          "count": 11
+        }
+      ]
 }

@@ -1,113 +1,18 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Doughnut } from "react-chartjs-2";
-import { FaGenderless, FaUsers } from "react-icons/fa";
-import { IoChevronDown } from "react-icons/io5";
+import React, { useState } from "react";
+import { Doughnut, Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import CounterSection from "./CounterSection";
 import DataChart2 from "./DoughnutPie";
 import DataChart1 from "./LineBar";
 import IndiaMap from "./IndiaMap";
+import occupationsData from "./Data.json"; // Import the occupations data
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Rights = () => {
-  const initialData = {
-    labels: [
-      "Most Vulnerable Communities",
-      "Daily Wage Workers",
-      "Organised Sector",
-    ],
-    datasets: [
-      {
-        label: "Number of Individuals",
-        data: [71, 554, 11],
-        backgroundColor: ["#3c3950", "#ce441a", "#919191"],
-        borderWidth: 2,
-        borderColor: "#fff",
-        hoverBackgroundColor: ["#e8461e", "#df6b4f", "#919191"],
-      },
-    ],
-  };
-
-  const [filtersDoughnut, setFiltersDoughnut] = useState({
-    "Most Vulnerable Communities": true,
-    "Daily Wage Workers": true,
-    "Organised Sector": true,
-  });
-
-  const [dropdownOpenDoughnut, setDropdownOpenDoughnut] = useState(false);
   const [selectedData, setSelectedData] = useState("gender");
-  const dropdownRefDoughnut = useRef(null);
 
-  const toggleDropdownDoughnut = () => {
-    setDropdownOpenDoughnut((prev) => !prev);
-  };
-
-  const toggleFilterDoughnut = (label) => {
-    setFiltersDoughnut((prevFilters) => ({
-      ...prevFilters,
-      [label]: !prevFilters[label],
-    }));
-  };
-
-  const filteredDoughnutData = {
-    ...initialData,
-    labels: initialData.labels.filter((label) => filtersDoughnut[label]),
-    datasets: [
-      {
-        ...initialData.datasets[0],
-        data: initialData.datasets[0].data.filter(
-          (_, index) => filtersDoughnut[initialData.labels[index]]
-        ),
-        backgroundColor: initialData.datasets[0].backgroundColor.filter(
-          (_, index) => filtersDoughnut[initialData.labels[index]]
-        ),
-        hoverBackgroundColor:
-          initialData.datasets[0].hoverBackgroundColor.filter(
-            (_, index) => filtersDoughnut[initialData.labels[index]]
-          ),
-      },
-    ],
-  };
-
-  const DoughnutOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        position: "top",
-        labels: {
-          boxWidth: 15,
-          padding: 20,
-          usePointStyle: true,
-          color: "#df6b4f",
-        },
-        onClick: (e) => e.stopPropagation(),
-      },
-      tooltip: {
-        callbacks: {
-          label: (tooltipItem) => `${tooltipItem.label}: ${tooltipItem.raw}`,
-        },
-        backgroundColor: "#65190b",
-        titleColor: "#fff",
-        bodyColor: "#fff",
-      },
-    },
-  };
-
-  const genderData = {
-    labels: ["Female", "Male"],
-    datasets: [
-      {
-        data: [558, 79],
-        backgroundColor: ["#e8461e", "#919191"],
-        borderColor: "#fff",
-        borderWidth: 2,
-        hoverBackgroundColor: ["#df6b4f", "#ce441a"],
-      },
-    ],
-  };
-
+  // Data for age chart
   const ageData = {
     labels: ["4-9 Years", "10-19 Years", "20-29 Years"],
     datasets: [
@@ -121,7 +26,7 @@ const Rights = () => {
     ],
   };
 
-  const options = {
+  const AgeOptions = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
@@ -146,30 +51,60 @@ const Rights = () => {
     },
   };
 
-  const handleIconClick = (dataType) => {
-    setSelectedData(dataType);
+  // Prepare data for the occupation chart
+  const categories = occupationsData.occupations.map(
+    (occupation) => occupation.category
+  );
+  const counts = occupationsData.occupations.map(
+    (occupation) => occupation.count
+  );
+
+  const data = {
+    labels: categories,
+    datasets: [
+      {
+        label: "Number of Workers",
+        data: counts,
+        backgroundColor: [
+          "rgba(223, 107, 79, 1)", // #3c3950
+          "rgba(206, 68, 26, 1)", // #ce441a
+          "rgba(145, 145, 145, 1)", // #919191
+        ],
+
+        borderWidth: 1,
+      },
+    ],
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        dropdownOpenDoughnut &&
-        dropdownRefDoughnut.current &&
-        !dropdownRefDoughnut.current.contains(event.target)
-      ) {
-        setDropdownOpenDoughnut(false);
-      }
-    };
+  const options = {
+    plugins: {
+      legend: {
+        display: true,
+        position: "top",
+        labels: {
+          boxWidth: 15,
+          padding: 20,
+          usePointStyle: true,
+          color: "#e8461e",
+        },
+        onClick: (e) => e.stopPropagation(),
+      },
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [dropdownOpenDoughnut]);
+      tooltip: {
+        callbacks: {
+          label: (tooltipItem) => {
+            const category = tooltipItem.label;
+            const count = tooltipItem.raw;
+            return `${category}: ${count}`;
+          },
+        },
+      },
+    },
+  };
 
   return (
     <div className="bg-[#3c3950] min-h-screen font-lato">
-      <div className="bg-[#212331] text-white py-8 px-11 max-md:px-0">
+      <div className="bg-[#212331] text-white py-8 px-4 sm:px-11">
         <div className="flex text-2xl md:text-4xl p-4">
           <h1 className="text-yellow-400">
             Protsahan - For a Better Future | Data Visualization
@@ -202,88 +137,45 @@ const Rights = () => {
           </div>
           <div className="bg-white rounded-lg shadow-lg">
             <CounterSection />
-            <div className="flex justify-center max-lg:flex-col items-center gap-4 md:gap-8 py-10 bg-[#dcdcdc] px-4 md:flex-row">
-              {/* Data Chart for Age Ratio */}
-              <div className="flex flex-col w-full max-w-[600px] flex-grow">
-                <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-[80vh] justify-between max-xs:justify-center max-xs:space-y-4 lg:justify-center lg:space-y-5 ">
-                  <h2 className="text-xl md:text-2xl font-bold text-center mb-4 text-[#212331]">
-                    Age: 4-29 Years Boys & Girls
-                  </h2>
-                  <div className="flex justify-center items-center h-[400px]">
-                    <Doughnut
-                      data={ageData}
-                      options={options}
-                      className="w-full h-auto"
-                    />
-                  </div>
-                </div>
-              </div>
 
-              {/* Chart for Occupation of Guardians/Family */}
-              <div className="flex flex-col w-full max-w-[600px] flex-grow">
-                <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-[80vh] justify-between  lg:justify-center lg:space-y-3 max-xs:justify-center max-xs:space-y-3">
-                  <h2 className="text-xl md:text-2xl font-bold text-center mb-4 text-[#212331]">
-                    Occupation of the Guardians / Family
-                  </h2>
-                  <div className="relative mb-5 flex justify-center">
-                    <button
-                      onClick={toggleDropdownDoughnut}
-                      className="bg-[#212331] text-white rounded-lg text-sm px-5 py-2.5 inline-flex items-center transition duration-300 hover:bg-[#e54b35]"
-                    >
-                      {selectedData === "gender"
-                        ? "Gender Ratio"
-                        : "Age Ratio"}
-                      <IoChevronDown className="ml-1" />
-                    </button>
-                    {dropdownOpenDoughnut && (
-                      <div
-                        ref={dropdownRefDoughnut}
-                        className="absolute z-10 mt-2 bg-white rounded-md shadow-lg w-48"
-                      >
-                        <div className="py-1">
-                          <button
-                            onClick={() => handleIconClick("gender")}
-                            className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 w-full text-left"
-                          >
-                            Gender Ratio
-                          </button>
-                          <button
-                            onClick={() => handleIconClick("age")}
-                            className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 w-full text-left"
-                          >
-                            Age Ratio
-                          </button>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                  <div className="flex justify-center items-center h-[400px]">
-                    <Doughnut
-                      data={selectedData === "gender" ? genderData : ageData}
-                      options={options}
-                      className="w-full h-auto"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+            <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-8 py-10 bg-[#dcdcdc] px-4">
+  {/* Data Chart for Age Ratio */}
+  <div className="flex flex-col w-full md:w-1/2 lg:w-[40%] max-w-lg justify-center">
+    <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-[60vh] lg:h-[80vh] justify-between items-center">
+      <h2 className="text-xl md:text-2xl font-bold text-center mb-4 text-[#212331]">
+        Age: 4-29 Years Boys & Girls
+      </h2>
+      <div className="flex justify-center items-center w-full h-full">
+        <Doughnut data={ageData} options={AgeOptions} />
+      </div>
+    </div>
+  </div>
+
+  {/* Chart for Occupation of Guardians/Family */}
+  <div className="flex flex-col w-full md:w-1/2 lg:w-[40%] max-w-lg justify-center">
+    <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-[60vh] lg:h-[80vh] justify-between items-center">
+      <h2 className="text-xl md:text-2xl font-bold text-center mb-4 text-[#212331]">
+        Occupation of the Guardians / Family
+      </h2>
+      <div className="flex justify-center items-center w-full h-full">
+        <Pie data={data} options={options} />
+      </div>
+    </div>
+  </div>
+</div>
+
 
             {/* India Map Section */}
-           
-              <IndiaMap />
+            <IndiaMap />
 
-           
-            
-                <DataChart1 />
-           
+            <DataChart1 />
 
             {/* Data Chart 2 */}
-            
-                <DataChart2 />
-            </div>
+            <DataChart2 />
           </div>
         </div>
       </div>
+    </div>
   );
 };
 

@@ -54,7 +54,7 @@ const DataChart1 = () => {
       {
         label: "Number of Scholarships",
         data: [20, 19, 531, 1, 55, 2],
-        backgroundColor: "#e8461e",
+        backgroundColor: "rgba(232, 70, 30, 0.3)", // Transparent fill for a better visual
         borderColor: "#df6b4f",
         fill: true,
         tension: 0.4,
@@ -63,7 +63,7 @@ const DataChart1 = () => {
     ],
   };
 
-  // Pie chart data (using JSON data from `scholarshipData`)
+  // Pie chart data from JSON
   const labels = Object.keys(scholarshipData["Type of Scholarship"]);
   const values = Object.values(scholarshipData["Type of Scholarship"]);
   const pieData = {
@@ -94,7 +94,7 @@ const DataChart1 = () => {
     },
   };
 
-  // Options for Line chart (without legend)
+  // Options for Line chart
   const lineChartOptions = {
     ...responsiveOptions,
     plugins: {
@@ -105,7 +105,7 @@ const DataChart1 = () => {
     },
   };
 
-  // Options for Pie chart (with legend)
+  // Options for Pie chart
   const pieChartOptions = {
     ...responsiveOptions,
     plugins: {
@@ -126,6 +126,7 @@ const DataChart1 = () => {
 
   return (
     <div className="bg-[#dcdcdc] flex flex-col md:flex-row justify-evenly items-center gap-6 py-8 px-4 sm:px-8 md:px-12 lg:px-16">
+      {/* Line Chart Container */}
       <div className="w-full md:w-[45%] h-[70vh] bg-white shadow-2xl p-6 sm:p-8 lg:p-10 rounded-xl flex flex-col items-center overflow-hidden">
         <h2 className="text-lg sm:text-xl font-bold text-center text-[#3c3950] mb-4">
           Categories of Scholarship
@@ -134,6 +135,8 @@ const DataChart1 = () => {
           <Line data={chartData} options={lineChartOptions} />
         </div>
       </div>
+
+      {/* Pie Chart Container */}
       <div className="w-full md:w-[45%] h-[70vh] max-xs:h-[75vh] bg-white shadow-2xl p-6 sm:p-8 lg:p-10 rounded-xl flex flex-col items-center overflow-hidden">
         <h2 className="text-lg sm:text-xl font-bold text-center text-[#3c3950] mb-4">
           Scholarship Distribution by Type
