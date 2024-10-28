@@ -164,7 +164,7 @@ const HeartModel = () => {
         {cards.map((item, index) => (
           <div
             key={index}
-            className="max-md:mb-4 p-5 h-[40vh]  max-md:h-[30vh] flex justify-between rounded-lg max-xs:flex-col max-xs:items-center  flex-col items-center w-2/3 max-md:w-full"
+            className="max-md:mb-4 p-5 h-[40vh]  max-md:h-[30vh] flex justify-evenly rounded-lg max-xs:flex-col max-xs:items-center  flex-col items-center w-2/3 max-md:w-full"
             style={{ backgroundColor: item.color }}
           >
             <div className="max-xs:text-center text-center text-white  ">
