@@ -12,7 +12,6 @@ import {
 import { IoMdArrowRoundBack } from "react-icons/io";
 import yearlyData from "./YearlyMonthlyData.json"; // Yearly data
 import studentData from "./StudentPassOut.json"; // Student pass out data
-import GovtLinkage from "./Category";
 
 
 
@@ -183,20 +182,6 @@ const Education = () => {
         </div>
         <div className="bg-[#3c3950] rounded-lg shadow-lg pt-4">
           <div className="border-[2px] border-dashed border-white rounded-md p-5 m-5">
-            {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-items-center">
-              <div className="text-white">
-                <span className="text-[#e8461e] mr-2">Timeline:</span>
-                Child entering Protsahan
-              </div>
-              <div className="flex flex-wrap justify-center">
-                <p className="text-white text-center">
-                  <span className="text-[#e8461e] mr-2">
-                    Potential Consumers:
-                  </span>
-                  Protsahan Executive Team | Governmental Bodies
-                </p>
-              </div>
-            </div> */}
             <div className="text-center p-4 text-white">
               <p className="text-center p-4">
               Protsahan focuses on closely monitoring and actively working to stop child begging, forced or early marriages, and child abuse, while encouraging school enrollment for children who aren’t in school. Their approach is to prevent the need for placing children in state shelters by stepping in early, providing safety nets and support to children, families, and communities right where they live. This way, they’re able to offer safe and healing spaces within their own communities, keeping children connected to their families and giving them the protection and care they need.
