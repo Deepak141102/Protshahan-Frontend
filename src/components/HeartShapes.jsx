@@ -3,6 +3,8 @@ import { style } from "d3";
 import { map } from "leaflet";
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Ensure you import Link from react-router-dom
+import { FaUsers, FaHandsHelping, FaBalanceScale, FaBriefcase,FaHeart ,FaShieldAlt  } from 'react-icons/fa';
+
 
 const HeartModel = () => {
   console.log('Heart is rendering...');
@@ -15,18 +17,23 @@ const HeartModel = () => {
       desc: "Rescue from Sexual Abuse, Child Marriage & Child Labor",
       icon: "./icons/first-icon.png",
       color: "#671c0f",
+      ico:<FaShieldAlt />
     },
     {
       heading: "Continuum of Care:",
       desc: "Access & Equity in Education, Healthcare & Life Skills through Arts and Technology",
       icon: "./icons/second-icon.png",
       color: "#962820",
+      ico:<FaHandsHelping/>
+
     },
     {
       heading: "Livelihoods, Rights & Entitlements:",
       desc: "Linkages with Government Schemes and Employability Enhancement Opportunities",
       icon: "./icons/third-icon.png",
       color: "#dd4826",
+      ico:<FaHeart />
+
     },
   ];
 
@@ -71,8 +78,8 @@ const HeartModel = () => {
  
 
   return (
-    <div className="flex justify-center items-center flex-col min-h-screen  mb-10">
-      <div className="text-center text-[24px] leading-[34px] text-[#3c3950] font-montserrat font-normal mb-4">
+    <div className="flex justify-center items-center flex-col min-h-screen  mb-10 font-lato">
+      <div className="text-center  text-[24px] leading-[34px] text-[#3c3950] font-lato font-normal mb-4">
         <h4>
           Protsahan’s Adolescent Girl Framework
           <br />
@@ -109,7 +116,7 @@ const HeartModel = () => {
 
       </div> */}
 
-      <div className="bg-[#e04729] p-5 px-12 text-white font-bold font-montserrat text-left mx-0 mt-8 w-2/3 text-xl ">
+      <div className="bg-[#e04729] p-5 px-12 text-white font-bold font-montserrat text-left mx-0 mt-8 w-2/3 text-xl max-md:w-full max-md:text-justify ">
         <h1>
           Protsahan's heart model is a holistic, flexible, first-of its kind
           gender transformative approach to seamlessly blending physical,
@@ -164,21 +171,16 @@ const HeartModel = () => {
         {cards.map((item, index) => (
           <div
             key={index}
-            className="max-md:mb-4 p-5 h-[40vh]  max-md:h-[30vh] flex justify-evenly rounded-lg max-xs:flex-col max-xs:items-center  flex-col items-center w-2/3 max-md:w-full"
+            className="max-md:mb-4 p-5 h-[38vh]  max-md:h-[35vh] flex justify-evenly rounded-lg max-xs:flex-col max-xs:items-center  flex-col items-center w-2/3 max-md:w-full"
             style={{ backgroundColor: item.color }}
           >
             <div className="max-xs:text-center text-center text-white  ">
               <h1 className="py-2 font-medium text-2xl">{item.heading}</h1>
               <p className="text-base ">{item.desc}</p>
             </div>
-            <div className="w-[9vw] max-md: max-md:w-[20vw] 2xl:w-[]">
+            <div className="text-6xl max-md:text-5xl w-full text-white flex justify-center p-4">
 
-            <img
-              src={item.icon}
-              alt="Card icon"
-              
-              className=""
-              />
+           {item.ico}
               </div>
           </div>
         ))}
