@@ -175,39 +175,38 @@ const Education = () => {
 
   return (
     <div className="bg-[#3c3950] min-h-screen font-lato">
-    <div className="bg-[#212331] text-white py-8 px-11 max-md:px-0">
-      <div className="flex text-2xl md:text-4xl p-4">
-        <h1 className="text-yellow-400">
-          Protsahan - For a Better Future | Data Visualization
-        </h1>
-      </div>
-      <div className="bg-[#3c3950] rounded-lg shadow-lg pt-4">
-        <div className="border-[2px] border-dashed border-white rounded-md p-5 m-5">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-items-center">
-            <div className="text-white">
-              <span className="text-[#e8461e] mr-2">Timeline:</span>
-              Child entering Protsahan
-            </div>
-            <div className="flex flex-wrap justify-center">
-              <p className="text-white text-center">
-                <span className="text-[#e8461e] mr-2">
-                  Potential Consumers:
-                </span>
-                Protsahan Executive Team | Governmental Bodies
+      <div className="bg-[#212331] text-white py-8 px-11 max-md:px-0">
+        <div className="flex text-2xl md:text-4xl p-4">
+          <h1 className="text-yellow-400">
+            Protsahan Education Impact | Data Story
+          </h1>
+        </div>
+        <div className="bg-[#3c3950] rounded-lg shadow-lg pt-4">
+          <div className="border-[2px] border-dashed border-white rounded-md p-5 m-5">
+            {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-items-center">
+              <div className="text-white">
+                <span className="text-[#e8461e] mr-2">Timeline:</span>
+                Child entering Protsahan
+              </div>
+              <div className="flex flex-wrap justify-center">
+                <p className="text-white text-center">
+                  <span className="text-[#e8461e] mr-2">
+                    Potential Consumers:
+                  </span>
+                  Protsahan Executive Team | Governmental Bodies
+                </p>
+              </div>
+            </div> */}
+            <div className="text-center p-4 text-white">
+              <p className="text-center p-4">
+              Protsahan focuses on closely monitoring and actively working to stop child begging, forced or early marriages, and child abuse, while encouraging school enrollment for children who aren’t in school. Their approach is to prevent the need for placing children in state shelters by stepping in early, providing safety nets and support to children, families, and communities right where they live. This way, they’re able to offer safe and healing spaces within their own communities, keeping children connected to their families and giving them the protection and care they need.
               </p>
             </div>
           </div>
-          <div className="text-center p-4 text-white">
-          <p className="text-center p-4">
-              These data visualizations show the enrollment and academic
-              performance of students.
-            </p>
-          </div>
-        </div>
 
           <div className="flex justify-center py-10 px-4  bg-[#dcdcdc] gap-4 max-md:flex-col">
             {/* Yearly Bar Chart */}
-           <div className="w-full max-md:w-full h-[75vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
+            <div className="w-full max-md:w-full h-[73vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
               <div
                 className={`transition-transform duration-700 ease-in-out transform ${showMonthlyChart ? "-translate-x-[45rem]" : "translate-x-0"
                   }`}
@@ -217,7 +216,7 @@ const Education = () => {
                 </h2>
 
                 {/* Set responsive height for the chart container */}
-                <div className="h-[57.6vh] max-md:h-[66vh] ">
+                <div className="h-[57.6vh] max-md:h-[66vh]">
                   <Bar
                     data={yearlyChartData}
                     options={{
@@ -226,6 +225,28 @@ const Education = () => {
                         ...commonChartOptions.plugins,
                         legend: {
                           display: false, // Hides the legend only for this chart
+                        },
+                      },
+                      scales: {
+                        x: {
+                          title: {
+                            display: true,
+                            text: "Years →", // Label for yearly chart's x-axis
+                            font: {
+                              size: 14,
+                            },
+                            color: "#e0461f",
+                          },
+                        },
+                        y: {
+                          title: {
+                            display: true,
+                            text: "Total Number of Lectures →", // Label for yearly chart's y-axis
+                            font: {
+                              size: 14,
+                            },
+                            color: "#e0461f",
+                          },
                         },
                       },
                       onClick: (evt, elements) => handleBarClick(elements),
@@ -242,11 +263,11 @@ const Education = () => {
               {selectedYearData && (
                 <div
                   className={`absolute top-0 left-0 w-full pb-36 px-4 overflow-hidden h-full transition-all duration-700 ease-in-out transform ${showMonthlyChart
-                      ? "translate-y-0 opacity-100"
-                      : "-translate-y-full opacity-0"
+                    ? "translate-y-0 opacity-100"
+                    : "-translate-y-full opacity-0"
                     }`}
                 >
-                  <div className="flex justify-start p-4">
+                  <div className="flex justify-start pt-4">
                     <button
                       className="bg-gradient-to-r from-gray-800 to-gray-600 p-3 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
                       onClick={handleBackClick}
@@ -260,13 +281,36 @@ const Education = () => {
                   </h2>
                   {/* Set responsive height for the monthly chart container */}
                   <div className="h-[60vh] max-md:h-[68vh] pb-14">
-                    <Bar data={monthlyData}
+                    <Bar
+                      data={monthlyData}
                       options={{
                         ...commonChartOptions,
                         plugins: {
                           ...commonChartOptions.plugins,
                           legend: {
                             display: false, // Hides the legend only for this chart
+                          },
+                        },
+                        scales: {
+                          x: {
+                            title: {
+                              display: true,
+                              text: "Months →", // Label for monthly chart's x-axis
+                              font: {
+                                size: 14,
+                              },
+                              color: "#e0461f",
+                            },
+                          },
+                          y: {
+                            title: {
+                              display: true,
+                              text: "Number of Lectures →", // Label for monthly chart's y-axis
+                              font: {
+                                size: 14,
+                              },
+                              color: "#e0461f",
+                            },
                           },
                         },
                         onClick: (evt, elements) => handleBarClick(elements),
@@ -278,9 +322,9 @@ const Education = () => {
             </div>
 
             {/* Student Pass Out Chart */}
-            <div className="w-full max-md:w-full h-[75vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
+            <div className="w-full max-md:w-full h-[73 vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
               {selectedSubject && (
-                <div className="flex justify-start p-4 pt-0">
+                <div className="flex justify-start pt-0">
                   <button
                     className="bg-gradient-to-r w-12 from-gray-800 to-gray-600 p-3 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
                     onClick={handleStudentBackClick}
@@ -301,6 +345,28 @@ const Education = () => {
                   data={studentChartData}
                   options={{
                     ...commonChartOptions,
+                    scales: {
+                      x: {
+                        title: {
+                          display: true,
+                          text: selectedSubject ? "Classes →" : "Years →", // Dynamic x-axis label for student chart
+                          font: {
+                            size: 14,
+                          },
+                          color: "#e0461f",
+                        },
+                      },
+                      y: {
+                        title: {
+                          display: true,
+                          text: selectedSubject ? "Number of Students in Class →" : "Number of Students Passed →", // Dynamic y-axis label
+                          font: {
+                            size: 14,
+                          },
+                          color: "#e0461f",
+                        },
+                      },
+                    },
                     onClick: (evt, elements) => handleStudentClick(evt, elements),
                   }}
                 />
@@ -312,8 +378,8 @@ const Education = () => {
               )}
             </div>
           </div>
-          <GovtLinkage />
 
+          <GovtLinkage />
 
         </div>
       </div>

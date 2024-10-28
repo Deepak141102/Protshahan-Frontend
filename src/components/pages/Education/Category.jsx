@@ -104,7 +104,8 @@ const GovtLinkage = () => {
     }
 
     return (
-        <div className="container mx-auto p-4 bg-white">
+        <div className="flex justify-center py-10 px-4  bg-[#dcdcdc] ">
+        <div className="container mx-auto p-4 bg-white shadow-lg rounded-lg max-w-6xl">
             {selectedYear && !selectedCategory && (
                 <div className="flex justify-start p-4">
                 <button
@@ -129,33 +130,62 @@ const GovtLinkage = () => {
             <div className="relative">
                 
                 <div className="w-full h-[50vh]">
-                    <Bar
-                        data={chartData}
-                        options={{
-                            onClick: onClickHandler,
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            plugins: {
-                                legend: {
-                                    display: false, // Hide the legend
-                                    position: 'top',
-                                    onClick: (e) => {
-                                        if (e && typeof e.stopPropagation === 'function') {
-                                            e.stopPropagation();
-                                        }
-                                    },
-                                    labels: {
-                                        boxWidth: 15,
-                                        padding: 20,
-                                        usePointStyle: true,
-                                    },
-                                },
-                            },
-                        }}
-                    />
+                <Bar
+    data={chartData}
+    options={{
+        onClick: onClickHandler,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false,
+                position: 'top',
+                onClick: (e) => {
+                    if (e && typeof e.stopPropagation === 'function') {
+                        e.stopPropagation();
+                    }
+                },
+                labels: {
+                    boxWidth: 15,
+                    padding: 20,
+                    usePointStyle: true,
+                },
+            },
+        },
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: `${selectedYear && !selectedCategory 
+                        ? 'Categories →'
+                        : selectedCategory 
+                            ? 'Months →'
+                            : 'Years →'}`, // Add right arrow on x-axis label
+                    font: {
+                        size: 14,
+                    },
+                    color: '#e0461f',
+                },
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: `Total Compensation →`, // Add up arrow on y-axis label
+                    font: {
+                        size: 14,
+                    },
+                    color: '#e0461f',
+                },
+            },
+        },
+    }}
+/>
+
+
                 </div>
             </div>
             <h2 className="text-[20px] font-bold text-[#e0461f] text-center mb-4">{headingText}</h2> {/* Dynamic heading */}
+        </div>
         </div>
     );
 };
