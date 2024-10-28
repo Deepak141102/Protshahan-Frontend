@@ -171,16 +171,14 @@ const HeartModel = () => {
               <h1 className="py-2 font-medium text-2xl">{item.heading}</h1>
               <p className="text-base ">{item.desc}</p>
             </div>
-            <div className="w-[9vw] max-md: max-md:w-[20vw]">
 
             <img
               src={item.icon}
               alt="Card icon"
-              
-              className=""
+              width="100%"
+              className="50%"
               />
               </div>
-          </div>
         ))}
 
 
