@@ -11,7 +11,6 @@ const DataChart2 = () => {
     "Upto INR 15,000": true,
   });
 
-
   const dropdownRefPie = useRef(null);
 
   const dataPie = {
@@ -89,6 +88,15 @@ const DataChart2 = () => {
         ticks: {
           color: "#3c3950",
         },
+        title: {
+          display: true,
+          text: "Gender",
+          font: {
+            size: 16,  // Font size for the x-axis title
+            weight: "bold",  // Make the font bold
+          },
+          color: "#3c3950",  // Color for the x-axis title
+        },
       },
       y: {
         beginAtZero: true,
@@ -98,21 +106,25 @@ const DataChart2 = () => {
         grid: {
           color: "rgba(33, 35, 49, 0.2)",
         },
+        title: {
+          display: true,
+          text: "Number of Scholarships Disbursed",
+          font: {
+            size: 16,  // Font size for the y-axis title
+            weight: "bold",  // Make the font bold
+          },
+          color: "#e8461e",  // Color for the y-axis title
+        },
       },
     },
   };
 
- 
-
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
-        dropdownRefPie.current && !dropdownRefPie.current.contains(event.target) &&
-        dropdownRefDoughnut.current && !dropdownRefDoughnut.current.contains(event.target)
+        dropdownRefPie.current && !dropdownRefPie.current.contains(event.target)
       ) {
-        setDropdownOpenPie(false);
-        setDropdownOpenDoughnut(false);
+        // Handle dropdown close logic if needed
       }
     };
 
@@ -124,27 +136,25 @@ const DataChart2 = () => {
 
   return (
     <div className="bg-[#dcdcdc] flex max-md:flex-col items-center justify-evenly w-full p-8 max-md:px-4 max-md:space-y-5 font-lato">
-
-        {/* Pie Chart Section */}
-        <div className="bg-white shadow-xl rounded-xl p-6 w-full h-[76vh] md:w-[45%] flex flex-col justify-center items-center">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">
-            Family Income Distribution
-          </h2>
-          <div className="w-full h-[60vh] flex justify-center">
-            <Pie data={filteredDataPie} options={optionsPie} />
-          </div>
+      {/* Pie Chart Section */}
+      <div className="bg-white shadow-xl rounded-xl p-6 w-full h-[76vh] md:w-[45%] flex flex-col justify-center items-center">
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">
+          Family Income Distribution
+        </h2>
+        <div className="w-full h-[60vh] flex justify-center">
+          <Pie data={filteredDataPie} options={optionsPie} />
         </div>
+      </div>
 
-        {/* Gender Chart Section */}
-        <div className="bg-white shadow-xl rounded-xl p-6 w-full h-[76vh] md:w-[45%] flex flex-col justify-center items-center">
-          <h2 className="text-2xl  font-bold text-gray-800 mb-4 text-center">
-            Number of Scholarships Disbursed by Gender
-          </h2>
-          <div className="w-full h-[60vh] flex justify-center">
-            <Bar data={genderData} options={options} />
-          </div>
-          
+      {/* Gender Chart Section */}
+      <div className="bg-white shadow-xl rounded-xl p-6 w-full h-[76vh] md:w-[45%] flex flex-col justify-center items-center">
+        <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
+          Number of Scholarships Disbursed by Gender
+        </h2>
+        <div className="w-full h-[60vh] flex justify-center">
+          <Bar data={genderData} options={options} />
         </div>
+      </div>
     </div>
   );
 };

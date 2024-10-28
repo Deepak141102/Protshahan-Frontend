@@ -97,6 +97,30 @@ const DataChart1 = () => {
   // Options for Line chart
   const lineChartOptions = {
     ...responsiveOptions,
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "Types of Scholarships", // Label for x-axis
+          font: {
+            size: 14,
+            weight: "bold", // Make the font bold
+          },
+          color: "#3c3950",
+        },
+      },
+      y: {
+        title: {
+          display: true,
+          text: "Number of Scholarships", // Label for y-axis
+          font: {
+            size: 14,
+            weight: "bold", // Make the font bold
+          },
+          color: "#3c3950",
+        },
+      },
+    },
     plugins: {
       ...responsiveOptions.plugins,
       legend: {
@@ -118,7 +142,7 @@ const DataChart1 = () => {
           boxWidth: 15,
           padding: 20,
           usePointStyle: true,
-          color: "#df6b4f",
+          color: "#e8461e",
         },
       },
     },
