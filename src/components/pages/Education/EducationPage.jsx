@@ -379,7 +379,7 @@ const Education = () => {
             </div>
           </div>
 
-          <GovtLinkage />
+          
 
         </div>
       </div>

@@ -5,7 +5,8 @@ import CounterSection from "./CounterSection";
 import DataChart2 from "./DoughnutPie";
 import DataChart1 from "./LineBar";
 import IndiaMap from "./IndiaMap";
-import occupationsData from "./Data.json"; // Import the occupations data
+import occupationsData from "./Data.json"; 
+import GovtLinkage from "../Education/Category";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -171,6 +172,8 @@ const Rights = () => {
 
             {/* Data Chart 2 */}
             <DataChart2 />
+            <GovtLinkage />
+
           </div>
         </div>
       </div>
