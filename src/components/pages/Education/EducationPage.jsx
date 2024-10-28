@@ -205,7 +205,7 @@ const Education = () => {
           </div>
         </div>
 
-          <div className="flex justify-center py-10 px-4 mb-10 bg-[#dcdcdc] gap-4 max-md:flex-col">
+          <div className="flex justify-center py-10 px-4  bg-[#dcdcdc] gap-4 max-md:flex-col">
             {/* Yearly Bar Chart */}
             <div className="w-full max-md:w-full h-[75vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
               <div
