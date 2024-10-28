@@ -205,7 +205,7 @@ const Rights = () => {
             <div className="flex justify-center max-lg:flex-col items-center gap-4 md:gap-8 py-10 bg-[#dcdcdc] px-4 md:flex-row">
               {/* Data Chart for Age Ratio */}
               <div className="flex flex-col w-full max-w-[600px] flex-grow">
-                <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-[80vh] justify-between max-xs:justify-center max-xs:space-y-4">
+                <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-[80vh] justify-between max-xs:justify-center max-xs:space-y-4 lg:justify-center lg:space-y-5 ">
                   <h2 className="text-xl md:text-2xl font-bold text-center mb-4 text-[#212331]">
                     Age: 4-29 Years Boys & Girls
                   </h2>
