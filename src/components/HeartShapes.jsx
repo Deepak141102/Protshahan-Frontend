@@ -116,7 +116,7 @@ const HeartModel = () => {
 
       </div> */}
 
-      <div className="bg-[#e04729] p-5 px-12 text-white font-bold font-montserrat text-justify mx-0 mt-8 w-2/3 text-xl max-md:w-full max-md:text-justify ">
+      <div className="bg-[#e04729] p-5 px-12 text-white font-bold font-montserrat text-justify mx-0 mt-8 w-2/3 text-xl max-md:w-full max-md:text-center max-md:px-2 ">
         <h1>
           Protsahan's H.E.A.R.T model is a holistic, flexible, first-of its kind gender transformative approach seamlessly blending physical, mental, material and emotional well-being of a survivor of sexual and gender based violence(SGBV)
         </h1>
@@ -170,14 +170,14 @@ const HeartModel = () => {
         {cards.map((item, index) => (
           <div
             key={index}
-            className="max-md:mb-4 p-5 h-[38vh]  max-md:h-[45vh] flex justify-evenly rounded-lg max-xs:flex-col max-xs:items-center  flex-col items-center w-[45%] max-md:w-full"
+            className="max-md:mb-4 p-5 h-[38vh] max-xs:overflow-hidden  max-md:h-full flex justify-evenly rounded-lg max-xs:flex-col max-xs:items-center lg:w-[30%]  flex-col items-center w-[45%] max-md:w-full"
             style={{ backgroundColor: item.color }}
           >
-            <div className="max-xs:text-center text-center text-white  ">
-              <h1 className="py-2 font-medium text-2xl">{item.heading}</h1>
+            <div className="max-xs:text-center text-center text-white flex flex-col flex-wrap ">
+              <h1 className="py-2 font-medium text-2xl max-md:text-3xl max-xs:text-2xl">{item.heading}</h1>
               <p className="text-base ">{item.desc}</p>
             </div>
-            <div className="text-6xl max-md:text-5xl w-full text-white flex justify-center p-4">
+            <div className="text-6xl max-md:text-6xl w-full text-white flex justify-center p-4">
 
               {item.ico}
             </div>
