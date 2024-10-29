@@ -3,7 +3,7 @@ import { style } from "d3";
 import { map } from "leaflet";
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Ensure you import Link from react-router-dom
-import { FaUsers, FaHandsHelping, FaBalanceScale, FaBriefcase,FaHeart ,FaShieldAlt  } from 'react-icons/fa';
+import { FaUsers, FaHandsHelping, FaBalanceScale, FaBriefcase, FaHeart, FaShieldAlt } from 'react-icons/fa';
 
 
 const HeartModel = () => {
@@ -17,14 +17,14 @@ const HeartModel = () => {
       desc: "Rescue from Sexual Abuse, Child Marriage & Child Labor",
       icon: "./icons/first-icon.png",
       color: "#671c0f",
-      ico:<FaShieldAlt />
+      ico: <FaShieldAlt />
     },
     {
       heading: "Continuum of Care:",
       desc: "Access & Equity in Education, Healthcare & Life Skills through Arts and Technology",
       icon: "./icons/second-icon.png",
       color: "#962820",
-      ico:<FaHandsHelping/>
+      ico: <FaHandsHelping />
 
     },
     {
@@ -32,7 +32,7 @@ const HeartModel = () => {
       desc: "Linkages with Government Schemes and Employability Enhancement Opportunities",
       icon: "./icons/third-icon.png",
       color: "#dd4826",
-      ico:<FaHeart />
+      ico: <FaHeart />
 
     },
   ];
@@ -75,7 +75,7 @@ const HeartModel = () => {
     },
   ];
 
- 
+
 
   return (
     <div className="flex justify-center items-center flex-col min-h-screen  mb-10 font-lato">
@@ -116,21 +116,22 @@ const HeartModel = () => {
 
       </div> */}
 
-      <div className="bg-[#e04729] p-5 px-12 text-white font-bold font-montserrat text-left mx-0 mt-8 w-2/3 text-xl max-md:w-full max-md:text-justify ">
+      <div className="bg-[#e04729] p-5 px-12 text-white font-bold font-montserrat text-justify mx-0 mt-8 w-2/3 text-xl max-md:w-full max-md:text-justify ">
         <h1>
-        Protsahan's H.E.A.R.T model is a holistic, flexible, first-of its kind gender transformative approach seamlessly blending physical, mental, material and emotional well-being of a survivor of sexual and gender based violence(SGBV)
+          Protsahan's H.E.A.R.T model is a holistic, flexible, first-of its kind gender transformative approach seamlessly blending physical, mental, material and emotional well-being of a survivor of sexual and gender based violence(SGBV)
         </h1>
+        <hr className="my-4 "/>
+        <h1 className="text-xl" >USE THE HEART MODEL BELOW TO UNDERSTAND OUR IMPACT IN DIFFERENT DOMAINS</h1>
       </div>
 
-    <div className=" flex flex-col h-auto py-9 max-md:w-full w-[45vw]  p-4 items-center">
-      <h1 className=" text-2xl text-center bg-[#dcdcdc] max-md:p-2 text-[#e04729] p-4 mb-3 ">USE THE HEART MODEL BELOW TO UNDERSTAND OUR IMPACT IN DIFFERENT DOMAINS</h1>
-      <svg
-        style={{ width: "100%", height: "auto" }}
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1328 1126"
-      >
-        <style>
-          {`
+      <div className=" flex flex-col h-auto py-9 max-md:w-full w-[45vw]  p-4 items-center">
+       <svg
+          style={{ width: "100%", height: "auto" }}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1328 1126"
+        >
+          <style>
+            {`
             .image-mapper-shape {
               fill: rgba(0, 0, 0, 0); /* Transparent fill */
               stroke: transparent; /* Default stroke color */
@@ -144,25 +145,25 @@ const HeartModel = () => {
               filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7)); /* Futuristic glow effect */
             }
           `}
-        </style>
+          </style>
 
-        {/* Background Image */}
-        <image
-          xlinkHref="mobi-heart.jpeg"
-          width="1328"
-          height="1126"
-        />
+          {/* Background Image */}
+          <image
+            xlinkHref="mobi-heart.jpeg"
+            width="1328"
+            height="1126"
+          />
 
-        {/* Technology Links */}
-        {mobQuickLink.map((item, ind) => (
-          <Link key={ind} to={item.href}>
-            <g>
-              <polygon className="image-mapper-shape" points={item.points} />
-            </g>
-          </Link>
-        ))}
-      </svg>
-    </div>
+          {/* Technology Links */}
+          {mobQuickLink.map((item, ind) => (
+            <Link key={ind} to={item.href}>
+              <g>
+                <polygon className="image-mapper-shape" points={item.points} />
+              </g>
+            </Link>
+          ))}
+        </svg>
+      </div>
 
       {/* THIS IS OUR CARDS AREA WHICH ARE GETTING DATA FROM THE ARRAY OBJECT  */}
       <div className=" w-full bg-[#212331] flex justify-center gap-5 p-4 max-md:flex-col">
@@ -178,16 +179,16 @@ const HeartModel = () => {
             </div>
             <div className="text-6xl max-md:text-5xl w-full text-white flex justify-center p-4">
 
-           {item.ico}
-              </div>
+              {item.ico}
+            </div>
           </div>
         ))}
 
 
-       
+
       </div>
 
-     
+
     </div>
   );
 };
