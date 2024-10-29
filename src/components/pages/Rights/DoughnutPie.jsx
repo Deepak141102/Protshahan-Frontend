@@ -95,7 +95,7 @@ const DataChart2 = () => {
             size: 16,  // Font size for the x-axis title
             weight: "bold",  // Make the font bold
           },
-          color: "#3c3950",  // Color for the x-axis title
+          color: "#e8461e",  // Color for the x-axis title
         },
       },
       y: {

@@ -177,7 +177,7 @@ const Education = () => {
     <div className="bg-[#3c3950] min-h-screen font-lato">
       <div className="bg-[#212331] text-white py-8 px-11 max-md:px-0">
         <div className="flex text-2xl md:text-4xl p-4">
-          <h1 className="text-yellow-400">
+          <h1 className="text-[#e8461e]">
             Protsahan Education Impact | Data Story
           </h1>
         </div>

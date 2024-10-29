@@ -106,7 +106,7 @@ const Rights = () => {
     <div className="bg-[#3c3950] min-h-screen font-lato">
       <div className="bg-[#212331] text-white py-8 px-4 sm:px-11">
         <div className="flex text-2xl md:text-4xl p-4">
-          <h1 className="text-yellow-400">
+          <h1 className="text-[#e8461e]">
             Protsahan Rights Impact | Data Story
           </h1>
         </div>
@@ -137,7 +137,7 @@ const Rights = () => {
 
             <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-8 py-10 bg-[#dcdcdc] px-4">
               {/* Data Chart for Age Ratio */}
-              <div className="flex flex-col w-full md:w-1/2 lg:w-[38%] max-w-lg justify-center">
+              <div className="flex flex-col w-full md:w-1/2 lg:w-[40%] max-w-lg justify-center">
                 <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-[50vh] lg:h-[70vh] justify-between items-center">
                   <h2 className="text-xl md:text-2xl font-bold text-center mb-4 text-[#212331]">
                     Age: 4-29 Years Boys & Girls

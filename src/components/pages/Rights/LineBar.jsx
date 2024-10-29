@@ -106,7 +106,7 @@ const DataChart1 = () => {
             size: 14,
             weight: "bold", // Make the font bold
           },
-          color: "#3c3950",
+          color: "#e8461e",
         },
       },
       y: {
@@ -117,7 +117,7 @@ const DataChart1 = () => {
             size: 14,
             weight: "bold", // Make the font bold
           },
-          color: "#3c3950",
+          color: "#e8461e",
         },
       },
     },
