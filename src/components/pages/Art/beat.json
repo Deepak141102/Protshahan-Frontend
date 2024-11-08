@@ -1,0 +1,131 @@
+{
+  "support_request": {
+    "Direct_Cash_Transfer": 150,
+    "Digital_Device": 29,
+    "In_Kind_Scholarship_Support": 4
+  },
+  "family_members": {
+    "1-3 Members": 29,
+    "4-6 Members": 120,
+    "7-10 Members": 45,
+    "10-12 Members": 1,
+    "More than 12": 3
+  },
+  "parent_profession": {
+    "employment_data": [
+      {
+        "category": "Daily Wage Workers",
+        "count": 104
+      },
+      {
+        "category": "Most Vulnerable Communities",
+        "count": 61
+      },
+      {
+        "category": "Organised Sector",
+        "count": 4
+      },
+      {
+        "category": "No One in the Family Works",
+        "count": 8
+      }
+    ]
+  },
+  "community_or_gec": {
+    "total_applicants": 200,
+    "applicants": [
+      {
+        "type": "Community",
+        "hindi": "सामुदायिक",
+        "count": 82
+      },
+      {
+        "type": "Girl Empowerment Center",
+        "hindi": "बालिका सशक्तिकरण केंद्र",
+        "count": 118
+      }
+    ]
+  },
+  "home_visits": {
+    "total_entries": 209,
+    "home_visit_conducted_count": 174,
+    "home_visit_not_conducted_count": 35,
+    "percentage_home_visit_conducted": 83.25
+  },
+  "monthly_income": {
+    "income_distribution": {
+      "No_Income": 16,
+      "Upto_INR_5000": 61,
+      "Upto_INR_10000": 82,
+      "Upto_INR_15000": 15,
+      "More_than_INR_15000": 1,
+      "Others": [
+        "7000-8000",
+        "8000"
+      ]
+    }
+  },
+  "rented_people": {
+    "Yes": 142,
+    "No": 38
+  },
+  "person_conditions": {
+  "Poverty Line Below 10k": 70,
+  "First Gen Learner": 70,
+  "Basic Docs Nominated": 30,
+  "Internally Migrated Family": 20,
+  "Disability in Family": 5,
+  "Long Term Ailment in Family": 3,
+  "Abuse Survivor Nominated": 7,
+  "No Govt Welfare Access": 8,
+  "PVTG Caste Minority": 3,
+  "Lost One Parent": 2,
+  "Healthcare Access Issues": 5,
+  "Disability in Applicant": 2,
+  "DV Survivor in Family": 1,
+  "School Dropout": 1
+}
+,
+  "place_details": [
+    {
+      "Native": "Andhra Pradesh",
+      "Place Address": "Amaravati",
+      "Count": 1
+    },
+    {
+      "Native": "Uttar Pradesh",
+      "Place Address": "Lucknow",
+      "Count": 44
+    },
+    {
+      "Native": "Bihar",
+      "Place Address": "Patna",
+      "Count": 106
+    },
+    {
+      "Native": "Haryana",
+      "Place Address": "Chandigarh",
+      "Count": 4
+    },
+    {
+      "Native": "Rajasthan",
+      "Place Address": "Jaipur",
+      "Count": 15
+    },
+    {
+      "Native": "Madhya Pradesh",
+      "Place Address": "Bhopal",
+      "Count": 3
+    },
+    {
+      "Native": "Uttarakhand",
+      "Place Address": "Dehradun",
+      "Count": 2
+    },
+    {
+      "Native": "Others",
+      "Place Address": "",
+      "Count": 5
+    }
+  ]
+}

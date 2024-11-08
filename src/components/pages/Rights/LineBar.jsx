@@ -10,9 +10,11 @@ import {
   Legend,
   LineElement,
   ArcElement,
+  PointElement, // Add this import for points in Line charts
 } from "chart.js";
 import scholarshipData from "./Data.json";
 
+// Register all required components, including PointElement for Line chart points
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -21,7 +23,8 @@ ChartJS.register(
   Tooltip,
   Legend,
   LineElement,
-  ArcElement
+  ArcElement,
+  PointElement // Register PointElement here
 );
 
 const COLORS = ["#e54c29", "#86250f", "#3c3950"];
@@ -137,7 +140,6 @@ const DataChart1 = () => {
       legend: {
         position: "top",
         labels: {
-          color: "#3c3950",
           font: { size: isMobile ? 10 : 14 },
           boxWidth: 15,
           padding: 20,
