@@ -199,20 +199,8 @@
         }
       ]
     },
-    {
-      "category": "COVID Widow Pension (PM)",
-      "monetary_compensation": 50000,
-      "monetary_compensation_breakdown": {
-        "message": "No data available for this category"
-      }
-    },
-    {
-      "category": "COVID Widow Pension (CM)",
-      "monetary_compensation": 10000,
-      "monetary_compensation_breakdown": {
-        "message": "No data available for this category"
-      }
-    },
+  
+  
     {
       "category": "E-Shram Card",
       "monetary_compensation_breakdown": {
@@ -405,27 +393,9 @@
       "grand_total": 37
     }
   },
-  {
-    "category": "COVID-19 Vaccination Registrations",
-    "description": "Assistance with COVID-19 vaccination registrations.",
-    "monetary_compensation": {
-      "message": "No data available for this category."
-    }
-  },
-  {
-    "category": "COVID Widow Pension (PM)",
-    "description": "Support for COVID widow pension under the Prime Minister's scheme.",
-    "monetary_compensation": {
-      "message": "No data available for this category."
-    }
-  },
-  {
-    "category": "COVID Widow Pension (CM)",
-    "description": "Support for COVID widow pension under the Chief Minister's scheme.",
-    "monetary_compensation": {
-      "message": "No data available for this category."
-    }
-  },
+ 
+
+ 
   {
     "category": "E-Shram Card",
     "description": "Facilitation of E-Shram card applications.",
@@ -521,13 +491,7 @@
       "grand_total": 45
     }
   },
-  {
-    "category": "Referral to 1098",
-    "description": "Support and referral to child helpline 1098.",
-    "monetary_compensation": {
-      "message": "No data available for this category."
-    }
-  },
+ 
   {
     "category": "Referral to 1076 (Caste Certificate)",
     "description": "Assistance in obtaining caste certificates.",
@@ -623,13 +587,7 @@
       "grand_total": 3
     }
   },
-  {
-    "category": "Scholarships",
-    "description": "Support for scholarship applications.",
-    "monetary_compensation": {
-      "message": "No data available for this category."
-    }
-  },
+ 
   {
     "category": "Home Visits",
     "description": "Documentation of home visits for support services.",
@@ -689,13 +647,7 @@
       "grand_total": 4
     }
   },
-  {
-    "category": "College Admission",
-    "description": "Support for college admissions.",
-    "monetary_compensation_breakdown": {
-      "message": "No data available for this category."
-    }
-  },
+
   {
     "category": "Ration Card",
     "description": "Facilitation of ration card applications.",
@@ -791,34 +743,9 @@
       "grand_total": 14
     }
   },
-  {
-    "category": "COVID-19 Vaccination Registrations",
-    "description": "Assistance with COVID-19 vaccination registrations.",
-    "monetary_compensation_breakdown": {
-      "message": "No data available for this category."
-    }
-  },
-  {
-    "category": "COVID Widow Pension (PM)",
-    "description": "Support for COVID widow pension under the Prime Minister's scheme.",
-    "monetary_compensation_breakdown": {
-      "message": "No data available for this category."
-    }
-  },
-  {
-    "category": "COVID Widow Pension (CM)",
-    "description": "Support for COVID widow pension under the Chief Minister's scheme.",
-    "monetary_compensation_breakdown": {
-      "message": "No data available for this category."
-    }
-  },
-  {
-    "category": "E-Shram Card",
-    "description": "Facilitation of E-Shram card applications.",
-    "monetary_compensation_breakdown": {
-      "message": "No data available for this category."
-    }
-  },
+
+
+
   {
     "category": "Bank Accounts",
     "description": "Assistance with opening bank accounts.",
@@ -838,13 +765,7 @@
       "grand_total": 23
     }
   },
-  {
-    "category": "Ladli Scheme",
-    "description": "Support for applications under the Ladli scheme.",
-    "monetary_compensation_breakdown": {
-      "message": "No data available for this category."
-    }
-  },
+
   {
     "category": "Voter ID",
     "description": "Assistance in obtaining voter IDs.",
@@ -883,13 +804,7 @@
       "grand_total": 20
     }
   },
-  {
-    "category": "Referral to 1098",
-    "description": "Support and referral to child helpline 1098.",
-    "monetary_compensation_breakdown": {
-      "message": "No data available for this category."
-    }
-  },
+ 
   {
     "category": "Referral to 1076 (Caste Certificate)",
     "description": "Assistance in obtaining caste certificates.",
@@ -909,13 +824,7 @@
       "grand_total": 3
     }
   },
-  {
-    "category": "Vidhwa Pension",
-    "description": "Support for widow pension applications.",
-    "monetary_compensation_breakdown": {
-      "message": "No data available for this category."
-    }
-  },
+  
   {
     "category": "Income Certificate",
     "description": "Facilitation of income certificate applications.",

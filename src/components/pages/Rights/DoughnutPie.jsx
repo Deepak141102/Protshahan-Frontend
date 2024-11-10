@@ -1,76 +1,90 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Pie, Bar } from "react-chartjs-2";
+import { Doughnut, Bar } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import JsonData from './Data.json';  // Import the JSON data
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DataChart2 = () => {
-  const [filtersPie, setFiltersPie] = useState({
-    "Upto INR 5,000": true,
-    "Upto INR 10,000": true,
-    "Upto INR 15,000": true,
-  });
+  const [incomeData, setIncomeData] = useState(null);
 
-  const dropdownRefPie = useRef(null);
+  useEffect(() => {
+    // Extract the income distribution data from the imported JSON
+    const incomeDistribution = JsonData.monthly_income.income_distribution;
 
-  const dataPie = {
-    labels: ["Upto INR 5,000", "Upto INR 10,000", "Upto INR 15,000"],
-    datasets: [
-      {
-        label: "Family Income Distribution",
-        data: [420, 206, 9],
-        backgroundColor: ["#919191", "#3c3950", "#ce441a"],
-        borderColor: "#fff",
-        borderWidth: 3,
-      },
-    ],
-  };
+    // Prepare labels and data for the chart
+    const labels = incomeDistribution.map((item) => item.range);
+    const data = incomeDistribution.map((item) => item.percentage_of_total);
 
-  const optionsPie = {
+    setIncomeData({
+      labels: labels,
+      datasets: [
+        {
+          label: "Income Distribution",
+          data: data,
+          backgroundColor: [
+            "rgb(224, 70, 31)", // Color 1
+            "rgb(101, 25, 11)", // Color 2
+            "rgb(134, 37, 15)", // Color 3
+            "#121331", // Color 4
+            "gray"
+          ],
+         
+          borderWidth: 1,
+        },
+      ],
+    });
+  }, []); // Empty dependency array ensures it runs once when component mounts
+
+  const incomeOptions = {
     responsive: true,
-    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: "top",
-        align: "center",
         labels: {
           boxWidth: 15,
           padding: 20,
           usePointStyle: true,
+          color: "#e8461e",
+        },
+        onClick: null,
+      },
+      tooltip: {
+        callbacks: {
+          label: function (tooltipItem) {
+            return `${tooltipItem.label}: ${tooltipItem.raw}% from the total ${JsonData.monthly_income.total_entries}`; // Show percentage in tooltip
+          },
         },
       },
     },
-    animation: {
-      animateScale: true,
-    },
   };
 
-  const filteredDataPie = {
-    ...dataPie,
-    labels: dataPie.labels.filter((label) => filtersPie[label]),
-    datasets: [
-      {
-        ...dataPie.datasets[0],
-        data: dataPie.datasets[0].data.filter((_, index) => filtersPie[dataPie.labels[index]]),
-        backgroundColor: dataPie.datasets[0].backgroundColor.filter((_, index) => filtersPie[dataPie.labels[index]]),
-      },
-    ],
-  };
+  const [genderData, setGenderData] = useState({
+    labels: [],
+    datasets: [],
+  });
 
-  const genderData = {
-    labels: ["Female", "Male"],
-    datasets: [
-      {
-        label: "Number of Scholarships Disbursed",
-        data: [558, 79],
-        backgroundColor: "#86250f",
-        borderWidth: 2,
-        borderRadius: 10,
-        barThickness: 55,
-        hoverBackgroundColor: "#e8461e",
-      },
-    ],
-  };
+  useEffect(() => {
+    // Extract gender counts and percentages from the imported JSON data
+    const labels = JsonData.gender_distribution.map(item => item.gender);
+    const data = JsonData.gender_distribution.map(item => item.percentage_of_total);
+    
+    // Setting the state with the new gender data and its percentage information
+    setGenderData({
+      labels: labels,
+      datasets: [
+        {
+          label: "Number of Scholarships Disbursed",
+          data: data,
+          backgroundColor: "#86250f",
+          borderWidth: 2,
+          borderRadius: 10,
+          barThickness: 55,
+          hoverBackgroundColor: "#e8461e",
+        },
+      ],
+    });
+  }, []); // Empty dependency array to only run once when the component mounts
 
   const options = {
     responsive: true,
@@ -92,10 +106,10 @@ const DataChart2 = () => {
           display: true,
           text: "Gender",
           font: {
-            size: 16,  // Font size for the x-axis title
-            weight: "bold",  // Make the font bold
+            size: 16, // Font size for the x-axis title
+            weight: "bold", // Make the font bold
           },
-          color: "#e8461e",  // Color for the x-axis title
+          color: "#e8461e", // Color for the x-axis title
         },
       },
       y: {
@@ -110,10 +124,10 @@ const DataChart2 = () => {
           display: true,
           text: "Number of Scholarships Disbursed",
           font: {
-            size: 16,  // Font size for the y-axis title
-            weight: "bold",  // Make the font bold
+            size: 16, // Font size for the y-axis title
+            weight: "bold", // Make the font bold
           },
-          color: "#e8461e",  // Color for the y-axis title
+          color: "#e8461e", // Color for the y-axis title
         },
       },
     },
@@ -122,7 +136,8 @@ const DataChart2 = () => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
-        dropdownRefPie.current && !dropdownRefPie.current.contains(event.target)
+        dropdownRefDoughnut.current &&
+        !dropdownRefDoughnut.current.contains(event.target)
       ) {
         // Handle dropdown close logic if needed
       }
@@ -135,20 +150,20 @@ const DataChart2 = () => {
   }, []);
 
   return (
-    <div className="bg-[#dcdcdc] flex max-md:flex-col items-center justify-evenly w-full p-8 max-md:px-4 max-md:space-y-5 font-lato">
-      {/* Pie Chart Section */}
-      <div className="bg-white shadow-xl rounded-xl p-6 w-full h-[76vh] md:w-[45%] flex flex-col justify-center items-center">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">
-          Family Income Distribution
+    <div className="flex justify-center items-center gap-4 p-3 max-md:flex-col bg-[#dcdcdc]">
+      {/* Doughnut Chart Section */}
+      <div className="w-[45%] max-md:w-full h-[80vh] bg-white p-5 flex justify-center items-center flex-col shadow-xl rounded-xl">
+      <h2 className="text-2xl font-bold text-[#212331] mb-4 text-center">
+          Monthly Income Doughnut Chart
         </h2>
-        <div className="w-full h-[60vh] flex justify-center">
-          <Pie data={filteredDataPie} options={optionsPie} />
+        <div className="w-[78%] max-md:w-full">
+        {incomeData && <Doughnut data={incomeData} options={incomeOptions} />} {/* Changed Doughnut to Doughnut as it was imported */}
         </div>
       </div>
 
       {/* Gender Chart Section */}
-      <div className="bg-white shadow-xl rounded-xl p-6 w-full h-[76vh] md:w-[45%] flex flex-col justify-center items-center">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
+      <div className="w-[45%] max-md:w-full h-[80vh] bg-white p-5 flex justify-center items-center flex-col shadow-xl rounded-xl">
+      <h2 className="text-2xl font-bold text-[#212331] mb-4 text-center">
           Number of Scholarships Disbursed by Gender
         </h2>
         <div className="w-full h-[60vh] flex justify-center">

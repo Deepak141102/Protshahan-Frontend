@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from "react"; // Added useEffect to imports
+import React, { useState, useEffect } from "react"; 
 import DatamapsIndia from "react-datamaps-india";
-import migrationData from "./Data.json";
+import placeData from "./Data.json"; 
 import "./rightsPage.css";
 
-const IndiaMap = () => {
+const StateMap = () => {
   const [color, setColor] = useState('#ff5733'); // Initial color
 
-  const migrationInfo = migrationData.migration_info;
+  const placeDetails = placeData.place_details; // Use the place details from your JSON
 
-  // Convert migration data into the format required by DatamapsIndia
-  const regionData = Object.keys(migrationInfo).reduce((acc, state) => {
-    acc[state] = {
-      value: migrationInfo[state],
+  // Calculate the total count
+  const totalCount = placeDetails.reduce((sum, { Count }) => sum + Count, 0);
+
+  // Convert place data into the format required by DatamapsIndia
+  const regionData = placeDetails.reduce((acc, { Native, Count }) => {
+    acc[Native] = {
+      value: Count, // Set the count as the value for the region
     };
     return acc;
   }, {});
@@ -46,68 +49,60 @@ const IndiaMap = () => {
     
   }, [color]); // Only runs when color changes
 
-  return (<>
-  <div className="bg-[#dcdcdc] text-white font-lato shadow-xl pt-12">
-
-  <div className=" bg-gray-900 bg-opacity-80 w-1/2 m-auto max-md:w-full rounded-xl px-3 py-2 max-md:rounded-none">
-  <h1 className="map-title ">Where has the child's family migrated from?</h1>
-  </div>
-  <div className="w-[70vw] max-xs:w-[94vw] max-xs:h-[46vh] max-lg:w-[90vw] max-md:w-[72vh] max-sm:w-full h-[100vh] m-auto max-sm:h-screen max-2xl:h-[65vh]">
-
-  
-    <div className="relative max-lg:w-[80%] w-2/3 max-sm:w-[100%] h-[75vh] max-md:h-[54vw] md:h-[100vh]  m-auto max-md:w-full rounded-xl">
- 
-      <DatamapsIndia
-        regionData={regionData}
-        hoverComponent={({ value }) => {
-          const count = value.value; // Get the migration count
-          const stateName = value.name; // Get the state name from your data
-          
-          // Construct the message
-          const message =
-          count > 0
-          ? `${count} people migrated from`
-          : `No data available for `;
-          
-          return (
-            <div className="tooltip flex max-md:w-screen">
-              <div className="inline">
-                {message}{" "}
-                <div className="tooltip-header inline">{stateName}</div>
-              </div>
-            </div>
-          );
-        }}
-        mapLayout={{
-          legendTitle: "Number of Migrants",
-          startColor: "#919191", // Light gray for low values
-          endColor: "#3c3950", // Dark purple for high values
-          hoverTitle: "Count",
-          noDataColor: "#f5f5f5", // Color for regions with no data
-          borderColor: "#ce441a", // Orange-red border for regions
-          hoverBorderColor: "#919191", // Gray border when hovered
-          hoverColor: "#e8461e", // Orange color on hover
-          height: 500,
-          width: 380,
-          color: "white",
-        }}
-        getFillColor={(region) => {
-          const value = regionData[region]?.value || 0;
-          return getGradientColor(value);
-        }}
-        />
-    </div>
+  return (
+    <>
+      <div className="bg-[#dcdcdc] text-white font-lato shadow-xl pt-12">
+        <div className="bg-gray-900 bg-opacity-80 w-1/2 m-auto max-md:w-full rounded-xl px-3 py-2 max-md:rounded-none">
+          <h1 className="map-title">Where has the child's family migrated from?</h1>
         </div>
+        <div className="w-[70vw] max-xs:w-[94vw] max-xs:h-[46vh] max-lg:w-[90vw] max-md:w-[72vh] max-sm:w-full h-[100vh] m-auto max-sm:h-screen max-2xl:h-[65vh]">
+          <div className="relative max-lg:w-[80%] w-2/3 max-sm:w-[100%] h-[75vh] max-md:h-[54vw] md:h-[100vh] m-auto max-md:w-full rounded-xl">
+            <DatamapsIndia
+              regionData={regionData}
+              hoverComponent={({ value }) => {
+                const count = value.value; // Get the migration count
+                const stateName = value.name; // Get the state name from your data
+                
+                // Find the place data for the region
+                const placeInfo = placeDetails.find(place => place.Native === stateName);
+                const percentage = ((count / totalCount) * 100).toFixed(2); // Calculate the percentage
+                const message =
+                  count > 0
+                    ? `(${percentage}% of total 816) people migrated from ${placeInfo?.["Place Address"] || 'Unknown'} `
+                    : `No data available for ${stateName}`;
+                
+                return (
+                  <div className="tooltip flex max-md:w-screen">
+                    <div className="inline">
+                      {message}{" "}
+                      <div className="tooltip-header inline">{stateName}</div>
+                    </div>
+                  </div>
+                );
+              }}
+              mapLayout={{
+                legendTitle: "Number of Migrants",
+                startColor: "#919191", // Light gray for low values
+                endColor: "#3c3950", // Dark purple for high values
+                hoverTitle: "Count",
+                noDataColor: "#f5f5f5", // Color for regions with no data
+                borderColor: "#ce441a", // Orange-red border for regions
+                hoverBorderColor: "#919191", // Gray border when hovered
+                hoverColor: "#e8461e", // Orange color on hover
+                height: 500,
+                width: 380,
+                color: "white",
+              }}
+              getFillColor={(region) => {
+                const value = regionData[region]?.value || 0;
+                return getGradientColor(value);
+              }}
+            />
+          </div>
         </div>
+      </div>
     </>
   );
 };
 
-export default IndiaMap;
-
-
-
-
-
-
-
+export default StateMap;

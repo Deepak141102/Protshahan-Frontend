@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Doughnut, Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import CounterSection from "./CounterSection";
@@ -22,7 +22,7 @@ const Rights = () => {
         backgroundColor: ["#3c3950", "#ce441a", "#919191"],
         borderColor: "#fff",
         borderWidth: 2,
-        hoverBackgroundColor: ["#e8461e", "#86250f", "#919191"],
+        hoverBackgroundColor: ["#121331", "#86250f", "#919191"],
       },
     ],
   };
@@ -54,56 +54,74 @@ const Rights = () => {
   };
 
   // Prepare data for the occupation chart
-  const categories = occupationsData.occupations.map(
-    (occupation) => occupation.category
-  );
-  const counts = occupationsData.occupations.map(
-    (occupation) => occupation.count
-  );
+  const [incomeData, setIncomeData] = useState(null);
 
-  const data = {
-    labels: categories,
-    datasets: [
-      {
-        label: "Number of Workers",
-        data: counts,
-        backgroundColor: [
-          "rgba(223, 107, 79, 1)", // #3c3950
-          "rgba(206, 68, 26, 1)", // #ce441a
-          "rgba(145, 145, 145, 1)", // #919191
-        ],
-        borderWidth: 1,
-      },
-    ],
-  };
+  useEffect(() => {
+    // Check if occupationsData and monthly_income are available
+    if (!occupationsData || !occupationsData.monthly_income) return;
+  
+    const incomeData = occupationsData.monthly_income.income_distribution;
+    const totalEntries = occupationsData.monthly_income.total_entries;
+  
+    const finalIncomeData = incomeData.map((item) => ({
+      range: item.range,
+      count: item.count,
+      percentage: (item.count / totalEntries) * 100,
+    }));
+  
+    const filteredIncomeData = finalIncomeData.filter((item) => item.count >= 5);
+  
+    // Set chart data for monthly income
+    setIncomeData({
+      labels: filteredIncomeData.map((item) => item.range),
+      datasets: [
+        {
+          label: "Income Distribution Percentage",
+          data: filteredIncomeData.map((item) => item.percentage),
+          backgroundColor: [
+            "rgb(224, 70, 31)", // Color 1
+            "rgb(101, 25, 11)", // Color 2
+            "rgb(134, 37, 15)", // Color 3
+            "rgb(223, 107, 79)", // Color 4
+            "rgb(50, 105, 170)", // Color 5
+          ],
+          borderColor: "rgba(255, 255, 255, 1)",
+          borderWidth: 2,
+        },
+      ],
+    });
+  }, [occupationsData]); // Add occupationsData as a dependency to re-run the effect if it changes
+  
+  
 
-  const options = {
+  const incomeOptions = {
     responsive: true,
-    maintainAspectRatio: false,
-    aspectRatio: 1, // Optional: Control aspect ratio
     plugins: {
       legend: {
-        display: true,
         position: "top",
         labels: {
           boxWidth: 15,
           padding: 20,
           usePointStyle: true,
-          color: "#e8461e",
+          color: "#e8461e", // Adjust legend color
         },
-        onClick: (e) => e.stopPropagation(),
+        onClick: null, // Disable the default filter behavior
       },
       tooltip: {
         callbacks: {
-          label: (tooltipItem) => {
-            const category = tooltipItem.label;
-            const count = tooltipItem.raw;
-            return `${category}: ${count}`;
+          // Custom tooltip that shows percentage for income distribution
+          label: function (tooltipItem) {
+            const index = tooltipItem.dataIndex;
+            const percentage = incomeData.datasets[0].data[index]; // Access percentage
+            return `${tooltipItem.dataset.label}: ${percentage.toFixed(
+              2
+            )}%  from the total [${occupationsData.monthly_income.total_entries}]`;
           },
         },
       },
     },
   };
+  
 
   return (
     <div className="bg-[#3c3950] min-h-screen font-lato">
@@ -160,7 +178,7 @@ const Rights = () => {
                     Occupation of the Guardians / Family
                   </h2>
                   <div className="flex justify-center items-center w-full h-[60vh]"> {/* Fixed height for better responsiveness */}
-                    <Pie data={data} options={options} />
+                  {incomeData && <Pie data={incomeData} options={incomeOptions} />} {/* Changed Doughnut to Doughnut as it was imported */}
                   </div>
                 </div>
               </div>

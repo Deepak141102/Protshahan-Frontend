@@ -4,7 +4,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-import data from './beat.json'; // Path to your data.json file
+import JsonData from './beat.json'; // Path to your data.json file
 
 const HomeVisitsPieChart = () => {
   const [chartData, setChartData] = useState(null);
@@ -12,8 +12,8 @@ const HomeVisitsPieChart = () => {
   useEffect(() => {
     // Extract relevant data from JSON
     const homeVisitsData = {
-      conducted: data.home_visits.home_visit_conducted_count,
-      notConducted: data.home_visits.home_visit_not_conducted_count,
+      conducted: JsonData.home_visits.home_visit_conducted_count,
+      notConducted: JsonData.home_visits.home_visit_not_conducted_count,
     };
 
     // Prepare chart data
@@ -47,55 +47,54 @@ const HomeVisitsPieChart = () => {
       tooltip: {
         callbacks: {
           label: function (tooltipItem) {
-            return `${tooltipItem.dataset.label}: ${tooltipItem.raw}`; // Custom tooltip text
+            // Ensure you're accessing the correct properties
+            const totalEntries = JsonData.home_visits.total_entries; // Assuming this is the correct reference
+            return `${tooltipItem.label}: ${tooltipItem.raw}% from the total ${JsonData.home_visits.total_entries}`; // Show percentage in tooltip
           },
         },
       },
+      
     },
   };
 // income chart 
 const [incomeData, setIncomeData] = useState(null);
 
-useEffect(() => {
-  // Extract relevant data from JSON
-  const incomeData = {
-    noIncome: data.monthly_income.income_distribution.No_Income,
-    upto5000: data.monthly_income.income_distribution.Upto_INR_5000,
-    upto10000: data.monthly_income.income_distribution.Upto_INR_10000,
-    upto15000: data.monthly_income.income_distribution.Upto_INR_15000,
-    moreThan15000: data.monthly_income.income_distribution.More_than_INR_15000,
-    others: data.monthly_income.income_distribution.Others.length,
-  };
 
-  // Prepare chart data
+useEffect(() => {
+  // Extract the income distribution data from the JSON
+  const incomeDistribution = JsonData.monthly_income.income_distribution;
+
+  // Prepare labels and data for the chart
+  const labels = incomeDistribution.map(item => item.range);
+  const data = incomeDistribution.map(item => item.percentage_of_total);
+
   setIncomeData({
-    labels: ['No Income', 'Upto INR 5000', 'Upto INR 10000', 'Upto INR 15000', 'More than INR 15000', 'Others'],
+    labels: labels,
     datasets: [
       {
         label: 'Income Distribution',
-        data: [
-          incomeData.noIncome,
-          incomeData.upto5000,
-          incomeData.upto10000,
-          incomeData.upto15000,
-          incomeData.moreThan15000,
-          incomeData.others,
-        ],
+        data: data,
         backgroundColor: [
-          'rgba(75, 192, 192, 0.6)',
-          'rgba(153, 102, 255, 0.6)',
-          'rgba(255, 159, 64, 0.6)',
-          'rgba(54, 162, 235, 0.6)',
-          'rgba(255, 99, 132, 0.6)',
-          'rgba(255, 205, 86, 0.6)',
+          'rgba(255, 99, 132, 0.6)',  // No Income
+          'rgba(54, 162, 235, 0.6)',  // Upto INR 5000
+          'rgba(255, 206, 86, 0.6)',  // Upto INR 10000
+          'rgba(75, 192, 192, 0.6)',  // Upto INR 15000
+          'rgba(153, 102, 255, 0.6)', // More than INR 15000
         ],
-        borderColor: 'rgba(255, 255, 255, 1)',
-        borderWidth: 2,
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+        ],
+        borderWidth: 1,
       },
     ],
   });
 }, []);
-const IncomeOptions = {
+
+const incomeOptions = {
   responsive: true,
   plugins: {
     legend: {
@@ -106,12 +105,13 @@ const IncomeOptions = {
         usePointStyle: true,
         color: "#e8461e",
       },
-      onClick: null,  // Disable the default filter behavior (no legend item click filtering)
+      onClick: null
+
     },
     tooltip: {
       callbacks: {
         label: function (tooltipItem) {
-          return `${tooltipItem.dataset.label}: ${tooltipItem.raw}`; // Custom tooltip text
+          return `${tooltipItem.label}: ${tooltipItem.raw}% from the total 177`; // Show percentage in tooltip
         },
       },
     },
@@ -134,7 +134,7 @@ const IncomeOptions = {
       </h2>
       <div className='w-2/3'>
 
-      {chartData && <Doughnut data={incomeData} options={IncomeOptions} />}
+      {chartData && <Doughnut data={incomeData} options={incomeOptions} />}
       </div>
     </div>
   </div>

@@ -1,178 +1,166 @@
-import React, { useEffect, useState } from "react";
-import { Line, Pie } from "react-chartjs-2";
+import React, { useState, useEffect } from "react";
+import { Line, Doughnut } from "react-chartjs-2";
 import {
   Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
+  LineElement,
   Tooltip,
   Legend,
-  LineElement,
+  CategoryScale,
+  LinearScale,
+  PointElement,
   ArcElement,
-  PointElement, // Add this import for points in Line charts
 } from "chart.js";
-import scholarshipData from "./Data.json";
 
-// Register all required components, including PointElement for Line chart points
+// Register necessary components
 ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
+  LineElement,
   Tooltip,
   Legend,
-  LineElement,
-  ArcElement,
-  PointElement // Register PointElement here
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  ArcElement
 );
 
-const COLORS = ["#e54c29", "#86250f", "#3c3950"];
+// Import JSON data
+import scholarshipData from "./Data.json";
 
-const DataChart1 = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+const ScholarshipLineChart = () => {
+  const [chartData, setChartData] = useState(null);
+  const [supportRequestData, setSupportRequestData] = useState(null);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
+    // Extracting labels and data from the JSON
+    const categories = Object.keys(scholarshipData.categories_of_scholarship);
+    const percentages = Object.values(
+      scholarshipData.categories_of_scholarship
+    ).map((item) => item.percentage);
 
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    // Setting up data for the line chart
+    setChartData({
+      labels: categories,
+      datasets: [
+        {
+          label: "Scholarship Percentage",
+          data: percentages,
+          borderColor: "#e8461e",
+          backgroundColor: "red",
+          fill: true,
+          tension: 0.4,
+          pointBackgroundColor: "#212331",
+        },
+      ],
+    });
   }, []);
 
-  // Line chart data
-  const chartData = {
-    labels: [
-      "Disability",
-      "Merit",
-      "Need Equity",
-      "Need Equity + Disability",
-      "Need Equity + Merit",
-      "STEM (Science)",
-    ],
-    datasets: [
-      {
-        label: "Number of Scholarships",
-        data: [20, 19, 531, 1, 55, 2],
-        backgroundColor: "rgba(232, 70, 30, 0.3)", // Transparent fill for a better visual
-        borderColor: "#df6b4f",
-        fill: true,
-        tension: 0.4,
-        pointHoverRadius: 8,
-      },
-    ],
-  };
-
-  // Pie chart data from JSON
-  const labels = Object.keys(scholarshipData["Type of Scholarship"]);
-  const values = Object.values(scholarshipData["Type of Scholarship"]);
-  const pieData = {
-    labels,
-    datasets: [
-      {
-        label: "Scholarships",
-        data: values,
-        backgroundColor: COLORS,
-        borderColor: COLORS.map((color) => color + "CC"),
-        borderWidth: 1,
-      },
-    ],
-  };
-
-  // Shared options for responsiveness
-  const responsiveOptions = {
+  const options = {
     responsive: true,
-    maintainAspectRatio: false,
     plugins: {
+      legend: {
+        display: false,
+      },
       tooltip: {
-        backgroundColor: "#fff",
-        titleColor: "#3c3950",
-        bodyColor: "#3c3950",
-        titleFont: { size: isMobile ? 12 : 14 },
-        bodyFont: { size: isMobile ? 10 : 12 },
+        callbacks: {
+          label: function (tooltipItem) {
+            return `${tooltipItem.label}: ${tooltipItem.raw}% from the total 628`;
+          },
+        },
       },
     },
-  };
-
-  // Options for Line chart
-  const lineChartOptions = {
-    ...responsiveOptions,
     scales: {
+      y: {
+        beginAtZero: true,
+        title: {
+          display: true,
+          text: "Percentage (%)",
+          color:'#e8461e'
+        },
+      },
       x: {
         title: {
           display: true,
-          text: "Types of Scholarships", // Label for x-axis
-          font: {
-            size: 14,
-            weight: "bold", // Make the font bold
-          },
-          color: "#e8461e",
+          text: "Scholarship Category",
         },
-      },
-      y: {
-        title: {
-          display: true,
-          text: "Number of Scholarships", // Label for y-axis
-          font: {
-            size: 14,
-            weight: "bold", // Make the font bold
-          },
-          color: "#e8461e",
-        },
-      },
-    },
-    plugins: {
-      ...responsiveOptions.plugins,
-      legend: {
-        display: false, // Hide legend only for Line chart
       },
     },
   };
 
-  // Options for Pie chart
-  const pieChartOptions = {
-    ...responsiveOptions,
+  // Set up support chart data
+  useEffect(() => {
+    // Extract support types and their percentages from the imported data
+    const supportTypes = scholarshipData.support_request.support_types;
+    const labels = supportTypes.map((item) => item.type);
+    const data = supportTypes.map((item) => item.percentage_of_total);
+
+    setSupportRequestData({
+      labels: labels,
+      datasets: [
+        {
+          label: "Support Request Distribution",
+          data: data,
+          backgroundColor: [
+           "rgb(224, 70, 31)", // Color 1
+            "rgb(101, 25, 11)", // Color 2
+            "gray", // Color 4
+            "rgb(134, 37, 15)", // Color 3
+            "rgb(50, 105, 170)", // Color 5 // In Kind Scholarship Support
+          ],
+         
+          borderWidth: 1,
+        },
+      ],
+    });
+  }, []);
+
+  const supportRequestOptions = {
+    responsive: true,
     plugins: {
-      ...responsiveOptions.plugins,
       legend: {
-        position: "top",
         labels: {
-          font: { size: isMobile ? 10 : 14 },
           boxWidth: 15,
           padding: 20,
           usePointStyle: true,
           color: "#e8461e",
         },
       },
+      tooltip: {
+        callbacks: {
+          label: function (tooltipItem) {
+            return `${tooltipItem.label}: ${tooltipItem.raw}%`; // Show percentage in tooltip
+          },
+        },
+      },
     },
   };
 
   return (
-    <div className="bg-[#dcdcdc] flex flex-col md:flex-row justify-evenly items-center gap-6 py-8 px-4 sm:px-8 md:px-12 lg:px-16">
-      {/* Line Chart Container */}
-      <div className="w-full md:w-[45%] h-[70vh] bg-white shadow-2xl p-6 sm:p-8 lg:p-10 rounded-xl flex flex-col items-center overflow-hidden">
-        <h2 className="text-lg sm:text-xl font-bold text-center text-[#3c3950] mb-4">
-          Categories of Scholarship
-        </h2>
-        <div className="w-full h-[55vh]">
-          <Line data={chartData} options={lineChartOptions} />
-        </div>
-      </div>
+    <>
+      <div className="flex justify-center items-center gap-4 p-3 max-md:flex-col bg-[#dcdcdc] py-4">
+        <div className="w-[45%] max-md:w-full h-[80vh] bg-white p-5 flex justify-center items-center flex-col shadow-xl rounded-xl">
+          <h2 className="font-lato text-2xl text-[#333] mb-5 text-center">
+            Scholarship Categories Distribution
+          </h2>
 
-      {/* Pie Chart Container */}
-      <div className="w-full md:w-[45%] h-[70vh] max-xs:h-[75vh] bg-white shadow-2xl p-6 sm:p-8 lg:p-10 rounded-xl flex flex-col items-center overflow-hidden">
-        <h2 className="text-lg sm:text-xl font-bold text-center text-[#3c3950] mb-4">
-          Scholarship Distribution by Type
-        </h2>
-        <div className="w-full h-[55vh]">
-          <Pie data={pieData} options={pieChartOptions} />
+          {chartData && <Line data={chartData} options={options} />}
+        </div>
+
+        {/* Support Request Doughnut Chart */}
+        <div className="w-[45%] max-md:w-full h-[80vh] bg-white p-5 flex justify-center items-center flex-col shadow-xl rounded-xl">
+          <h2 className="font-lato text-2xl text-[#333] mb-5 text-center pt-3">
+            Support Request Doughnut Chart
+          </h2>
+          <div className="w-[78%] max-md:w-full">
+            {supportRequestData && (
+              <Doughnut
+                data={supportRequestData}
+                options={supportRequestOptions}
+              />
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default DataChart1;
+export default ScholarshipLineChart;

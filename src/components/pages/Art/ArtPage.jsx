@@ -1,10 +1,7 @@
 import React from "react";
 import FamilyMembersChart from "./Chart1";
 import ParentProfessionChart from "./Chart3";
-// import CommunityOrGecDoughnutChart from "./CommunityOrGecDoughnutChart";
 import HomeVisitsPieChart from "./Chart2";
-// import RentedPeopleBarChart from "./RentedPeopleChart";
-// import IncomeDoughnutChart from "./IncomeDoughnutChart";
 import PersonConditionsHorizontalBarChart from "./PersonConditionChart";
 import StateMap from "./StateMap";
 
@@ -46,11 +43,8 @@ const ArtPage = () => {
             </div>
             <div className="bg-[#dcdcdc] rounded-lg shadow-lg">
               <FamilyMembersChart />
-              {/* <CommunityOrGecDoughnutChart /> */}
               <HomeVisitsPieChart />
               <ParentProfessionChart />
-              {/* <IncomeDoughnutChart /> */}
-              {/* <RentedPeopleBarChart /> */}
               <PersonConditionsHorizontalBarChart />
               <StateMap />
             </div>

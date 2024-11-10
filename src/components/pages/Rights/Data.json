@@ -1,83 +1,191 @@
 {
-    "Number of Metrix": "April 2023 - March 2024",
-    "direct_cash_transfer_scholarships": {
-        "number_disbursed": 241,
-        "amount_disbursed_inr": 1446000
+  "Number of Metrix": "April 2023 - March 2024",
+  "direct_cash_transfer_scholarships": {
+    "number_disbursed": 241,
+    "amount_disbursed_inr": 1446000
+  },
+  "digital_device_scholarships": {
+    "number_awarded": 10,
+    "amount_invested_inr": 99000
+  },
+  "categories_of_scholarship": {
+    "Disability": {
+      "count": 20,
+      "percentage": 3.18
     },
-    "digital_device_scholarships": {
-        "number_awarded": 10,
-        "amount_invested_inr": 99000
+    "Merit": {
+      "count": 19,
+      "percentage": 3.02
     },
-    "categories_of_scholarship": {
-        "Disability Scholarship": 20,
-        "Merit Scholarship": 19,
-        "Need Based Equity": 531,
-        "Need Based Equity Disability": 1,
-        "Need Based Equity Merit": 55,
-        "Stem Scholarship": 2
+    "Need Equity": {
+      "count": 531,
+      "percentage": 84.49
     },
-    "migration_info": {
-        "Bihar": 440,
-        "Rajasthan": 40,
-        "Chhattisgarh": 3,
-        "Uttar Pradesh": 125,
-        "Jharkhand": 3,
-        "Madhya Pradesh": 1,
-        "West Bengal": 0,
-        "Uttarakhand": 3,
-        "Nepal": 1,
-        "Delhi": 9,
-        "Haryana": 9,
-        "Lucknow": 1
+    "Need Equity + Disability": {
+      "count": 1,
+      "percentage": 0.16
     },
-    "Type of Scholarship": {
-        "Direct Bank Transfer": 603,
-        "Digital Device": 29,
-
-        "Direct Benefit Transfer + Demand Draft": 5
+    "Need Equity + Merit": {
+      "count": 55,
+      "percentage": 8.75
     },
-    "occupations": [
-        {
-          "category": "Most Vulnerable Communities",
-          "types": [
-            "Begging",
-            "Ragpicking",
-            "Sewer Cleaner",
-            "Boot Polish Work",
-            "Domestic helper",
-            "Paan shopkeeper"
-          ],
-          "count": 71
-        },
-        {
-          "category": "Daily Wage Workers",
-          "types": [
-            "Construction Workers",
-            "E-Rickshaw Drivers",
-            "Fruit Vendors",
-            "Labourers",
-            "Carpenter",
-            "Electricity worker",
-            "Factory worker",
-            "Machine repairing",
-            "Painter",
-            "Plumber",
-            "Tailor",
-            "Worker in palor",
-            "Salesman",
-            "Shopkeeper"
-          ],
-          "count": 554
-        },
-        {
-          "category": "Organised Sector",
-          "types": [
-            "Data entry",
-            "School teacher"
-          ],
-          "count": 11
-        }
-      ]
-
-       
+    "STEM (Science)": {
+      "count": 2,
+      "percentage": 0.32
     }
+  },
+  "monthly_income": {
+    "total_entries": 180,
+    "income_distribution": [
+      {
+        "range": "No Income",
+        "count": 13,
+        "percentage_of_total": 7.34
+      },
+      {
+        "range": "Upto INR 5000",
+        "count": 66,
+        "percentage_of_total": 37.3
+      },
+      {
+        "range": "7,000 to 8,000",
+        "count": 1,
+        "percentage_of_total": 0.56
+      },
+      {
+        "range": "8,000",
+        "count": 1,
+        "percentage_of_total": 0.56
+      },
+      {
+        "range": "Upto INR 10000",
+        "count": 89,
+        "percentage_of_total": 50.28
+      },
+      {
+        "range": "Upto INR 15000",
+        "count": 9,
+        "percentage_of_total": 5.08
+      },
+      {
+        "range": "More than INR 15000",
+        "count": 1,
+        "percentage_of_total": 0.56
+      }
+    ]
+  },
+  "place_details": [
+    {
+      "Native": "Andhra Pradesh",
+      "Place Address": "Amaravati",
+      "Count": 1
+    },
+    {
+      "Native": "Uttar Pradesh",
+      "Place Address": "Lucknow",
+      "Count": 171
+    },
+    {
+      "Native": "Bihar",
+      "Place Address": "Patna",
+      "Count": 546
+    },
+    {
+      "Native": "Haryana",
+      "Place Address": "Chandigarh",
+      "Count": 13
+    },
+    {
+      "Native": "Rajasthan",
+      "Place Address": "Jaipur",
+      "Count": 55
+    },
+    {
+      "Native": "Madhya Pradesh",
+      "Place Address": "Bhopal",
+      "Count": 4
+    },
+    {
+      "Native": "Uttarakhand",
+      "Place Address": "Dehradun",
+      "Count": 5
+    },
+    {
+      "Native": "Chhattisgarh",
+      "Place Address": "",
+      "Count": 3
+    },
+    {
+      "Native": "Jharkhand",
+      "Place Address": "",
+      "Count": 3
+    },
+    {
+      "Native": "Nepal",
+      "Place Address": "",
+      "Count": 1
+    },
+    {
+      "Native": "Delhi",
+      "Place Address": "",
+      "Count": 9
+    },
+    {
+      "Native": "Others",
+      "Place Address": "",
+      "Count": 5
+    }
+  ],
+  "support_request": {
+    "total_entries": 820,
+    "support_types": [
+      {
+        "type": "Direct Bank Transfer",
+        "count": 753,
+        "percentage_of_total": 91.80
+      },
+      {
+        "type": "Digital Device",
+        "count": 58,
+        "percentage_of_total": 7.07
+      },
+      {
+        "type": "Direct Benefit Transfer + Demand Draft",
+        "count": 5,
+        "percentage_of_total": 0.61
+      },
+      {
+        "type": "In Kind Scholarship Support",
+        "count": 4,
+        "percentage_of_total": 0.49
+      }
+    ]
+  },
+  "total": 637,
+  "gender_distribution": [
+    {
+      "gender": "Male",
+      "count": 558,
+      "percentage_of_total": 87.60
+    },
+    {
+      "gender": "Female",
+      "count": 79,
+      "percentage_of_total": 12.40
+    }
+  ],
+  "occupations": [
+    {
+      "category": "Most Vulnerable Communities",
+      "count": 71
+    },
+    {
+      "category": "Daily Wage Workers",
+      "count": 554
+    },
+    {
+      "category": "Organised Sector",
+      "count": 11
+    }
+  ]
+}
