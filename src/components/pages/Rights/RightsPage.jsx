@@ -1,36 +1,40 @@
-import React, { useState,useEffect } from "react";
-import { Doughnut, Pie } from "react-chartjs-2";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import CounterSection from "./CounterSection";
-import DataChart2 from "./DoughnutPie";
-import DataChart1 from "./LineBar";
-import IndiaMap from "./IndiaMap";
-import occupationsData from "./Data.json"; 
-import GovtLinkage from "../Education/Category";
+// Importing necessary modules and components
+import React, { useState, useEffect } from "react"; // Import React, useState, useEffect hooks for managing component state and side effects
+import { Doughnut, Pie } from "react-chartjs-2"; // Import Doughnut and Pie chart components from react-chartjs-2
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js"; // Import necessary modules from Chart.js
+import CounterSection from "./CounterSection"; // Import CounterSection component
+import DataChart2 from "./DoughnutPie"; // Import DataChart2 component
+import DataChart1 from "./LineBar"; // Import DataChart1 component
+import IndiaMap from "./IndiaMap"; // Import IndiaMap component
+import occupationsData from "./Data.json"; // Import data from a local JSON file
+import GovtLinkage from "../Education/Category"; // Import GovtLinkage component
 
+// Register Chart.js components to use ArcElement, Tooltip, and Legend
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Rights = () => {
+  // State for selected data type, initially set to "gender"
   const [selectedData, setSelectedData] = useState("gender");
 
-  // Data for age chart
+  // Define data for the age chart
   const ageData = {
-    labels: ["4-9 Years", "10-19 Years", "20-29 Years"],
+    labels: ["4-9 Years", "10-19 Years", "20-29 Years"], // Age groups as labels
     datasets: [
       {
-        data: [28, 552, 57],
-        backgroundColor: ["#3c3950", "#ce441a", "#919191"],
-        borderColor: "#fff",
-        borderWidth: 2,
-        hoverBackgroundColor: ["#121331", "#86250f", "#919191"],
+        data: [28, 552, 57], // Data values for each age group
+        backgroundColor: ["#3c3950", "#ce441a", "#919191"], // Colors for each section
+        borderColor: "#fff", // Border color for each section
+        borderWidth: 2, // Border width
+        hoverBackgroundColor: ["#121331", "#86250f", "#919191"], // Hover colors for each section
       },
     ],
   };
 
+  // Define options for the age chart
   const AgeOptions = {
     responsive: true,
     maintainAspectRatio: false,
-    aspectRatio: 1, // Optional: Control aspect ratio
+    aspectRatio: 1,
     plugins: {
       legend: {
         position: "top",
@@ -40,61 +44,71 @@ const Rights = () => {
           usePointStyle: true,
           color: "#e8461e",
         },
-        onClick: (e) => e.stopPropagation(),
+        onClick: (e) => e.stopPropagation(), // Prevents legend click filtering
       },
       tooltip: {
         callbacks: {
-          label: (tooltipItem) => `${tooltipItem.label}: ${tooltipItem.raw}`,
+          label: (tooltipItem) => `${tooltipItem.label}: ${tooltipItem.raw}`, // Custom label for tooltip
         },
-        backgroundColor: "#65190b",
-        titleColor: "#fff",
-        bodyColor: "#fff",
+        backgroundColor: "#65190b", // Tooltip background color
+        titleColor: "#fff", // Tooltip title color
+        bodyColor: "#fff", // Tooltip body text color
       },
     },
   };
 
-  // Prepare data for the occupation chart
-  const [incomeData, setIncomeData] = useState(null);
+  // State for profession data, initially null
+  const [professionData, setProfessionData] = useState(null);
 
+  // Effect hook to load and prepare profession data
   useEffect(() => {
-    // Check if occupationsData and monthly_income are available
-    if (!occupationsData || !occupationsData.monthly_income) return;
-  
-    const incomeData = occupationsData.monthly_income.income_distribution;
-    const totalEntries = occupationsData.monthly_income.total_entries;
-  
-    const finalIncomeData = incomeData.map((item) => ({
-      range: item.range,
+    // Extract employment data and total count from JSON
+    const employmentData = occupationsData.parent_profession.employment_data;
+    const totalCount = occupationsData.parent_profession.total_count;
+
+    // Flatten employment data for organized sector categories
+    const flattenedData = employmentData.flatMap((item) => {
+      if (item.category === "Organised Sector" && item.details) {
+        return item.details.map((detail) => ({
+          category: `${item.category} - ${detail.role}`, // Category includes role
+          count: detail.count,
+        }));
+      }
+      return { category: item.category, count: item.count };
+    });
+
+    // Calculate percentages for each category
+    const finalData = flattenedData.map((item) => ({
+      category: item.category,
       count: item.count,
-      percentage: (item.count / totalEntries) * 100,
+      percentage: (item.count / totalCount) * 100, // Calculate percentage
     }));
-  
-    const filteredIncomeData = finalIncomeData.filter((item) => item.count >= 5);
-  
-    // Set chart data for monthly income
-    setIncomeData({
-      labels: filteredIncomeData.map((item) => item.range),
+
+    // Filter data to exclude categories with count < 5
+    const filteredData = finalData.filter((item) => item.count >= 5);
+
+    // Set the prepared data to the professionData state
+    setProfessionData({
+      labels: filteredData.map((item) => item.category),
       datasets: [
         {
-          label: "Income Distribution Percentage",
-          data: filteredIncomeData.map((item) => item.percentage),
+          label: "Profession Percentage",
+          data: filteredData.map((item) => item.percentage),
           backgroundColor: [
-            "rgb(224, 70, 31)", // Color 1
-            "rgb(101, 25, 11)", // Color 2
-            "rgb(134, 37, 15)", // Color 3
-            "rgb(223, 107, 79)", // Color 4
-            "rgb(50, 105, 170)", // Color 5
+            "rgb(224, 70, 31)",
+            "rgb(101, 25, 11)",
+            "rgb(134, 37, 15)",
+            "rgb(223, 107, 79)",
           ],
           borderColor: "rgba(255, 255, 255, 1)",
           borderWidth: 2,
         },
       ],
     });
-  }, [occupationsData]); // Add occupationsData as a dependency to re-run the effect if it changes
-  
-  
+  }, []);
 
-  const incomeOptions = {
+  // Options for profession chart
+  const professionOptions = {
     responsive: true,
     plugins: {
       legend: {
@@ -103,26 +117,26 @@ const Rights = () => {
           boxWidth: 15,
           padding: 20,
           usePointStyle: true,
-          color: "#e8461e", // Adjust legend color
+          color: "#e8461e",
         },
-        onClick: null, // Disable the default filter behavior
+        onClick: null, // Disable legend filtering on click
       },
       tooltip: {
         callbacks: {
-          // Custom tooltip that shows percentage for income distribution
+          // Tooltip with custom percentage label
           label: function (tooltipItem) {
             const index = tooltipItem.dataIndex;
-            const percentage = incomeData.datasets[0].data[index]; // Access percentage
+            const percentage = professionData.datasets[0].data[index];
             return `${tooltipItem.dataset.label}: ${percentage.toFixed(
               2
-            )}%  from the total [${occupationsData.monthly_income.total_entries}]`;
+            )}%  from the total [${occupationsData.parent_profession.total_count}]`;
           },
         },
       },
     },
   };
-  
 
+  // Component render
   return (
     <div className="bg-[#3c3950] min-h-screen font-lato">
       <div className="bg-[#212331] text-white py-8 px-4 sm:px-11">
@@ -140,9 +154,7 @@ const Rights = () => {
               </div>
               <div className="flex flex-wrap justify-center">
                 <p className="text-white text-center">
-                  <span className="text-[#e8461e] mr-2">
-                    Potential Consumers:
-                  </span>
+                  <span className="text-[#e8461e] mr-2">Potential Consumers:</span>
                   Protsahan Executive Team | Governmental Bodies
                 </p>
               </div>
@@ -165,7 +177,7 @@ const Rights = () => {
                   <h2 className="text-xl md:text-2xl font-bold text-center mb-4 text-[#212331]">
                     Age: 4-29 Years Boys & Girls
                   </h2>
-                  <div className="flex justify-center items-center w-full h-[60vh]"> {/* Fixed height for better responsiveness */}
+                  <div className="flex justify-center items-center w-full h-[60vh]">
                     <Doughnut data={ageData} options={AgeOptions} />
                   </div>
                 </div>
@@ -177,21 +189,19 @@ const Rights = () => {
                   <h2 className="text-xl md:text-2xl font-bold text-center mb-4 text-[#212331]">
                     Occupation of the Guardians / Family
                   </h2>
-                  <div className="flex justify-center items-center w-full h-[60vh]"> {/* Fixed height for better responsiveness */}
-                  {incomeData && <Pie data={incomeData} options={incomeOptions} />} {/* Changed Doughnut to Doughnut as it was imported */}
+                  <div className="flex justify-center items-center w-full h-[60vh]">
+                    {professionData && (
+                      <Pie data={professionData} options={professionOptions} />
+                    )}
                   </div>
                 </div>
               </div>
             </div>
             {/* India Map Section */}
             <IndiaMap />
-
             <DataChart1 />
-
-            {/* Data Chart 2 */}
             <DataChart2 />
             <GovtLinkage />
-
           </div>
         </div>
       </div>

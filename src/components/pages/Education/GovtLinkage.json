@@ -3,21 +3,10 @@
     {
       "category": "Aadhaar Card",
       "description": "Creation of Aadhaar card enables basic documentation for banks and government services.",
-      "monetary_compensation": {
-        "january": 0,
-        "february": 37,
-        "march": 12,
-        "april": 3,
-        "may": 2,
-        "june": 11,
-        "july": 4,
-        "august": 13,
-        "september": 5,
-        "october": 90,
-        "november": 432000,
-        "december": 828000,
-        "grand_total": 396052
-      },
+      
+       
+        "grand_total": 396052,
+      
       "notes": [
         {
           "note_1": "432000",
@@ -35,21 +24,8 @@
         "up_to": 1600,
         "notes": "(for uniform & books)"
       },
-      "monetary_compensation_breakdown": {
-        "january": 0,
-        "february": 20,
-        "march": 23,
-        "april": 7,
-        "may": 6,
-        "june": 3,
-        "july": 0,
-        "august": 0,
-        "september": 0,
-        "october": 0,
-        "november": 0,
-        "december": 0,
+       
         "grand_total": 66
-      }
     },
     {
       "category": "College Admission",
@@ -61,21 +37,7 @@
     {
       "category": "Ration Card",
       "monetary_compensation": "INR 175 per head",
-      "monetary_compensation_breakdown": {
-        "january": 0,
-        "february": 0,
-        "march": 0,
-        "april": 6,
-        "may": 0,
-        "june": 0,
-        "july": 2,
-        "august": 0,
-        "september": 0,
-        "october": 2,
-        "november": 0,
-        "december": 0,
-        "grand_total": 32
-      },
+        "grand_total": 32,
       "notes": [
         {
           "note_1": "71040000",
@@ -92,40 +54,14 @@
     {
       "category": "PAN Card",
       "monetary_compensation": "Linked with bank account and PM Jan Dhan Yojna - INR 1500",
-      "monetary_compensation_breakdown": {
-        "january": 0,
-        "february": 0,
-        "march": 0,
-        "april": 0,
-        "may": 0,
-        "june": 3,
-        "july": 3,
-        "august": 0,
-        "september": 5,
-        "october": 5,
-        "november": 18,
-        "december": 0,
+      
         "grand_total": 24
-      }
     },
     {
       "category": "Labour Card",
       "monetary_compensation": "Up to 1000 per month for 2 children",
-      "monetary_compensation_breakdown": {
-        "january": 0,
-        "february": 0,
-        "march": 3,
-        "april": 1,
-        "may": 0,
-        "june": 0,
-        "july": 4,
-        "august": 0,
-        "september": 4,
-        "october": 6,
-        "november": 0,
-        "december": 0,
-        "grand_total": 18
-      },
+     
+        "grand_total": 18,
       "notes": [
         {
           "note_1": "1728000",
@@ -139,57 +75,20 @@
     {
       "category": "Aanganwadi Referrals (Women)",
       "monetary_compensation": "Pradhan Mantri Matritve Yojana.",
-      "monetary_compensation_breakdown": {
-        "january": 0,
-        "february": 0,
-        "march": 0,
-        "april": 0,
-        "may": 7,
-        "june": 1,
-        "august": 0,
-        "september": 0,
-        "october": 0,
-        "november": 0,
-        "december": 0,
+     
         "grand_total": 8
-      }
     },
     {
       "category": "Aanganwadi Referrals (Children)",
       "monetary_compensation": "- Cooked meal every day - INR 30/meal for children (Mon-Sat) \n- Immunization vaccination \n- Refer children to schools for admission",
-      "monetary_compensation_breakdown": {
-        "january": 0,
-        "february": 6,
-        "march": 0,
-        "april": 6,
-        "may": 1,
-        "june": 4,
-        "july": 2,
-        "august": 0,
-        "september": 0,
-        "october": 0,
-        "november": 0,
-        "december": 0,
+      
         "grand_total": 13
-      }
+      
     },
     {
       "category": "COVID-19 Vaccination Registrations",
-      "monetary_compensation_breakdown": {
-        "january": 0,
-        "february": 0,
-        "march": 0,
-        "april": 35,
-        "may": 10,
-        "june": 30,
-        "july": 10,
-        "august": 10,
-        "september": 0,
-        "october": 0,
-        "november": 0,
-        "december": 0,
-        "grand_total": 95
-      },
+      
+        "grand_total": 95,
       "notes": [
         {
           "note": "277210"

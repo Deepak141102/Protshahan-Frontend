@@ -68,7 +68,7 @@ const DataChart2 = () => {
     // Extract gender counts and percentages from the imported JSON data
     const labels = JsonData.gender_distribution.map(item => item.gender);
     const data = JsonData.gender_distribution.map(item => item.percentage_of_total);
-    
+  
     // Setting the state with the new gender data and its percentage information
     setGenderData({
       labels: labels,
@@ -85,13 +85,19 @@ const DataChart2 = () => {
       ],
     });
   }, []); // Empty dependency array to only run once when the component mounts
-
+  
   const options = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: {
         display: false,
+      },
+      tooltip: {
+        callbacks: {
+          // Append % symbol to each data point in the tooltip
+          label: (context) => `${context.raw}% from the total ${JsonData.total}`,
+        },
       },
     },
     scales: {
@@ -115,6 +121,8 @@ const DataChart2 = () => {
       y: {
         beginAtZero: true,
         ticks: {
+          // Append % symbol to each label on the y-axis
+          callback: (value) => `${value}%`,
           color: "rgba(33, 35, 49, 0.3)",
         },
         grid: {
@@ -132,6 +140,9 @@ const DataChart2 = () => {
       },
     },
   };
+  
+  // Pass the `options` to your chart component
+  
 
   useEffect(() => {
     const handleClickOutside = (event) => {

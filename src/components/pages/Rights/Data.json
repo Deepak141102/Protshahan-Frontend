@@ -187,5 +187,29 @@
       "category": "Organised Sector",
       "count": 11
     }
-  ]
+  ], "parent_profession": {
+    "total_count": 813,
+    "employment_data": [
+      {
+        "category": "Daily Wage Workers",
+        "count": 658,
+        "percentage": 80.99
+      },
+      {
+        "category": "Most Vulnerable Communities",
+        "count": 132,
+        "percentage": 16.24
+      },
+      {
+        "category": "Organised Sector",
+        "count": 15,
+        "percentage": 1.85
+      },
+      {
+        "category": "No One in the Family Works",
+        "count": 8,
+        "percentage": 0.98
+      }
+    ]
+  }
 }
