@@ -7,12 +7,13 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DataChart2 = () => {
   const [incomeData, setIncomeData] = useState(null);
+  const [genderData, setGenderData] = useState({ labels: [], datasets: [] });
+  const dropdownRefDoughnut = useRef(null); // Define the ref for the dropdown
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+  // Prepare income distribution data
   useEffect(() => {
-    // Extract the income distribution data from the imported JSON
     const incomeDistribution = JsonData.monthly_income.income_distribution;
-
-    // Prepare labels and data for the chart
     const labels = incomeDistribution.map((item) => item.range);
     const data = incomeDistribution.map((item) => item.percentage_of_total);
 
@@ -29,12 +30,11 @@ const DataChart2 = () => {
             "#121331", // Color 4
             "gray"
           ],
-         
           borderWidth: 1,
         },
       ],
     });
-  }, []); // Empty dependency array ensures it runs once when component mounts
+  }, []);
 
   const incomeOptions = {
     responsive: true,
@@ -52,24 +52,18 @@ const DataChart2 = () => {
       tooltip: {
         callbacks: {
           label: function (tooltipItem) {
-            return `${tooltipItem.label}: ${tooltipItem.raw}% from the total ${JsonData.monthly_income.total_entries}`; // Show percentage in tooltip
+            return `${tooltipItem.label}: ${tooltipItem.raw}% from the total ${JsonData.monthly_income.total_entries}`;
           },
         },
       },
     },
   };
 
-  const [genderData, setGenderData] = useState({
-    labels: [],
-    datasets: [],
-  });
-
+  // Prepare gender distribution data
   useEffect(() => {
-    // Extract gender counts and percentages from the imported JSON data
     const labels = JsonData.gender_distribution.map(item => item.gender);
     const data = JsonData.gender_distribution.map(item => item.percentage_of_total);
-  
-    // Setting the state with the new gender data and its percentage information
+
     setGenderData({
       labels: labels,
       datasets: [
@@ -84,8 +78,8 @@ const DataChart2 = () => {
         },
       ],
     });
-  }, []); // Empty dependency array to only run once when the component mounts
-  
+  }, []);
+
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -95,7 +89,6 @@ const DataChart2 = () => {
       },
       tooltip: {
         callbacks: {
-          // Append % symbol to each data point in the tooltip
           label: (context) => `${context.raw}% from the total ${JsonData.total}`,
         },
       },
@@ -112,16 +105,15 @@ const DataChart2 = () => {
           display: true,
           text: "Gender",
           font: {
-            size: 16, // Font size for the x-axis title
-            weight: "bold", // Make the font bold
+            size: 16,
+            weight: "bold",
           },
-          color: "#e8461e", // Color for the x-axis title
+          color: "#e8461e",
         },
       },
       y: {
         beginAtZero: true,
         ticks: {
-          // Append % symbol to each label on the y-axis
           callback: (value) => `${value}%`,
           color: "rgba(33, 35, 49, 0.3)",
         },
@@ -132,25 +124,23 @@ const DataChart2 = () => {
           display: true,
           text: "Number of Scholarships Disbursed",
           font: {
-            size: 16, // Font size for the y-axis title
-            weight: "bold", // Make the font bold
+            size: 16,
+            weight: "bold",
           },
-          color: "#e8461e", // Color for the y-axis title
+          color: "#e8461e",
         },
       },
     },
   };
-  
-  // Pass the `options` to your chart component
-  
 
+  // Handle click outside dropdown to close it
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
         dropdownRefDoughnut.current &&
         !dropdownRefDoughnut.current.contains(event.target)
       ) {
-        // Handle dropdown close logic if needed
+        setIsDropdownOpen(false);
       }
     };
 
@@ -164,17 +154,17 @@ const DataChart2 = () => {
     <div className="flex justify-center items-center gap-4 p-3 max-md:flex-col bg-[#dcdcdc]">
       {/* Doughnut Chart Section */}
       <div className="w-[45%] max-md:w-full h-[80vh] bg-white p-5 flex justify-center items-center flex-col shadow-xl rounded-xl">
-      <h2 className="text-2xl font-bold text-[#212331] mb-4 text-center">
+        <h2 className="text-2xl font-bold text-[#212331] mb-4 text-center">
           Monthly Income Doughnut Chart
         </h2>
-        <div className="w-[78%] max-md:w-full">
-        {incomeData && <Doughnut data={incomeData} options={incomeOptions} />} {/* Changed Doughnut to Doughnut as it was imported */}
+        <div ref={dropdownRefDoughnut} className="w-[78%] max-md:w-full">
+          {incomeData && <Doughnut data={incomeData} options={incomeOptions} />}
         </div>
       </div>
 
       {/* Gender Chart Section */}
       <div className="w-[45%] max-md:w-full h-[80vh] bg-white p-5 flex justify-center items-center flex-col shadow-xl rounded-xl">
-      <h2 className="text-2xl font-bold text-[#212331] mb-4 text-center">
+        <h2 className="text-2xl font-bold text-[#212331] mb-4 text-center">
           Number of Scholarships Disbursed by Gender
         </h2>
         <div className="w-full h-[60vh] flex justify-center">

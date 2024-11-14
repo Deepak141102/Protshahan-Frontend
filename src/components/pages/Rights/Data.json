@@ -211,5 +211,20 @@
         "percentage": 0.98
       }
     ]
-  }
+  },
+    "4-9 Years": {
+      "count": 28,
+      "percentage": 3.87
+    },
+    "10-19 Years": {
+      "count": 552,
+      "percentage": 74.67
+    },
+    "20-29 Years": {
+      "count": 57,
+      "percentage": 7.6
+    },
+    "total_people": {
+      "all": 637
+    }  
 }

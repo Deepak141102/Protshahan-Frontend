@@ -1,40 +1,41 @@
-// Importing necessary modules and components
-import React, { useState, useEffect } from "react"; // Import React, useState, useEffect hooks for managing component state and side effects
-import { Doughnut, Pie } from "react-chartjs-2"; // Import Doughnut and Pie chart components from react-chartjs-2
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js"; // Import necessary modules from Chart.js
-import CounterSection from "./CounterSection"; // Import CounterSection component
-import DataChart2 from "./DoughnutPie"; // Import DataChart2 component
-import DataChart1 from "./LineBar"; // Import DataChart1 component
-import IndiaMap from "./IndiaMap"; // Import IndiaMap component
-import occupationsData from "./Data.json"; // Import data from a local JSON file
-import GovtLinkage from "../Education/Category"; // Import GovtLinkage component
+import React, { useState, useEffect } from "react";
+import { Doughnut, Pie } from "react-chartjs-2";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import CounterSection from "./CounterSection";
+import DataChart2 from "./DoughnutPie";
+import DataChart1 from "./LineBar";
+import IndiaMap from "./IndiaMap";
+import occupationsData from "./Data.json";
+import GovtLinkage from "../Education/Category";
 
-// Register Chart.js components to use ArcElement, Tooltip, and Legend
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Rights = () => {
-  // State for selected data type, initially set to "gender"
   const [selectedData, setSelectedData] = useState("gender");
 
-  // Define data for the age chart
-  const ageData = {
-    labels: ["4-9 Years", "10-19 Years", "20-29 Years"], // Age groups as labels
+  // Destructure the data with a fallback to empty objects or default values
+  const {
+    "4-9 Years": fourToNine = { count: 0, percentage: 0 },
+    "10-19 Years": tenToNineteen = { count: 0, percentage: 0 },
+    "20-29 Years": twentyToTwentyNine = { count: 0, percentage: 0 },
+    total_people: { all: total = 0 } = {}, // Destructure `total_people` correctly
+  } = occupationsData;
+
+  // Data for the chart
+  const data = {
+    labels: ['4-9 Years', '10-19 Years', '20-29 Years'],
     datasets: [
       {
-        data: [28, 552, 57], // Data values for each age group
+        label: 'Age Group Distribution',
+        data: [fourToNine.count, tenToNineteen.count, twentyToTwentyNine.count], // Use the 'count' values
         backgroundColor: ["#3c3950", "#ce441a", "#919191"], // Colors for each section
-        borderColor: "#fff", // Border color for each section
-        borderWidth: 2, // Border width
-        hoverBackgroundColor: ["#121331", "#86250f", "#919191"], // Hover colors for each section
+
       },
     ],
   };
 
-  // Define options for the age chart
-  const AgeOptions = {
+  const ageOptions = {
     responsive: true,
-    maintainAspectRatio: false,
-    aspectRatio: 1,
     plugins: {
       legend: {
         position: "top",
@@ -44,50 +45,45 @@ const Rights = () => {
           usePointStyle: true,
           color: "#e8461e",
         },
-        onClick: (e) => e.stopPropagation(), // Prevents legend click filtering
+        onClick: null,
       },
       tooltip: {
         callbacks: {
-          label: (tooltipItem) => `${tooltipItem.label}: ${tooltipItem.raw}`, // Custom label for tooltip
+          label: function (tooltipItem) {
+            const currentValue = tooltipItem.raw;
+            // Ensure the total value is valid before dividing
+            const percentage = total > 0 ? ((currentValue / total) * 100).toFixed(2) : 0;
+            return `${currentValue} people (${percentage}%) from the total ${total} people`;
+          },
         },
-        backgroundColor: "#65190b", // Tooltip background color
-        titleColor: "#fff", // Tooltip title color
-        bodyColor: "#fff", // Tooltip body text color
       },
     },
   };
 
-  // State for profession data, initially null
   const [professionData, setProfessionData] = useState(null);
 
-  // Effect hook to load and prepare profession data
   useEffect(() => {
-    // Extract employment data and total count from JSON
-    const employmentData = occupationsData.parent_profession.employment_data;
-    const totalCount = occupationsData.parent_profession.total_count;
+    const employmentData = occupationsData?.parent_profession?.employment_data || [];
+    const totalCount = occupationsData?.parent_profession?.total_count || 1;
 
-    // Flatten employment data for organized sector categories
     const flattenedData = employmentData.flatMap((item) => {
       if (item.category === "Organised Sector" && item.details) {
         return item.details.map((detail) => ({
-          category: `${item.category} - ${detail.role}`, // Category includes role
+          category: `${item.category} - ${detail.role}`,
           count: detail.count,
         }));
       }
       return { category: item.category, count: item.count };
     });
 
-    // Calculate percentages for each category
     const finalData = flattenedData.map((item) => ({
       category: item.category,
       count: item.count,
-      percentage: (item.count / totalCount) * 100, // Calculate percentage
+      percentage: (item.count / totalCount) * 100,
     }));
 
-    // Filter data to exclude categories with count < 5
     const filteredData = finalData.filter((item) => item.count >= 5);
 
-    // Set the prepared data to the professionData state
     setProfessionData({
       labels: filteredData.map((item) => item.category),
       datasets: [
@@ -107,7 +103,6 @@ const Rights = () => {
     });
   }, []);
 
-  // Options for profession chart
   const professionOptions = {
     responsive: true,
     plugins: {
@@ -119,24 +114,20 @@ const Rights = () => {
           usePointStyle: true,
           color: "#e8461e",
         },
-        onClick: null, // Disable legend filtering on click
+        onClick: null,
       },
       tooltip: {
         callbacks: {
-          // Tooltip with custom percentage label
           label: function (tooltipItem) {
             const index = tooltipItem.dataIndex;
             const percentage = professionData.datasets[0].data[index];
-            return `${tooltipItem.dataset.label}: ${percentage.toFixed(
-              2
-            )}%  from the total [${occupationsData.parent_profession.total_count}]`;
+            return `${tooltipItem.dataset.label}: ${percentage.toFixed(2)}% from the total [${occupationsData.parent_profession.total_count}]`;
           },
         },
       },
     },
   };
 
-  // Component render
   return (
     <div className="bg-[#3c3950] min-h-screen font-lato">
       <div className="bg-[#212331] text-white py-8 px-4 sm:px-11">
@@ -171,19 +162,17 @@ const Rights = () => {
           <div className="bg-white rounded-lg shadow-lg">
             <CounterSection />
             <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 py-10 bg-[#dcdcdc] px-4">
-              {/* Data Chart for Age Ratio */}
               <div className="flex flex-col w-full md:w-[45%]">
                 <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full justify-between">
                   <h2 className="text-xl md:text-2xl font-bold text-center mb-4 text-[#212331]">
                     Age: 4-29 Years Boys & Girls
                   </h2>
                   <div className="flex justify-center items-center w-full h-[60vh]">
-                    <Doughnut data={ageData} options={AgeOptions} />
+                    <Doughnut data={data} options={ageOptions} />
                   </div>
                 </div>
               </div>
 
-              {/* Chart for Occupation of Guardians/Family */}
               <div className="flex flex-col w-full md:w-[45%]">
                 <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full justify-between">
                   <h2 className="text-xl md:text-2xl font-bold text-center mb-4 text-[#212331]">
@@ -197,7 +186,6 @@ const Rights = () => {
                 </div>
               </div>
             </div>
-            {/* India Map Section */}
             <IndiaMap />
             <DataChart1 />
             <DataChart2 />

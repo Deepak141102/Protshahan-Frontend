@@ -1,215 +1,171 @@
 import React, { useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import catalog from "./GovtLinkage.json"; // Ensure the path is correct
+import data from "./GovtLinkage.json"; // Ensure path is correct
 
-const GovtLinkage = () => {
+const ChartComponent = () => {
   const [selectedYear, setSelectedYear] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedYearData, setSelectedYearData] = useState(null);
+  const [showCategoryChart, setShowCategoryChart] = useState(false);
 
-  // Define your colors
-  const colors = [
-    "rgba(224, 70, 31, 1)", // Red
-    "rgba(242, 92, 84, 1)", // Pink
-    "rgba(134, 37, 15, 1)", // Brown
-    "rgba(223, 107, 79, 1)", // Orange
-    "rgba(101, 25, 11, 1)", // Dark Red
-  ];
+  const yearData = Object.keys(data).map((year) => ({
+    year,
+    total: data[year].total_grand_total,
+  }));
 
-  const getYearlyData = () => {
-    const years = Object.keys(catalog);
-    console.log("Available Years:", years); // Debugging to check available years
-
-    // Calculate total compensations for each year
-    const totalCompensations = years.map((year) => {
-      return catalog[year].reduce((total, entry) => {
-        const grandTotal =
-          entry.monetary_compensation_breakdown?.grand_total || 0; // Handle undefined
-        return total + grandTotal;
-      }, 0);
-    });
-
-    return {
-      labels: years, // Set the labels to the years array
-      datasets: [
-        {
-          label: "Total Compensation",
-          data: totalCompensations, // Total compensation for each year
-          backgroundColor: colors.slice(0, years.length), // Keep original colors for each year
-          hoverBackgroundColor: colors.slice(0, years.length), // Keep original colors for hover
-        },
-      ],
-    };
+  const handleYearClick = (year) => {
+    const yearDetails = data[year].data;
+    setSelectedYear(year);
+    setSelectedYearData(yearDetails);
+    setShowCategoryChart(true);
   };
 
-  const getCategoryData = (year) => {
-    const yearData = catalog[year];
-    const categories = yearData.map((entry) => entry.category);
-    const data = yearData.map(
-      (entry) => entry.monetary_compensation_breakdown?.grand_total || 0
-    ); // Handle undefined
-
-    return {
-      labels: categories,
-      datasets: [
-        {
-          label: `Categories in ${year}`,
-          data,
-          backgroundColor: "rgba(134, 37, 15, 1)", // Using Brown for the category bar
-          hoverBackgroundColor: "rgba(134, 37, 15, 0.8)", // Slightly lighter for hover
-        },
-      ],
-    };
+  const handleBackToYearlyChart = () => {
+    setShowCategoryChart(false);
+    setTimeout(() => {
+      setSelectedYear(null);
+      setSelectedYearData(null);
+    }, 500); // Delay for smooth transition
   };
 
-  const getMonthlyData = (year, category) => {
-    const categoryData = catalog[year].find(
-      (entry) => entry.category === category
-    );
-    if (!categoryData) return { labels: [], datasets: [] };
-
-    return {
-      labels: Object.keys(categoryData.monetary_compensation_breakdown).filter(
-        (month) => month !== "grand_total"
-      ),
-      datasets: [
-        {
-          label: `Monthly Data for ${category} in ${year}`,
-          data: Object.values(
-            categoryData.monetary_compensation_breakdown
-          ).filter((_, index) => index < 12),
-          backgroundColor: "rgba(242, 92, 84, 1)", // Using Pink for monthly data
-          hoverBackgroundColor: "rgba(242, 92, 84, 0.8)", // Slightly lighter for hover
-        },
-      ],
-    };
+  const totalChartData = {
+    labels: yearData.map((item) => item.year),
+    datasets: [
+      {
+        label: "Total Grand Total",
+        data: yearData.map((item) => item.total),
+        backgroundColor: "rgba(224, 70, 31, 1)",
+        borderColor: "rgba(224, 70, 31, 0.8)",
+        borderWidth: 1,
+      },
+    ],
   };
 
-  const handleYearClick = (event, elements) => {
-    if (elements.length > 0) {
-      const yearIndex = elements[0].index;
-      const year = Object.keys(catalog)[yearIndex]; // Get the year from the index
-      setSelectedYear(year);
-    }
+  const categoryChartData = {
+    labels: selectedYearData ? selectedYearData.map((item) => item.category) : [],
+    datasets: [
+      {
+        label: `Category Grand Total for ${selectedYear}`,
+        data: selectedYearData ? selectedYearData.map((item) => item.grand_total) : [],
+        backgroundColor: "rgba(153, 102, 255, 0.6)",
+        borderColor: "rgba(153, 102, 255, 1)",
+        borderWidth: 1,
+      },
+    ],
   };
-
-  const handleCategoryClick = (event, elements) => {
-    if (elements.length > 0) {
-      const category = event.chart.data.labels[elements[0].index];
-      setSelectedCategory(category);
-    }
-  };
-
-  let chartData;
-  let onClickHandler = null;
-  let headingText = ""; // Variable for dynamic heading text
-
-  if (!selectedYear) {
-    chartData = getYearlyData();
-    onClickHandler = handleYearClick;
-    headingText = "Click on a bar to view category data!"; // Heading when viewing yearly data
-  } else if (!selectedCategory) {
-    chartData = getCategoryData(selectedYear);
-    console.log("Selected Year Data:", chartData); // Debugging line
-    onClickHandler = handleCategoryClick;
-    headingText = "Click on a bar to view monthly data!"; // Heading when viewing category data
-  } else {
-    chartData = getMonthlyData(selectedYear, selectedCategory);
-    headingText = "Visualise monthly data!"; // Heading when viewing monthly data
-  }
 
   return (
-    <div className="flex justify-center py-10 px-4  bg-[#dcdcdc] ">
+    <div className="flex justify-center py-10 px-4 bg-[#dcdcdc]">
       <div className="container mx-auto p-4 bg-white shadow-lg rounded-lg max-w-6xl">
-        {selectedYear && !selectedCategory && (
-          <div className="flex justify-start p-4">
-            <button
-              className="bg-gradient-to-r from-gray-800 to-gray-600 p-3 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
-              onClick={() => {
-                setSelectedYear(null);
-                setSelectedCategory(null);
-              }}
-            >
-              <IoMdArrowRoundBack className="text-white text-2xl hover:text-gray-300 transition-all" />
+        <div className="flex justify-start p-4">
+          {showCategoryChart && (
+            <button className="transition-button" onClick={handleBackToYearlyChart}>
+              <IoMdArrowRoundBack className="text-white text-2xl hover:text-gray-300" />
             </button>
-          </div>
-        )}
-        {selectedCategory && (
-          <div className="flex justify-start p-4 ">
-            <button
-              className="bg-gradient-to-r from-gray-800 to-gray-600 p-3 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
-              onClick={() => setSelectedCategory(null)}
-            >
-              <IoMdArrowRoundBack className="text-white text-2xl hover:text-gray-300 transition-all" />
-            </button>
-          </div>
-        )}
+          )}
+        </div>
         <h1 className="text-2xl font-bold text-[#212331] text-center mb-4">
           Interactive Data Visualization
         </h1>
-        <div className="relative">
-          <div className="w-full h-[50vh]">
-            <Bar
-              data={chartData}
-              options={{
-                onClick: onClickHandler,
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                  legend: {
-                    display: false,
-                    position: "top",
-                    onClick: (e) => {
-                      if (e && typeof e.stopPropagation === "function") {
-                        e.stopPropagation();
-                      }
-                    },
-                    labels: {
-                      boxWidth: 15,
-                      padding: 20,
-                      usePointStyle: true,
-                    },
+        <div className="chart-wrapper">
+          <div className={`chart-container ${showCategoryChart ? "slide-out-left" : "slide-in-left"}`}>
+            {!showCategoryChart && (
+              <Bar
+                data={totalChartData}
+                options={{
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  onClick: (event, elements) => {
+                    if (elements.length > 0) {
+                      const year = yearData[elements[0].index].year;
+                      handleYearClick(year);
+                    }
                   },
-                },
-                scales: {
-                  x: {
-                    title: {
-                      display: true,
-                      text: `${
-                        selectedYear && !selectedCategory
-                          ? "Categories →"
-                          : selectedCategory
-                          ? "Months →"
-                          : "Years →"
-                      }`, // Add right arrow on x-axis label
-                      font: {
-                        size: 14,
-                      },
-                      color: "#e0461f",
-                    },
+                  plugins: {
+                    legend: { display: false },
                   },
-                  y: {
-                    title: {
-                      display: true,
-                      text: `Total Compensation →`, // Add up arrow on y-axis label
-                      font: {
-                        size: 14,
-                      },
-                      color: "#e0461f",
-                    },
+                  scales: {
+                    x: { title: { display: true, text: "Years →", color: "#e0461f" } },
+                    y: { title: { display: true, text: "Total Compensation →", color: "#e0461f" } },
                   },
-                },
-              }}
-            />
+                }}
+              />
+            )}
+          </div>
+          <div className={`chart-container ${showCategoryChart ? "slide-in-right" : "slide-out-right"}`}>
+            {showCategoryChart && (
+              <Bar
+                data={categoryChartData}
+                options={{
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  plugins: {
+                    legend: { display: false },
+                  },
+                  scales: {
+                    x: { title: { display: true, text: "Categories →", color: "#9966ff" } },
+                    y: { title: { display: true, text: "Category Total →", color: "#9966ff" } },
+                  },
+                }}
+              />
+            )}
           </div>
         </div>
-        <h2 className="text-[20px] font-bold text-[#e0461f] text-center mb-4">
-          {headingText}
-        </h2>
-        {/* Dynamic heading */}
       </div>
+      <style>{`.chart-wrapper {
+  position: relative;
+  width: 100%;
+  height: 60vh; /* Set height to 75vh for both charts */
+  overflow: hidden;
+}
+
+.chart-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-in-left {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.slide-out-left {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.slide-in-right {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.slide-out-right {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.transition-button {
+  background: linear-gradient(to right, #333, #555);
+  padding: 0.75rem;
+  border-radius: 50%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.transition-button:hover {
+  transform: scale(1.15);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+`}</style>
     </div>
   );
 };
 
-export default GovtLinkage;
+export default ChartComponent;

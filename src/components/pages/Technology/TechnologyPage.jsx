@@ -14,6 +14,8 @@ import {
 } from "chart.js";
 import { icon } from "leaflet";
 import { data } from "autoprefixer";
+import SalaryChart from "./Income";
+
 
 ChartJS.register(
   CategoryScale,
@@ -326,6 +328,7 @@ const GraphFourth = () => {
                 </div>
               </div>
             </div>
+                <SalaryChart/>
           </div>
         </div>
       </div>
