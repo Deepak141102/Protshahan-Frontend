@@ -7,7 +7,7 @@ export default defineConfig({
     rollupOptions: {
       external: [
         '@fortawesome/fontawesome-svg-core', // Externalize FontAwesome
-        'chart.js', // Externalize chart.js if needed to avoid bundling
+        'chart.js', 
       ]
     }
   },
