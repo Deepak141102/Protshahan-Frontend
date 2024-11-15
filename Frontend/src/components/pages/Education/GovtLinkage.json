@@ -1,0 +1,219 @@
+{
+  "2023": {
+    "total_grand_total": 663,
+    "data": [
+      {
+        "category": "Aadhaar Card",
+        "description": "Creation of Aadhaar card enables basic documentation for banks and government services.",
+        "grand_total": 90,
+        "notes": [
+          {
+            "note_1": "432000",
+            "note_2": "828000"
+          },
+          {
+            "note": "Component 1 - Base Number: 24 (90 - 66, number of school admissions supported by team Protsahan)",
+            "working_rationale": "Component 1:\nBase Number: 24 (90 - 66, no. of school admissions supported by team Protsahan).\nCalculation: 1500 (estimated cost of chronic illness treatment) * Base Number * 12 months.\n\nComponent 2:\nBase Number: 66 (Girl champions, children - younger population).\nCalculation: 1500 (estimated cost of chronic illness treatment) * Base Number * 4 (Health services availed once per year).\n\nTotal - Component 1 + Component 2."
+          }
+        ]
+      },
+      {
+        "category": "School Admission",
+        "monetary_compensation": {
+          "up_to": 1600,
+          "notes": "(for uniform & books)"
+        },
+        "grand_total": 66
+      },
+      {
+        "category": "College Admission",
+        "monetary_compensation": "Enable for job",
+        "monetary_compensation_breakdown": {
+          "message": "No data available for this category"
+        }
+      },
+      {
+        "category": "Ration Card",
+        "monetary_compensation": "INR 175 per head",
+        "grand_total": 32,
+        "notes": [
+          {
+            "note_1": "71040000",
+            "note_2": "71040000"
+          },
+          {
+            "remarks": "8 Ration Cards supported by team & Ration Cards unlocked for 24 more adults."
+          },
+          {
+            "working_rationale": "Base Number: 24 (Ration cards unlocked via Aadhaar Card) + 8 (supported by team) = 32. Avg. cost of basic household groceries = INR 5000. Average lifespan of an Indian = 71 years, assuming the age of community members to be in the range of 25-30 years; they may avail the benefits of the ration card for approx. 37 more years for 12 months per year. Calculation = Base number * 5000 * 37 * 12."
+          }
+        ]
+      },
+      {
+        "category": "PAN Card",
+        "monetary_compensation": "Linked with bank account and PM Jan Dhan Yojna - INR 1500",
+        "grand_total": 24
+      },
+      {
+        "category": "Labour Card",
+        "monetary_compensation": "Up to 1000 per month for 2 children",
+        "grand_total": 18,
+        "notes": [
+          {
+            "note_1": "1728000",
+            "note_2": "1728000"
+          },
+          {
+            "working_rationale": "-1000 x 12 (months in a year) until they reach the age of 18. Assuming the age of the children to be at least 10 years, the individual may avail the benefit of the labour card for at least 8 years. Calculation = 12000 * number of labour card(s) * 8."
+          }
+        ]
+      },
+      {
+        "category": "Aanganwadi Referrals (Women)",
+        "monetary_compensation": "Pradhan Mantri Matritve Yojana.",
+        "grand_total": 8
+      },
+      {
+        "category": "Aanganwadi Referrals (Children)",
+        "monetary_compensation": "- Cooked meal every day - INR 30/meal for children (Mon-Sat) \n- Immunization vaccination \n- Refer children to schools for admission",
+        "grand_total": 13
+      },
+      {
+        "category": "COVID-19 Vaccination Registrations",
+        "grand_total": 95,
+        "notes": [
+          {
+            "note": "277210"
+          },
+          {
+            "working_rationale": "Component 1 - Overall cost of getting a COVID vaccination from a private hospital/clinic: INR 800. Calculation = No. of vaccine registrations * 800 = amount unlocked. Component 2 - 353 * 6 * T10."
+          }
+        ]
+      },
+      {
+        "category": "COVID Widow Pension (CM) ",
+        "grand_total": 10,
+        "notes": [
+          {
+            "note": "19776000"
+          },
+          {
+            "working_rationale": "Calculation= 50,000 *  No. of women connected (as it is a one-time aid)"
+          }
+        ]
+      },
+      {
+        "category": "E-Shram Card",
+        "grand_total": 27
+      },
+      {
+        "category": "Bank Accounts",
+        "grand_total": 54
+      },
+      {
+        "category": "Voter ID",
+        "grand_total": 23
+      },
+      {
+        "category": "Referral to 1076 (Cast Certificate)",
+        "grand_total": 194
+      },
+      {
+        "category": "Vidwa Pension",
+        "grand_total": 4
+      },
+      {
+        "category": "Income Certificate",
+        "grand_total": 5
+      }
+     
+    ]
+  },
+  
+  "2024": {
+    "total_grand_total": 797,
+    "data": 
+      [
+        {
+          "category": "Aadhaar Card",
+          "description": "Creation of Aadhaar card enables basic documentation for banks and government services.",
+          "grand_total": 34
+        },
+        {
+          "category": "School Admission",
+          "description": "Assistance with school admissions for children.",
+          "grand_total": 8
+        },
+        {
+          "category": "Rehabilitation",
+          "description": "Rescue & Transition from Begging, sexual abuse, early and forced marriages, DV, any form Child Abuse, DV",
+          "monetary_compensation_breakdown": {
+            "message": "No data available for this category."
+          }
+        },
+        {
+          "category": "Ration Card",
+          "description": "Facilitation of ration card applications.",
+          "grand_total": 488
+        },
+        {
+          "category": "PAN Card",
+          "description": "Assistance in obtaining PAN cards for individuals.",
+          "grand_total": 128
+        },
+        {
+          "category": "Labour Card",
+          "description": "Support for obtaining labour cards.",
+          "grand_total": 270
+        },
+        {
+          "category": "Aanganwadi Referrals (Women)",
+          "description": "Referrals to Aanganwadi services for women.",
+          "grand_total": 6
+        },
+        {
+          "category": "Aanganwadi Referrals (Children)",
+          "description": "Referrals to Aanganwadi services for children.",
+          "grand_total": 28
+        },
+        {
+          "category": "Reintegration",
+          "description": "Educational Reintegration Support",
+          "monetary_compensation_breakdown": {
+            "message": "No data available for this category."
+          }
+        },
+        {
+          "category": "Educational Advancement.",
+          "description": "Post-secondary Education or Advanced Learning Access",
+          "monetary_compensation_breakdown": {
+            "message": "No data available for this category."
+          }
+        },
+        {
+          "category": "Bank Accounts",
+          "description": "Assistance with opening bank accounts.",
+          "grand_total": 46
+        },
+        {
+          "category": "Voter ID",
+          "description": "Assistance in obtaining voter IDs.",
+          "grand_total": 458
+        },
+        {
+          "category": "Referral to 181",
+          "description": "Referral services to 181 helpline.",
+          "grand_total": 40
+        },
+        {
+          "category": "Referral to 1076 (Caste Certificate)",
+          "description": "Assistance in obtaining caste certificates.",
+          "grand_total": 6
+        },
+        {
+          "category": "Income Certificate",
+          "description": "Facilitation of income certificate applications.",
+          "grand_total": 114
+        }
+      ]}
+    }

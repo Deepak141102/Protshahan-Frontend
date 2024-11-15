@@ -1,0 +1,216 @@
+{
+  "Number of Metrix": "April 2023 - March 2024",
+  "direct_cash_transfer_scholarships": {
+    "number_disbursed": 241,
+    "amount_disbursed_inr": 1446000
+  },
+  "digital_device_scholarships": {
+    "number_awarded": 10,
+    "amount_invested_inr": 99000
+  },
+  "categories_of_scholarship": {
+    "Disability": {
+      "count": 20,
+      "percentage": 3.18
+    },
+    "Merit": {
+      "count": 19,
+      "percentage": 3.02
+    },
+    "Need Equity": {
+      "count": 531,
+      "percentage": 84.49
+    },
+    "Need Equity + Disability": {
+      "count": 1,
+      "percentage": 0.16
+    },
+    "Need Equity + Merit": {
+      "count": 55,
+      "percentage": 8.75
+    },
+    "STEM (Science)": {
+      "count": 2,
+      "percentage": 0.32
+    }
+  },
+  "monthly_income": {
+    "total_entries": 815,
+    "income_distribution": [
+      {
+        "range": "Upto INR 5,000",
+        "count": 486,
+        "percentage_of_total": 59.64
+      },
+      {
+        "range": "Upto INR 10,000",
+        "count": 297,
+        "percentage_of_total": 36.46
+      },
+      {
+        "range": "Upto INR 15,000 & 15,000 +",
+        "count": 19,
+        "percentage_of_total": 2.33
+      },
+      {
+        "range": "No Income",
+        "count": 13,
+        "percentage_of_total": 1.60
+      }
+    ]
+  },
+  "place_details": [
+    {
+      "Native": "Andhra Pradesh",
+      "Place Address": "Amaravati",
+      "Count": 1
+    },
+    {
+      "Native": "Uttar Pradesh",
+      "Place Address": "Lucknow",
+      "Count": 171
+    },
+    {
+      "Native": "Bihar",
+      "Place Address": "Patna",
+      "Count": 546
+    },
+    {
+      "Native": "Haryana",
+      "Place Address": "Chandigarh",
+      "Count": 13
+    },
+    {
+      "Native": "Rajasthan",
+      "Place Address": "Jaipur",
+      "Count": 55
+    },
+    {
+      "Native": "Madhya Pradesh",
+      "Place Address": "Bhopal",
+      "Count": 4
+    },
+    {
+      "Native": "Uttarakhand",
+      "Place Address": "Dehradun",
+      "Count": 5
+    },
+    {
+      "Native": "Chhattisgarh",
+      "Place Address": "",
+      "Count": 3
+    },
+    {
+      "Native": "Jharkhand",
+      "Place Address": "",
+      "Count": 3
+    },
+    {
+      "Native": "Nepal",
+      "Place Address": "",
+      "Count": 1
+    },
+    {
+      "Native": "Delhi",
+      "Place Address": "",
+      "Count": 9
+    },
+    {
+      "Native": "Others",
+      "Place Address": "",
+      "Count": 5
+    }
+  ],
+  "support_request": {
+    "total_entries": 820,
+    "support_types": [
+      {
+        "type": "Direct Bank Transfer",
+        "count": 753,
+        "percentage_of_total": 91.80
+      },
+      {
+        "type": "Digital Device",
+        "count": 58,
+        "percentage_of_total": 7.07
+      },
+      {
+        "type": "Direct Benefit Transfer + Demand Draft",
+        "count": 5,
+        "percentage_of_total": 0.61
+      },
+      {
+        "type": "In Kind Scholarship Support",
+        "count": 4,
+        "percentage_of_total": 0.49
+      }
+    ]
+  },
+  "total": 637,
+  "gender_distribution": [
+    {
+      "gender": "Male",
+      "count": 558,
+      "percentage_of_total": 87.60
+    },
+    {
+      "gender": "Female",
+      "count": 79,
+      "percentage_of_total": 12.40
+    }
+  ],
+  "occupations": [
+    {
+      "category": "Most Vulnerable Communities",
+      "count": 71
+    },
+    {
+      "category": "Daily Wage Workers",
+      "count": 554
+    },
+    {
+      "category": "Organised Sector",
+      "count": 11
+    }
+  ],
+  "parent_profession": {
+    "total_count": 813,
+    "employment_data": [
+      {
+        "category": "Daily Wage Workers",
+        "count": 658,
+        "percentage": 80.99
+      },
+      {
+        "category": "Most Vulnerable Communities",
+        "count": 132,
+        "percentage": 16.24
+      },
+      {
+        "category": "Organised Sector",
+        "count": 15,
+        "percentage": 1.85
+      },
+      {
+        "category": "No One in the Family Works",
+        "count": 8,
+        "percentage": 0.98
+      }
+    ]
+  },
+  "4-9 Years": {
+    "count": 43,
+    "percentage": 3.87
+  },
+  "10-19 Years": {
+    "count": 704,
+    "percentage": 74.67
+  },
+  "20-29 Years": {
+    "count": 70,
+    "percentage": 7.6
+  },
+  "total_people": {
+    "all": 817
+  }
+}
