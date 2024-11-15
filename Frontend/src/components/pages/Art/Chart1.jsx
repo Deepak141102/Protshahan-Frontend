@@ -21,7 +21,7 @@ ChartJS.register(
 );
 
 // Importing JSON data directly
-import JsonData from "./beat.json"; // Path to your data.json file
+import JsonData from "./beat.json"; 
 
 const FamilyMembersChart = () => {
   // Extract the family members data from the imported JSON file
