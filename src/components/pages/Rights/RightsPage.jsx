@@ -7,6 +7,9 @@ import DataChart1 from "./LineBar";
 import IndiaMap from "./IndiaMap";
 import occupationsData from "./Data.json";
 import GovtLinkage from "../Education/Category";
+import HomeVisitsPieChart from "./HomeVisitsAndDistribution";
+import ServiverChart from "./IssuesChart1";
+import LostChart from "./IssuesChart2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -189,6 +192,9 @@ const Rights = () => {
             <IndiaMap />
             <DataChart1 />
             <DataChart2 />
+            <HomeVisitsPieChart/>
+            <ServiverChart/>
+            <LostChart/>
             <GovtLinkage />
           </div>
         </div>

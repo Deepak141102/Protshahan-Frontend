@@ -12,6 +12,7 @@ import {
 import { IoMdArrowRoundBack } from "react-icons/io";
 import yearlyData from "./YearlyMonthlyData.json"; // Yearly data
 import studentData from "./StudentPassOut.json"; // Student pass out data
+import DomesticViolenceDoughnutChart from "./Gec";
 
 
 
@@ -189,9 +190,10 @@ const Education = () => {
             </div>
           </div>
 
-          <div className="flex justify-center py-10 px-4  bg-[#dcdcdc] gap-4 max-md:flex-col">
+          <div className="flex justify-center py-10 px-4  bg-[#dcdcdc] gap-4 flex-col max-md:flex-col">
             {/* Yearly Bar Chart */}
-            <div className="w-full max-md:w-full h-[73vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
+            <div className="flex gap-4 max-md:flex-col">
+            <div className="w-1/2 max-md:w-full h-[73vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
               <div
                 className={`transition-transform duration-700 ease-in-out transform ${showMonthlyChart ? "-translate-x-[45rem]" : "translate-x-0"
                   }`}
@@ -307,7 +309,7 @@ const Education = () => {
             </div>
 
             {/* Student Pass Out Chart */}
-            <div className="w-full max-md:w-full h-[73 vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
+            <div className="w-1/2 max-md:w-full h-[73 vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
               {selectedSubject && (
                 <div className="flex justify-start pt-0">
                   <button
@@ -362,10 +364,11 @@ const Education = () => {
                 </h2>
               )}
             </div>
+            </div>
+<DomesticViolenceDoughnutChart/>
           </div>
 
           
-
         </div>
       </div>
     </div>

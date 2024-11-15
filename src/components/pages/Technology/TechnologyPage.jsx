@@ -15,6 +15,7 @@ import {
 import { icon } from "leaflet";
 import { data } from "autoprefixer";
 import SalaryChart from "./Income";
+import BarChart from "./Issues";
 
 
 ChartJS.register(
@@ -329,6 +330,7 @@ const GraphFourth = () => {
               </div>
             </div>
                 <SalaryChart/>
+                <BarChart/>
           </div>
         </div>
       </div>

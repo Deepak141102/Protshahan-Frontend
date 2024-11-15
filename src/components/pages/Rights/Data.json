@@ -35,42 +35,27 @@
     }
   },
   "monthly_income": {
-    "total_entries": 180,
+    "total_entries": 815,
     "income_distribution": [
+      {
+        "range": "Upto INR 5,000",
+        "count": 486,
+        "percentage_of_total": 59.64
+      },
+      {
+        "range": "Upto INR 10,000",
+        "count": 297,
+        "percentage_of_total": 36.46
+      },
+      {
+        "range": "Upto INR 15,000 & 15,000 +",
+        "count": 19,
+        "percentage_of_total": 2.33
+      },
       {
         "range": "No Income",
         "count": 13,
-        "percentage_of_total": 7.34
-      },
-      {
-        "range": "Upto INR 5000",
-        "count": 66,
-        "percentage_of_total": 37.3
-      },
-      {
-        "range": "7,000 to 8,000",
-        "count": 1,
-        "percentage_of_total": 0.56
-      },
-      {
-        "range": "8,000",
-        "count": 1,
-        "percentage_of_total": 0.56
-      },
-      {
-        "range": "Upto INR 10000",
-        "count": 89,
-        "percentage_of_total": 50.28
-      },
-      {
-        "range": "Upto INR 15000",
-        "count": 9,
-        "percentage_of_total": 5.08
-      },
-      {
-        "range": "More than INR 15000",
-        "count": 1,
-        "percentage_of_total": 0.56
+        "percentage_of_total": 1.60
       }
     ]
   },
@@ -187,7 +172,8 @@
       "category": "Organised Sector",
       "count": 11
     }
-  ], "parent_profession": {
+  ],
+  "parent_profession": {
     "total_count": 813,
     "employment_data": [
       {
@@ -212,19 +198,19 @@
       }
     ]
   },
-    "4-9 Years": {
-      "count": 28,
-      "percentage": 3.87
-    },
-    "10-19 Years": {
-      "count": 552,
-      "percentage": 74.67
-    },
-    "20-29 Years": {
-      "count": 57,
-      "percentage": 7.6
-    },
-    "total_people": {
-      "all": 637
-    }  
+  "4-9 Years": {
+    "count": 43,
+    "percentage": 3.87
+  },
+  "10-19 Years": {
+    "count": 704,
+    "percentage": 74.67
+  },
+  "20-29 Years": {
+    "count": 70,
+    "percentage": 7.6
+  },
+  "total_people": {
+    "all": 817
+  }
 }

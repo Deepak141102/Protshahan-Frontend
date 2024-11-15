@@ -32,7 +32,7 @@ const ChartComponent = () => {
     labels: yearData.map((item) => item.year),
     datasets: [
       {
-        label: "Total Grand Total",
+        label: "Grand Total",
         data: yearData.map((item) => item.total),
         backgroundColor: "rgba(224, 70, 31, 1)",
         borderColor: "rgba(224, 70, 31, 0.8)",
@@ -42,11 +42,15 @@ const ChartComponent = () => {
   };
 
   const categoryChartData = {
-    labels: selectedYearData ? selectedYearData.map((item) => item.category) : [],
+    labels: selectedYearData
+      ? selectedYearData.map((item) => item.category)
+      : [],
     datasets: [
       {
         label: `Category Grand Total for ${selectedYear}`,
-        data: selectedYearData ? selectedYearData.map((item) => item.grand_total) : [],
+        data: selectedYearData
+          ? selectedYearData.map((item) => item.grand_total)
+          : [],
         backgroundColor: "rgba(153, 102, 255, 0.6)",
         borderColor: "rgba(153, 102, 255, 1)",
         borderWidth: 1,
@@ -59,7 +63,10 @@ const ChartComponent = () => {
       <div className="container mx-auto p-4 bg-white shadow-lg rounded-lg max-w-6xl">
         <div className="flex justify-start p-4">
           {showCategoryChart && (
-            <button className="transition-button" onClick={handleBackToYearlyChart}>
+            <button
+              className="transition-button"
+              onClick={handleBackToYearlyChart}
+            >
               <IoMdArrowRoundBack className="text-white text-2xl hover:text-gray-300" />
             </button>
           )}
@@ -68,31 +75,64 @@ const ChartComponent = () => {
           Interactive Data Visualization
         </h1>
         <div className="chart-wrapper">
-          <div className={`chart-container ${showCategoryChart ? "slide-out-left" : "slide-in-left"}`}>
+          <div
+            className={`chart-container ${
+              showCategoryChart ? "slide-out-left" : "slide-in-left"
+            }`}
+          >
             {!showCategoryChart && (
-              <Bar
-                data={totalChartData}
-                options={{
-                  responsive: true,
-                  maintainAspectRatio: false,
-                  onClick: (event, elements) => {
-                    if (elements.length > 0) {
-                      const year = yearData[elements[0].index].year;
-                      handleYearClick(year);
-                    }
-                  },
-                  plugins: {
-                    legend: { display: false },
-                  },
-                  scales: {
-                    x: { title: { display: true, text: "Years →", color: "#e0461f" } },
-                    y: { title: { display: true, text: "Total Compensation →", color: "#e0461f" } },
-                  },
-                }}
-              />
+              <>
+                <Bar
+                  data={totalChartData}
+                  options={{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    onClick: (event, elements) => {
+                      if (elements.length > 0) {
+                        const year = yearData[elements[0].index].year;
+                        handleYearClick(year);
+                      }
+                    },
+                    plugins: {
+                      legend: { display: false },
+                    },
+                    scales: {
+                      x: {
+                        title: {
+                          display: true,
+                          text: "Years →",
+                          color: "#e0461f",
+                          font: {
+                            size: 16,
+                            weight: "bold",
+                          },
+                        },
+                      },
+                      y: {
+                        title: {
+                          display: true,
+                          text: "Total Compensation →",
+                          color: "#e0461f",
+                          font: {
+                            size: 16,
+                            weight: "bold",
+                          },
+                        },
+                      },
+                    },
+                  }}
+                />
+                <p className="text-center text-[#e0461f] mt-4 text-xl font-semibold">
+                  Click on any bar to see the categories
+                </p>
+              </>
             )}
           </div>
-          <div className={`chart-container ${showCategoryChart ? "slide-in-right" : "slide-out-right"}`}>
+          <div
+            className={`chart-container ${
+              showCategoryChart ? "slide-in-right" : "slide-out-right"
+            }`}
+          >
             {showCategoryChart && (
               <Bar
                 data={categoryChartData}
@@ -103,8 +143,20 @@ const ChartComponent = () => {
                     legend: { display: false },
                   },
                   scales: {
-                    x: { title: { display: true, text: "Categories →", color: "#9966ff" } },
-                    y: { title: { display: true, text: "Category Total →", color: "#9966ff" } },
+                    x: {
+                      title: {
+                        display: true,
+                        text: "Categories →",
+                        color: "#9966ff",
+                      },
+                    },
+                    y: {
+                      title: {
+                        display: true,
+                        text: "Category Total →",
+                        color: "#9966ff",
+                      },
+                    },
                   },
                 }}
               />
@@ -124,12 +176,13 @@ const ChartComponent = () => {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 55vh;
   transition: transform 0.5s ease, opacity 0.5s ease;
   opacity: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction:column;
 }
 
 .slide-in-left {
