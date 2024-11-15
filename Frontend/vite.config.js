@@ -34,7 +34,7 @@ export default defineConfig({
   },
   server: {
     fs: {
-      strict: false, // Allow serving files from outside the root if necessary
+      strict: false, 
     },
   },
 });
