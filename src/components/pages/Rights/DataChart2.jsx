@@ -23,9 +23,9 @@ ChartJS.register(
 );
 
 // Import JSON data
-import scholarshipData from "./Data.json";
+import scholarshipData from "../json/rights/Data.json";
 
-const ScholarshipLineChart = () => {
+const DataChart2 = () => {
   const [chartData, setChartData] = useState(null);
   const [supportRequestData, setSupportRequestData] = useState(null);
 
@@ -73,7 +73,7 @@ const ScholarshipLineChart = () => {
         title: {
           display: true,
           text: "Percentage (%)",
-          color:'#e8461e'
+          color: "#e8461e",
         },
       },
       x: {
@@ -99,13 +99,13 @@ const ScholarshipLineChart = () => {
           label: "Support Request Distribution",
           data: data,
           backgroundColor: [
-           "rgb(224, 70, 31)", // Color 1
+            "rgb(224, 70, 31)", // Color 1
             "rgb(101, 25, 11)", // Color 2
             "gray", // Color 4
             "rgb(134, 37, 15)", // Color 3
             "rgb(50, 105, 170)", // Color 5 // In Kind Scholarship Support
           ],
-         
+
           borderWidth: 1,
         },
       ],
@@ -114,6 +114,7 @@ const ScholarshipLineChart = () => {
 
   const supportRequestOptions = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         labels: {
@@ -136,20 +137,21 @@ const ScholarshipLineChart = () => {
   return (
     <>
       <div className="flex justify-center items-center gap-4 p-3 max-md:flex-col bg-[#dcdcdc] py-4">
-        <div className="w-[45%] max-md:w-full h-[80vh] bg-white p-5 flex justify-center items-center flex-col shadow-xl rounded-xl">
-          <h2 className="font-lato text-2xl text-[#333] mb-5 text-center">
-            Scholarship Categories Distribution
+        <div className="w-1/2 max-md:w-full h-[75vh] bg-white p-5 py-6 flex justify-center items-center flex-col shadow-md rounded-lg">
+          <h2 className="font-lato text-xl text-[#121331] mb-5 text-center font-semibold">
+            Categories of Provided Scholarships by us
           </h2>
-
-          {chartData && <Line data={chartData} options={options} />}
+          <div className="w-full max-md:h-[54vh] h-full">
+            {chartData && <Line data={chartData} options={options} />}
+          </div>
         </div>
 
         {/* Support Request Doughnut Chart */}
-        <div className="w-[45%] max-md:w-full h-[80vh] bg-white p-5 flex justify-center items-center flex-col shadow-xl rounded-xl">
-          <h2 className="font-lato text-2xl text-[#333] mb-5 text-center pt-3">
-            Support Request Doughnut Chart
+        <div className="w-1/2 max-md:w-full h-[75vh] bg-white p-5 py-6 flex justify-center items-center flex-col shadow-md rounded-lg">
+          <h2 className="font-lato text-xl text-[#121331] mb-5 text-center pt-3 font-semibold">
+            Support Channels Breakdown
           </h2>
-          <div className="w-[78%] max-md:w-full">
+          <div className="w-full max-md:h-[54vh] h-full">
             {supportRequestData && (
               <Doughnut
                 data={supportRequestData}
@@ -163,4 +165,4 @@ const ScholarshipLineChart = () => {
   );
 };
 
-export default ScholarshipLineChart;
+export default DataChart2;

@@ -1,7 +1,7 @@
 import { React, useState, useRef, useEffect } from "react";
-import { Pie, Radar, Bar, Line, Doughnut } from "react-chartjs-2";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilter } from "@fortawesome/free-solid-svg-icons";
+import {Doughnut } from "react-chartjs-2";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import {
   Chart as ChartJS,
   ArcElement,
@@ -15,7 +15,6 @@ import {
   Filler,
   RadialLinearScale,
 } from "chart.js";
-import { FaGenderless, FaUsers } from "react-icons/fa";
 import RightsPage2 from "../../RightsPage2";
 import DataChart1 from "./DataChart3";
 
@@ -59,6 +58,7 @@ const DataChart1 = () => {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: "top",
@@ -126,7 +126,7 @@ const DataChart1 = () => {
           <div className="flex text-4xl max-md:text-2xl mb-4">
             <h1 className="max-md:text-center max-md:text-2xl">
               <span className="text-yellow-400 pl-4">Protsahan</span>
-              -For a Better Future | Data Visualization
+              -For a Better Future | Duuata Visualization
             </h1>
           </div>
           <div className="bg-black py-11 max-p-0 rounded-lg bg-opacity-60">

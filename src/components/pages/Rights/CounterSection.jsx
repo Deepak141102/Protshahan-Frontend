@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaMoneyBillWave, FaLaptop, FaHandHoldingHeart, FaRupeeSign } from 'react-icons/fa';
-import data from './Data.json'; // Import the JSON file
+import data from '../json/rights/Data.json'; // Import the JSON file
 
 const CounterSection = () => {
   const counters = [

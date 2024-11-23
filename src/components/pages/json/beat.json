@@ -1,0 +1,77 @@
+{
+    
+    
+  
+     "community_or_gec": {
+       "total_applicants": 200,
+       "applicants": [
+         {
+           "type": "Community",
+           "hindi": "सामुदायिक",
+           "count": 82,
+           "percentage_of_total": 41
+         },
+         {
+           "type": "Girl Empowerment Center",
+           "hindi": "बालिका सशक्तिकरण केंद्र",
+           "count": 118,
+           "percentage_of_total": 59
+         }
+       ]
+     },
+   
+     
+    
+     "person_conditions": {
+       "Poverty Line Below 10k": 70,
+       "First Gen Learner": 70,
+       "Basic Docs Nominated": 30,
+       "Internally Migrated Family": 20,
+       "Disability in Family": 5,
+       "Long Term Ailment in Family": 3,
+       "Abuse Survivor Nominated": 7,
+       "No Govt Welfare Access": 8,
+       "PVTG Caste Minority": 3,
+       "Lost One Parent": 2,
+       "Healthcare Access Issues": 5,
+       "Disability in Applicant": 2,
+       "DV Survivor in Family": 1,
+       "School Dropout": 1
+     },
+     "Age Groups": {
+       "4-9 Years": {
+         "Total": 39,
+         "Percentage": 4.91
+       },
+       "10-19 Years": {
+         "Total": 679,
+         "Percentage": 85.46
+       },
+       "20-29 Years": {
+         "Total": 75,
+         "Percentage": 9.45
+       },
+       "30+ Years": {
+         "Total": 1,
+         "Percentage": 0.13
+       }
+     },"First_Generation_Learner": [
+      {
+        "Salary": "Upto 5,000 INR",
+        "First_Generation_Learner": 37,
+        "total_attended": 67
+      },
+      {
+        "Salary": "Upto 10,000 INR",
+        "First_Generation_Learner": 46,
+        "total_attended": 89
+      },
+      {
+        "Salary": "Below 15,000 INR & 15,000 +",
+        "First_Generation_Learner": 4,
+        "total_attended": 10,
+        "people_Count": 180
+      }
+    ]
+    
+   }

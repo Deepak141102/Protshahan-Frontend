@@ -75,6 +75,22 @@ const HeartModel = () => {
     },
   ];
 
+const handleTooltip = (e, text) => {
+  const tooltip = document.getElementById("tooltip");
+  if (tooltip) {
+    tooltip.style.left = `${e.clientX}px`;
+    tooltip.style.top = `${e.clientY - 20}px`;
+    tooltip.textContent = text;
+    tooltip.style.opacity = 1;
+  }
+};
+
+const hideTooltip = () => {
+  const tooltip = document.getElementById("tooltip");
+  if (tooltip) {
+    tooltip.style.opacity = 0;
+  }
+};
 
 
   return (
@@ -124,46 +140,101 @@ const HeartModel = () => {
         <h1 className="text-xl" >USE THE HEART MODEL BELOW TO UNDERSTAND OUR IMPACT IN DIFFERENT DOMAINS</h1>
       </div>
 
-      <div className=" flex flex-col h-auto py-9 max-md:w-full w-[45vw]  p-4 items-center">
-       <svg
-          style={{ width: "100%", height: "auto" }}
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1328 1126"
+     <div className="flex flex-col h-auto py-9 max-md:w-full w-[45vw] p-4 items-center">
+  <svg
+    style={{ width: "100%", height: "auto" }}
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1328 1126"
+  >
+    <style>
+      {`
+        .image-mapper-shape {
+          fill: rgba(0, 0, 0, 0); /* Transparent fill */
+          stroke: transparent; /* Default stroke color */
+          transition: all 0.3s ease; /* Smooth transition */
+        }
+        g:hover .image-mapper-shape {
+          stroke: rgba(255, 255, 255, 0.2); /* Light glowing stroke on hover */
+          stroke-width: 3px; /* Increased stroke width on hover */
+          opacity: 1; /* Full opacity on hover */
+          fill: rgba(255, 255, 255, 0.3); /* Slightly visible fill */
+          filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7)); /* Futuristic glow effect */
+        }
+      `}
+    </style>
+
+    {/* Background Image */}
+    <image
+      xlinkHref="mobi-heart.jpeg"
+      width="1328"
+      height="1126"
+    />
+
+    {/* Technology Links */}
+    {mobQuickLink.map((item, ind) => (
+      <Link key={ind} to={item.href}>
+        <g
+          className="group"
+          onMouseEnter={(e) => handleTooltip(e, `Hi, I am ${item.title}`)}
+          onMouseLeave={hideTooltip}
         >
-          <style>
-            {`
-            .image-mapper-shape {
-              fill: rgba(0, 0, 0, 0); /* Transparent fill */
-              stroke: transparent; /* Default stroke color */
-              transition: all 0.3s ease; /* Smooth transition */
-            }
-            g:hover .image-mapper-shape {
-              stroke: rgba(255, 255, 255, 0.2); /* Light glowing stroke on hover */
-              stroke-width: 3px; /* Increased stroke width on hover */
-              opacity: 1; /* Full opacity on hover */
-              fill: rgba(255, 255, 255, 0.3); /* Slightly visible fill */
-              filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.7)); /* Futuristic glow effect */
-            }
-          `}
-          </style>
+          <polygon className="image-mapper-shape" points={item.points} />
+        </g>
+      </Link>
+    ))}
+  </svg>
 
-          {/* Background Image */}
-          <image
-            xlinkHref="mobi-heart.jpeg"
-            width="1328"
-            height="1126"
-          />
+  {/* Tooltip */}
+  <div
+  id="tooltip"
+  className="fixed p-3 rounded-lg shadow-xl opacity-0 scale-90 transform transition-all duration-300 pointer-events-none bg-gradient-to-r from-[#ce441a] via-[#ce441a] to-[#ce441a] text-white text-xs 
+  animate-tooltip-tooltipIn hover:opacity-100 hover:scale-100 hover:translate-y-2"  style={{
+    pointerEvents: "none",
+    boxShadow: "0 0 15px rgba(255, 255, 255, 0.5)",
+    backdropFilter: "blur(4px)",
+    filter: "brightness(1.3)",
+    animation: "tooltip-glow 1.5s infinite alternate, tooltip-slide 0.3s ease-out",
+  }}
+/>
+</div>
 
-          {/* Technology Links */}
-          {mobQuickLink.map((item, ind) => (
-            <Link key={ind} to={item.href}>
-              <g>
-                <polygon className="image-mapper-shape" points={item.points} />
-              </g>
-            </Link>
-          ))}
-        </svg>
-      </div>
+<style jsx>{`
+  @keyframes tooltip-glow {
+    0% {
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+    100% {
+      box-shadow: 0 0 30px rgba(255, 255, 255, 1), 0 0 50px rgba(255, 105, 180, 1);
+    }
+  }
+
+  @keyframes tooltip-slide {
+    0% {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  #tooltip {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(4px);
+    background: rgba(255, 255, 255,);
+    filter: brightness(1.3);
+    animation: tooltip-glow 1.5s infinite alternate, tooltip-slide 0.3s ease-out;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    #tooltip {
+      animation: tooltip-glow 2s infinite alternate, tooltip-slide 0.3s ease-out;
+    }
+  }
+`}</style>
+
+
 
       {/* THIS IS OUR CARDS AREA WHICH ARE GETTING DATA FROM THE ARRAY OBJECT  */}
       <div className=" w-full bg-[#212331] flex justify-center gap-5 p-4 max-md:flex-col flex-wrap">

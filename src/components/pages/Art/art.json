@@ -1,0 +1,75 @@
+{
+  "girl_participants": {
+    "activities": [
+      {
+        "name": "Calligraphy",
+        "count": 89
+      },
+      {
+        "name": "Storytelling",
+        "count": 71
+      },
+      {
+        "name": "Puppetry Workshop",
+        "count": 98
+      },
+      {
+        "name": "Theater Workshop",
+        "count": 49
+      },
+      {
+        "name": "Medical Clowning",
+        "count": 57
+      },
+      {
+        "name": "Pottery Workshop",
+        "count": 100
+      },
+      {
+        "name": "Dance Choreography",
+        "count": 27
+      },
+      {
+        "name": "Art Therapy (Murals & Portraits)",
+        "count": 20
+      }
+    ]
+  },
+  "sessions": {
+    "activities_session": [
+      {
+        "name": "Calligraphy",
+        "count": 4
+      },
+      {
+        "name": "Storytelling",
+        "count": 2
+      },
+      {
+        "name": "Puppetry Workshop",
+        "count": 15
+      },
+      {
+        "name": "Theater Workshop",
+        "count": 15
+      },
+      {
+        "name": "Medical Clowning",
+        "count": 3
+      },
+      {
+        "name": "Pottery Workshop",
+        "count": 2
+      },
+      {
+        "name": "Dance Choreography",
+        "count": 5
+      },
+      {
+        "name": "Art Therapy (Murals & Portraits)",
+        "count": 2
+      }
+    ],
+    "total": 48
+  }
+}

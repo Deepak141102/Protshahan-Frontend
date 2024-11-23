@@ -2,8 +2,7 @@
     {
       "year": 2022,
       "monthWise": {
-        "January": 0,
-        "February": 0,
+        
         "March": 158,
         "April": 131,
         "May": 205,
@@ -40,16 +39,8 @@
       "monthWise": {
         "January": 282,
         "February": 306,
-        "March": 255,
-        "April": 0,
-        "May": 0,
-        "June": 0,
-        "July": 0,
-        "August": 0,
-        "September": 0,
-        "October": 0,
-        "November": 0,
-        "December": 0
+        "March": 255
+        
       },
       "total": 843
     }

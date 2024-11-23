@@ -14,7 +14,7 @@
             "From a minority": 10,
             "Family has a long-term ailment": 5
         },
-        "total_ans":67
+        "total_ans": 67
     },
     {
         "salary": "Below 10,000 INR",
@@ -34,7 +34,7 @@
             "Family has a long-term ailment": 10,
             "Facing difficulties accessing healthcare services?": 12
         },
-        "total_ans":89
+        "total_ans": 89
     },
     {
         "salary": "Below 15,000 INR & More than 15,000",
@@ -44,14 +44,12 @@
             "Belongs internally migrated family": 4,
             "Applicant lacks access to welfare schemes": 1,
             "Has basic documents": 1,
-            
             "Has disability in family": 2,
             "Person with Disability": 1,
             "Family has a long-term ailment": 4
         },
-        "total_ans":10
+        "total_ans": 10
     },
-     
     {
         "salary": "No Income",
         "options": {
@@ -68,6 +66,55 @@
             "Family has a long-term ailment": 2,
             "Facing difficulties accessing healthcare services?": 2
         },
-        "total_ans":13
-    }
+        "total_ans": 13
+    },
+    {
+        "Job Search": 43,
+        "Career Coaching": 23,
+        "Personal Development": 15,
+        "Interview Prep": 13,
+        "Resume Building": 12,
+        "Financial Literacy": 9,
+        "Mental Health": 2
+    },
+    {
+        "500-5000": {
+            "count": 18
+        },
+        "5000-10000": {
+            "count": 28
+        },
+        "10000-15000": {
+            "count": 24
+        },
+        "15000-20000": {
+            "count": 10
+        },
+        "20000-25000+": {
+            "count": 9,
+            "total_people": 89
+        }
+    },{
+        "income": {
+          "500-5000": {
+            "count": 18
+          },
+          "5000-10000": {
+            "count": 28
+          },
+          "10000-15000": {
+            "count": 24
+          },
+          "15000-20000": {
+            "count": 10
+          },
+          "20000-25000+": {
+            "count": 9,
+            "total_people": 89
+          }
+        }
+      }
+   
+      
+      
 ]

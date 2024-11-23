@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import data from "./Inocme.json"; // Ensure path is correct for the provided JSON
+import data from "../json/technology/Inocme.json"; // Ensure path is correct for the provided JSON
 
 const ChartComponent = () => {
   const [selectedSalary, setSelectedSalary] = useState(null);

@@ -10,10 +10,10 @@ import {
   Legend,
 } from "chart.js";
 import { IoMdArrowRoundBack } from "react-icons/io";
-import yearlyData from "./YearlyMonthlyData.json"; // Yearly data
-import studentData from "./StudentPassOut.json"; // Student pass out data
-
-
+import yearlyData from "../json/education/YearlyMonthlyData.json"; // Yearly data
+import studentData from "../json/education/StudentPassOut.json"; // Student pass out data
+import EduChart from "./DataChart";
+// import EduChart2 from "./DataChart2";
 
 // Register ChartJS components
 ChartJS.register(
@@ -25,7 +25,7 @@ ChartJS.register(
   Legend
 );
 
-const Education = () => {
+const EducationPage = () => {
   const [selectedYearData, setSelectedYearData] = useState(null);
   const [showMonthlyChart, setShowMonthlyChart] = useState(false);
   const [selectedSubject, setSelectedSubject] = useState(null);
@@ -53,9 +53,7 @@ const Education = () => {
         {
           label: `Monthly Data for ${selectedYearData.year}`,
           data: Object.values(selectedYearData.monthWise),
-          backgroundColor: "rgba(153, 102, 255, 0.6)",
-          borderColor: "rgba(153, 102, 255, 1)",
-          borderWidth: 1,
+          backgroundColor: "#df6b4f",
         },
       ],
     }
@@ -189,15 +187,16 @@ const Education = () => {
             </div>
           </div>
 
-          <div className="flex justify-center py-10 px-4  bg-[#dcdcdc] gap-4 max-md:flex-col">
+          <div className="flex justify-center py-10 px-4  bg-[#dcdcdc] gap-4 flex-col max-md:flex-col">
             {/* Yearly Bar Chart */}
-            <div className="w-full max-md:w-full h-[73vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
+            <div className="flex gap-4 max-md:flex-col">
+            <div className="w-1/2 max-md:w-full h-[73vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
               <div
                 className={`transition-transform duration-700 ease-in-out transform ${showMonthlyChart ? "-translate-x-[45rem]" : "translate-x-0"
                   }`}
               >
-                <h2 className="text-xl font-bold text-center mb-4 text-[#212331]">
-                  Number of Lectures (Yearly)
+                <h2 className="text-xl font-semibold text-center mb-4 text-[#212331]">
+                  Number of Lectures Conducted by us(Yearly)
                 </h2>
 
                 {/* Set responsive height for the chart container */}
@@ -239,7 +238,7 @@ const Education = () => {
                   />
                 </div>
 
-                <p className="text-[#e8461e] text-center mt-2 font-bold text-[20px]">
+                <p className="text-[#e8461e] text-center mt-2 font-bold text-[18px]">
                   Click on a bar to view monthly data!
                 </p>
               </div>
@@ -262,7 +261,7 @@ const Education = () => {
                   </div>
 
                   <h2 className="text-xl font-bold text-center mb-4 text-[#212331]">
-                    Number of Lectures in {selectedYearData.year} (Monthly)
+                    Number of Lectures in Conducted by us {selectedYearData.year} (Monthly)
                   </h2>
                   {/* Set responsive height for the monthly chart container */}
                   <div className="h-[60vh] max-md:h-[68vh] pb-14">
@@ -307,7 +306,7 @@ const Education = () => {
             </div>
 
             {/* Student Pass Out Chart */}
-            <div className="w-full max-md:w-full h-[73 vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
+            <div className="w-1/2 max-md:w-full h-[73 vh] max-md:h-[85vh] relative overflow-hidden bg-white p-4 rounded-lg shadow-md">
               {selectedSubject && (
                 <div className="flex justify-start pt-0">
                   <button
@@ -321,8 +320,7 @@ const Education = () => {
 
               {/* Conditionally render the heading only if selectedSubject is not set */}
               <h2 className="text-xl font-bold text-center mb-4 text-[#212331]">
-                Number of Students Passed Out
-              </h2>
+              Student Success Rates with Our Guidance              </h2>
 
               {/* Set responsive height for the student chart container */}
               <div className="h-[55.5vh] max-md:h-[66vh]">
@@ -357,19 +355,20 @@ const Education = () => {
                 />
               </div>
               {!selectedSubject && (
-                <h2 className="text-[#e8461e] text-center mt-2 font-bold text-[20px]">
+                <h2 className="text-[#e8461e] text-center mt-2 font-bold text-[18px]">
                   Click on a bar to view passed students data!
                 </h2>
               )}
             </div>
+            </div>
+<EduChart/>
           </div>
 
           
-
         </div>
       </div>
     </div>
   );
 };
 
-export default Education;
+export default EducationPage;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"; 
 import DatamapsIndia from "react-datamaps-india";
-import placeData from "./Data.json"; 
+import placeData from "../json/rights/Data.json"; 
 import "./rightsPage.css";
 
 const StateMap = () => {
@@ -74,7 +74,7 @@ const StateMap = () => {
                 return (
                   <div className="tooltip flex max-md:w-screen">
                     <div className="inline">
-                      {message}{" "}
+                      {message}
                       <div className="tooltip-header inline">{stateName}</div>
                     </div>
                   </div>
