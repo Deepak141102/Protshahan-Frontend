@@ -4,7 +4,7 @@ import Health from "./components/pages/Health/Health.jsx";
 import EducationPage from "./components/pages/Education/EducationPage.jsx";  {/* Ensure extension consistency */}
 import Art from "./components/pages/Art/ArtPage.jsx";  {/* Ensure extension consistency */}
 import Rights from "./components/pages/Rights/RightsPage.jsx";
-import Tech from "./components/pages/Technology/TechnologyPage.jsx";  {/* Ensure extension consistency */}
+import Tech from "./components/pages/Technology/TechnologyPage.jsx";  
 import NotFound from "./components/NotFound.jsx";
 import SalaryChart from "./components/pages/Technology/Income.jsx";  {/* Ensure extension consistency */}
 
