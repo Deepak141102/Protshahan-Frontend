@@ -15,8 +15,8 @@
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
-    "chart.js": "^3.9.1",
-    "chartjs-plugin-annotation": "^1.4.0",
+    "chart.js": "^4.4.6",
+    "chartjs-plugin-annotation": "^3.1.0",
     "d3": "^7.9.0",
     "d3-scale": "^4.0.2",
     "highcharts": "^11.4.8",

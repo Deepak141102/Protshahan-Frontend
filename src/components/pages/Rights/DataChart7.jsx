@@ -94,13 +94,7 @@ const DataChart7 = () => {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: "top",
-        labels: {
-          boxWidth: 15,
-          padding: 10,
-          usePointStyle: true,
-          color: "#e8461e",
-        },
+        display:false
       },
       tooltip: {
         callbacks: {
